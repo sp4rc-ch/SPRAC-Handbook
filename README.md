@@ -12,6 +12,7 @@ The site is a static single-page app built with React, Vite and Tailwind CSS. It
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Maintainers](#maintainers)
+- [Contact](#contact)
 - [License](#license)
 
 ## Requirements
@@ -46,7 +47,10 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 | An0n | Repository owner |
 | vo1n | Maintainer. Actively maintains the project and built version v1.0.0 |
 
-Reach the maintainers through the [issue tracker](https://github.com/sp4rc-ch/sp4rc-ch.github.io/issues).
+## Contact
+
+- **Threema:** search for the maintainers' aliases, An0n or vo1n, in Threema and send a message.
+- **GitHub:** bugs and content suggestions go on the [issue tracker](https://github.com/sp4rc-ch/sp4rc-ch.github.io/issues).
 
 ## License
 
