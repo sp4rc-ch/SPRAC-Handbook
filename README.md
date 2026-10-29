@@ -41,9 +41,12 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 
 ## Maintainers
 
-The handbook is maintained by the SPARC community. Reach the maintainers through the [issue tracker](https://github.com/sp4rc-ch/sp4rc-ch.github.io/issues).
+| Name | Role |
+|---|---|
+| An0n | Repository owner |
+| vo1n | Maintainer. Actively maintains the project and built version v1.0.0 |
 
-//TODO: list maintainer names and GitHub handles
+Reach the maintainers through the [issue tracker](https://github.com/sp4rc-ch/sp4rc-ch.github.io/issues).
 
 ## License
 
