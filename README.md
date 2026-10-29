@@ -45,7 +45,9 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 | Name | Role |
 |---|---|
 | An0n | Repository owner |
-| vo1n | Maintainer. Actively maintains the project and built version v1.0.0 |
+| vo1n | Maintainer |
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for who built what.
 
 ## Contact
 
