@@ -1,0 +1,23 @@
+# The SPRAC Handbook
+
+> Unofficial knowledge base on SPARC, the Cyber Lehrgang (CYLG) and Cyber Bataillon 42 (CYBAT): what they are, how they are built and where to read more. Run by the SPARC Community and not affiliated with SPARC, the Swiss Armed Forces or the Cyber Command. Available in English, German, French, Italian and Romansh.
+
+The site has not launched yet. Content is maintained in the open on GitHub; corrections are welcome as issues or pull requests.
+
+## Pages
+
+- [Home (English)](https://sprac.ch/en/): launch status and how to contribute
+- [Legal notice](https://sprac.ch/en/legal-notice/): who runs the site
+- [Privacy policy](https://sprac.ch/en/privacy-policy/): which data the site processes
+
+## Official sources
+
+- [SPARC](https://sparc-cyberdefence.ch): the Swiss Army's pre-military cyber talent programme
+- [Cyber Miliz / Cyber Lehrgang](https://www.vtg.admin.ch/cyber-miliz)
+- [Cyber Bataillon 42](https://www.vtg.admin.ch/neu-gegrundetes-bataillon-ubernimmt-kommando)
+- [Kommando Cyber](https://www.vtg.admin.ch/kdo-cy)
+
+## Optional
+
+- [Source code](https://github.com/sp4rc-ch/SPR4C-Handbook/)
+- [Sitemap](https://sprac.ch/sitemap.xml)

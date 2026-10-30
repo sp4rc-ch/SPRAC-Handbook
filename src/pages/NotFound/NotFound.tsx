@@ -1,6 +1,5 @@
 import { PageLayout } from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/Button';
-import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useLanguage, useTranslation } from '@/i18n/LanguageContext';
 import { buildPath } from '@/router/routes';
 import { ErrorCode } from './ErrorCode';
@@ -8,7 +7,6 @@ import { ErrorCode } from './ErrorCode';
 export function NotFound() {
     const language = useLanguage();
     const t = useTranslation();
-    useDocumentTitle(t.notFound.documentTitle);
 
     return (
         <PageLayout>
