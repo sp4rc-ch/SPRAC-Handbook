@@ -8,6 +8,34 @@ import { PAGES, pagePath } from './src/router/pages';
 import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta';
 
 /**
+ * Same-origin only: the build has no inline scripts or styles, no eval and no third-party
+ * requests. JSON-LD is a data block and is not affected. Build only, because the Vite dev
+ * server injects inline styles for hot reload. frame-ancestors, HSTS and Permissions-Policy
+ * cannot be set from a <meta> tag and must come from the host as HTTP headers.
+ */
+const CONTENT_SECURITY_POLICY = [
+    "default-src 'self'",
+    "script-src 'self'",
+    "style-src 'self'",
+    "img-src 'self'",
+    "font-src 'self'",
+    "connect-src 'self'",
+    "manifest-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'none'",
+    'upgrade-insecure-requests',
+].join('; ');
+
+function contentSecurityPolicy(): Plugin {
+    return {
+        name: 'content-security-policy',
+        apply: 'build',
+        transformIndexHtml: () => [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CONTENT_SECURITY_POLICY }, injectTo: 'head-prepend' }],
+    };
+}
+
+/**
  * Writes one HTML file per language and page (e.g. de/legal-notice/index.html) with its own
  * title, description, canonical, hreflang, Open Graph and JSON-LD, plus 404.html and sitemap.xml.
  * GitHub Pages then answers every real route with 200 and the right <head>, instead of a 404
@@ -49,7 +77,7 @@ function seoPages(): Plugin {
 }
 
 export default defineConfig({
-    plugins: [react(), tailwindcss(), seoPages()],
+    plugins: [react(), tailwindcss(), contentSecurityPolicy(), seoPages()],
     resolve: {
         alias: {
             '@': path.resolve(import.meta.dirname, './src'),
