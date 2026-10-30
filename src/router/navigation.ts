@@ -21,6 +21,17 @@ function subscribe(onChange: () => void) {
     };
 }
 
+/** Path rendered at build time (see entry-server.ts); there is no window there. */
+let prerenderPathname = '/';
+
+export function setPrerenderPathname(pathname: string) {
+    prerenderPathname = pathname;
+}
+
+const browserPathname = () => window.location.pathname;
+// Also used while hydrating in the browser, where it must read the real location.
+const serverPathname = () => (typeof window === 'undefined' ? prerenderPathname : window.location.pathname);
+
 export function usePathname(): string {
-    return useSyncExternalStore(subscribe, () => window.location.pathname);
+    return useSyncExternalStore(subscribe, browserPathname, serverPathname);
 }

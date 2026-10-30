@@ -1,11 +1,13 @@
+import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { defineConfig, type Plugin } from 'vite';
-import { translations } from './src/i18n/index';
-import { DEFAULT_LANGUAGE, LANGUAGES } from './src/i18n/languages';
-import { PAGES, pagePath } from './src/router/pages';
-import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta';
+import { build, defineConfig, type Plugin } from 'vite';
+import { translations } from './src/i18n/index.ts';
+import { DEFAULT_LANGUAGE, LANGUAGES } from './src/i18n/languages.ts';
+import { PAGES, pagePath } from './src/router/pages.ts';
+import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta.ts';
 
 /**
  * Same-origin only: the build has no inline scripts or styles, no eval and no third-party
@@ -35,34 +37,47 @@ function contentSecurityPolicy(): Plugin {
     };
 }
 
+const ROOT_DIV = '<div id="root"></div>';
+const OUTLET = '<!--prerender-->';
+
+/** Marks a page's root element with the path it was built for, plus a slot for the pre-rendered markup. */
+const prerenderSlot = (pathname: string) => `<div id="root" data-prerendered="${pathname}">${OUTLET}</div>`;
+
 /**
  * Writes one HTML file per language and page (e.g. de/legal-notice/index.html) with its own
  * title, description, canonical, hreflang, Open Graph and JSON-LD, plus 404.html and sitemap.xml.
- * GitHub Pages then answers every real route with 200 and the right <head>, instead of a 404
- * fallback that search engines would not index.
+ * The host then answers every real route with 200 and the right <head>, instead of a 404
+ * fallback that search engines would not index. The page body is filled in by prerender().
  */
 function seoPages(): Plugin {
     return {
         name: 'seo-pages',
-        apply: 'build',
+        apply: (config, { command }) => command === 'build' && !config.build?.ssr,
         enforce: 'post',
         generateBundle(_, bundle) {
             const index = bundle['index.html'];
             if (index?.type !== 'asset') return this.error('index.html was not emitted');
 
             const template = String(index.source);
-            const render = (language: string, head: string) =>
-                template.replace(/<!-- seo:start[\s\S]*?<!-- seo:end -->/, head).replace(/<html lang="[^"]*">/, `<html lang="${language}">`);
+            const render = (language: string, head: string, root = ROOT_DIV) =>
+                template
+                    .replace(/<!-- seo:start[\s\S]*?<!-- seo:end -->/, head)
+                    .replace(/<html lang="[^"]*">/, `<html lang="${language}">`)
+                    .replace(ROOT_DIV, root);
 
             for (const language of LANGUAGES) {
                 for (const page of PAGES) {
-                    const fileName = `${pagePath(language, page).slice(1)}index.html`;
-                    this.emitFile({ type: 'asset', fileName, source: render(language, renderHeadTags(getPageMeta(language, page))) });
+                    const pathname = pagePath(language, page);
+                    this.emitFile({
+                        type: 'asset',
+                        fileName: `${pathname.slice(1)}index.html`,
+                        source: render(language, renderHeadTags(getPageMeta(language, page)), prerenderSlot(pathname)),
+                    });
                 }
             }
 
             // "/" redirects to the visitor's language in the browser; for crawlers it carries the English home head.
-            index.source = render(DEFAULT_LANGUAGE, renderHeadTags(getPageMeta(DEFAULT_LANGUAGE, 'home')));
+            index.source = render(DEFAULT_LANGUAGE, renderHeadTags(getPageMeta(DEFAULT_LANGUAGE, 'home')), prerenderSlot('/'));
 
             const { siteName, notFound } = translations[DEFAULT_LANGUAGE];
             this.emitFile({
@@ -76,8 +91,42 @@ function seoPages(): Plugin {
     };
 }
 
+/**
+ * Renders each page's React tree into its HTML file, so the content is in the HTML itself and
+ * readable without JavaScript (most AI crawlers). The browser then hydrates it (see main.tsx).
+ */
+function prerender(): Plugin {
+    let outDir = '';
+    return {
+        name: 'prerender',
+        apply: (config, { command }) => command === 'build' && !config.build?.ssr,
+        configResolved(config) {
+            outDir = path.resolve(config.root, config.build.outDir);
+        },
+        async closeBundle() {
+            const serverDir = path.resolve(import.meta.dirname, 'node_modules/.tmp/prerender');
+            await build({
+                configFile: false,
+                logLevel: 'warn',
+                resolve: { alias: { '@': path.resolve(import.meta.dirname, './src') } },
+                build: { ssr: 'src/entry-server.ts', outDir: serverDir, emptyOutDir: true, rollupOptions: { output: { entryFileNames: 'entry-server.mjs' } } },
+            });
+            const { render } = (await import(pathToFileURL(path.join(serverDir, 'entry-server.mjs')).href)) as { render: (pathname: string) => string };
+
+            const files = ['index.html', ...LANGUAGES.flatMap((language) => PAGES.map((page) => `${pagePath(language, page).slice(1)}index.html`))];
+            for (const file of files) {
+                const filePath = path.join(outDir, file);
+                const html = await readFile(filePath, 'utf8');
+                const pathname = html.match(/data-prerendered="([^"]+)"/)?.[1];
+                if (!pathname || !html.includes(OUTLET)) throw new Error(`prerender: no slot in ${file}`);
+                await writeFile(filePath, html.replace(OUTLET, render(pathname)));
+            }
+        },
+    };
+}
+
 export default defineConfig({
-    plugins: [react(), tailwindcss(), contentSecurityPolicy(), seoPages()],
+    plugins: [react(), tailwindcss(), contentSecurityPolicy(), seoPages(), prerender()],
     resolve: {
         alias: {
             '@': path.resolve(import.meta.dirname, './src'),

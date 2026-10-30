@@ -1,4 +1,4 @@
-import type { Translation } from './en';
+import type { Translation } from './en.ts';
 
 export const it: Translation = {
     siteName: 'The SPRAC Handbook',
@@ -63,6 +63,170 @@ export const it: Translation = {
         copyright: '© 2026 The SPRAC Handbook',
         disclaimer: 'Progetto della community. Non affiliato all’Esercito svizzero né a SPARC.',
         lastVerified: 'Ultima verifica · nov. 2026',
+    },
+    legal: {
+        lastUpdated: 'Ultimo aggiornamento',
+        lastUpdatedDate: '30 ottobre 2026',
+        law: 'Diritto',
+        repoOwner: 'Proprietario del repository',
+        maintainer: 'Maintainer',
+        email: 'E-mail (vo1n)',
+        purpose: 'Scopo',
+        retention: 'Conservazione',
+        legalNotice: 'Note legali',
+        privacyPolicy: 'Informativa sulla privacy',
+    },
+    legalNotice: {
+        title: 'Note legali',
+        lead: 'Chi c’è dietro lo SPRAC Handbook, come contattarci e cosa è e non è questo sito.',
+        projectLabel: 'Progetto',
+        project: 'Progetto comunitario non commerciale',
+        law: 'Diritto svizzero',
+        who: {
+            heading: 'Chi gestisce questo sito?',
+            body: 'Lo SPRAC Handbook (sprac.ch) è un progetto comunitario open source e non commerciale, realizzato da studenti della community SPARC. Non è un’azienda né un’associazione iscritta.',
+        },
+        contact: {
+            heading: 'Contatto',
+            repositoryLabel: 'Repository',
+            body: 'Per domande, correzioni o richieste legali scrivi un’e-mail a vo1n. Se trovi un errore nei contenuti, puoi anche aprire una issue nel repository.',
+        },
+        nonCommercial: {
+            heading: 'Progetto non commerciale',
+            body: 'Lo SPRAC Handbook non ha pubblicità, contenuti sponsorizzati, link di affiliazione né servizi a pagamento. Non raccogliamo denaro né donazioni e non vendiamo nulla.',
+        },
+        notOfficial: {
+            heading: 'Non è un sito ufficiale',
+            body1: 'Lo SPRAC Handbook è un progetto non ufficiale. Non è gestito, sostenuto né verificato dall’Esercito svizzero, dal Comando Cyber, dal DDPS, da SPARC o dalle aziende che gestiscono SPARC.',
+            body2: 'Nomi come SPARC, Cyber Lehrgang (CYLG) e battaglione cyber 42 sono usati solo per descrivere questi programmi e appartengono ai rispettivi titolari.',
+        },
+        accuracy: {
+            heading: 'Correttezza dei contenuti',
+            body1: 'Scriviamo ogni pagina con cura e citiamo le fonti ufficiali su cui ci basiamo. Programmi, requisiti e date cambiano, quindi non possiamo garantire che i contenuti siano sempre corretti, completi e aggiornati.',
+            body2: 'Lo handbook offre informazioni generali. Non sono informazioni ufficiali né consulenza sui tuoi obblighi di servizio militare personali. Per risposte vincolanti rivolgiti direttamente agli enti ufficiali, per esempio alla tua autorità militare cantonale, al Comando Reclutamento o ai siti ufficiali dei programmi.',
+        },
+        externalLinks: {
+            heading: 'Link esterni',
+            body: 'Lo handbook rimanda a siti esterni, come le pagine ufficiali dei programmi e il nostro repository. I gestori di questi siti sono gli unici responsabili dei loro contenuti. Controlliamo un link quando lo aggiungiamo, ma non sorvegliamo costantemente i siti collegati.',
+        },
+        copyright: {
+            heading: 'Diritti d’autore e licenze',
+            textsLabel: 'Testi',
+            codeLabel: 'Codice sorgente',
+            licenceNotChosen: 'Nessuna licenza ancora scelta, tutti i diritti riservati',
+            iconsLabel: 'Icone',
+            icons: 'Phosphor Icons · licenza MIT',
+            fontsLabel: 'Font',
+            fonts: 'Space Grotesk, Geist, Geist Mono · SIL OFL 1.1',
+            body: 'Nomi, loghi e materiale citato di terzi restano di proprietà dei rispettivi titolari.',
+        },
+        otherTexts: 'Altri testi legali',
+    },
+    privacy: {
+        title: 'Informativa sulla privacy',
+        lead: 'Quali dati personali vengono trattati quando visiti lo SPRAC Handbook e quali sono i tuoi diritti.',
+        appliesToLabel: 'Si applica a',
+        law: 'LPD svizzera',
+        overview: {
+            heading: 'Di cosa si tratta?',
+            body: 'Questa informativa spiega come vengono trattati i dati personali quando visiti sprac.ch, ci scrivi un’e-mail o contribuisci al nostro repository. Si applica la legge federale svizzera sulla protezione dei dati (LPD).',
+        },
+        responsible: {
+            heading: 'Chi è responsabile?',
+            body: 'vo1n, maintainer dello SPRAC Handbook, è responsabile del trattamento dei dati personali su questo sito. Il repository appartiene ad An0n.',
+        },
+        visiting: {
+            heading: 'Visita del sito',
+            intro: 'Quando apri lo handbook, il provider di hosting registra automaticamente dati tecnici nei file di log del server:',
+            items: [
+                'Indirizzo IP del tuo dispositivo',
+                'Data e ora della richiesta',
+                'Pagina o file richiesto',
+                'Sito di provenienza, se il browser lo trasmette',
+                'Tipo e versione del browser, sistema operativo',
+                'Codice di stato e quantità di dati trasferiti',
+            ],
+            purpose: 'Fornire il sito, mantenerlo sicuro, analizzare errori tecnici',
+            retention: 'Cancellati dopo 30 giorni, salvo in caso di incidente di sicurezza',
+            outro: 'Non usiamo questi dati per identificarti e non li combiniamo con altri dati.',
+        },
+        email: {
+            heading: 'Contattarci via e-mail',
+            body: 'Se ci scrivi, trattiamo il tuo indirizzo e-mail, il nome o pseudonimo che usi e il contenuto del messaggio.',
+            purpose: 'Rispondere alla tua richiesta',
+            retention: 'Al più tardi 12 mesi dopo la fine della conversazione',
+        },
+        repository: {
+            heading: 'Contribuire al repository',
+            body1Start: 'Codice e contenuti si trovano in un repository pubblico su ',
+            body1End: '. Issue, commenti e proposte di modifica sono soggetti alle condizioni d’uso e all’informativa sulla privacy di quella piattaforma. Il gestore della piattaforma è responsabile dei dati del tuo account.',
+            body2: 'Il tuo nome utente e i tuoi contributi sono visibili pubblicamente e possono restare nella cronologia del progetto. Puoi modificare o eliminare i tuoi commenti sulla piattaforma.',
+            body2Emphasis: 'Non usare il tuo account GitHub privato. Usa un account separato, per esempio con il tuo alias SPARC.',
+        },
+        notDo: {
+            heading: 'Cosa non facciamo',
+            items: [
+                'Nessun account utente, modulo o newsletter',
+                'Nessun pagamento, donazione o pubblicità',
+                'Nessuna analisi, tracciamento o profilazione',
+                'Nessuna decisione individuale automatizzata',
+                'Non vendiamo né affittiamo mai dati personali',
+            ],
+        },
+        cookies: {
+            heading: 'Cookie e archiviazione locale',
+            body1: 'Non usiamo cookie per analisi, pubblicità o tracciamento.',
+            body2: 'Per ricordare la lingua scelta, lo handbook salva una piccola voce nell’archiviazione locale del browser. Resta sul tuo dispositivo e non viene mai inviata a noi o a terzi.',
+            body3: 'Puoi cancellarla in qualsiasi momento eliminando i dati del sito nelle impostazioni del browser. Il sito funziona anche senza; scegli semplicemente di nuovo la lingua.',
+        },
+        fonts: {
+            heading: 'Font, icone e contenuti esterni',
+            body1: 'Font e icone sono serviti dal nostro hosting. Non carichiamo font da Google Fonts o da altri servizi esterni.',
+            body2: 'Lo handbook non incorpora video, mappe o plugin di social media. Contiene solo link normali. Nessun dato viene inviato a un sito collegato finché non clicchi il link; da quel momento vale la sua informativa sulla privacy.',
+        },
+        recipients: {
+            heading: 'Chi riceve i tuoi dati?',
+            items: [
+                { name: 'Provider di hosting', text: ' (Infomaniak Network SA, Svizzera): fornisce il sito e conserva i log del server, per nostro conto e vincolato da contratto.' },
+                { name: 'Provider e-mail', text: ' (Proton AG, Svizzera): archivia e trasmette le nostre e-mail, per nostro conto e vincolato da contratto.' },
+                { name: 'Piattaforma del repository', text: ' (GitHub Inc.): solo se vi contribuisci tu stesso, sotto la sua responsabilità.' },
+                { name: 'Autorità e tribunali', text: ', se la legge ci obbliga a comunicare dati.' },
+            ],
+        },
+        abroad: {
+            heading: 'Comunicazione all’estero',
+            intro: 'Cerchiamo di trattare i dati personali in Svizzera. Alcuni fornitori possono trattare dati anche in questi Stati:',
+            columns: ['Stato', 'Servizio', 'Base'],
+            rows: [
+                ['Svizzera', 'Hosting e log del server (Infomaniak)', 'Svizzera: nessuna comunicazione all’estero'],
+                ['Svizzera', 'E-mail (Proton AG)', 'Svizzera: nessuna comunicazione all’estero'],
+                ['USA', 'GitHub Inc., solo se vi contribuisci tu stesso', 'Swiss-U.S. Data Privacy Framework e clausole contrattuali standard'],
+            ],
+            outro: 'Comunichiamo dati personali a Stati senza protezione adeguata solo sulla base di garanzie idonee, in particolare clausole contrattuali standard, o di un’eccezione legale. Puoi chiederci una copia di queste garanzie.',
+        },
+        security: {
+            heading: 'Come proteggiamo i tuoi dati?',
+            body: 'Lo handbook è un sito statico: nessun database, nessun account utente e nessun modulo. Oltre ai log del server e alle e-mail descritti sopra, non abbiamo dati personali da proteggere. Il sito è servito solo tramite connessione cifrata (HTTPS/TLS) e l’accesso agli account di hosting, e-mail e repository è limitato ai maintainer.',
+        },
+        rights: {
+            heading: 'Quali sono i tuoi diritti?',
+            intro: 'Secondo la LPD hai il diritto di:',
+            items: ['Chiedere informazioni sui dati personali che trattiamo su di te', 'Far rettificare dati inesatti', 'Far cancellare i tuoi dati', 'Opporti al trattamento dei tuoi dati'],
+            practiceEmphasis: 'In pratica non abbiamo quasi nulla su di te.',
+            practice:
+                'Non possiamo collegare i log del server a una persona e comunque vengono cancellati dopo 30 giorni. Gli unici dati che possiamo davvero associarti sono le e-mail che ci hai inviato. Su richiesta ti diciamo cosa abbiamo, di solito solo quelle e-mail, e le cancelliamo.',
+            requestStart: 'Invia la tua richiesta a ',
+            requestEnd: '. Per essere sicuri di rispondere alla persona giusta, rispondiamo all’indirizzo e-mail a cui appartengono i dati. Le richieste sono gratuite e di regola ricevono risposta entro 30 giorni.',
+            complaint: 'Puoi anche presentare un reclamo all’Incaricato federale della protezione dei dati e della trasparenza (IFPDT).',
+        },
+        youngPeople: {
+            heading: 'Giovani',
+            body: 'Lo handbook si rivolge anche ad adolescenti e giovani adulti.',
+        },
+        changes: {
+            heading: 'Modifiche a questa informativa',
+            body: 'Possiamo aggiornare questa informativa, per esempio se cambiamo hosting o aggiungiamo nuove funzioni. Vale la versione pubblicata su questo sito. Tutte le modifiche sono tracciabili nella cronologia pubblica del repository.',
+        },
     },
     notFound: {
         documentTitle: 'Pagina non trovata',

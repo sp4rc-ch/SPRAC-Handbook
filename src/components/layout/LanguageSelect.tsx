@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Icon } from '@/components/ui/Icon';
+import { rememberLanguage } from '@/i18n/detectLanguage';
 import { useLanguage, useTranslation } from '@/i18n/LanguageContext';
 import { LANGUAGE_NAMES, LANGUAGES } from '@/i18n/languages';
 import { Link } from '@/router/Link';
@@ -59,7 +60,10 @@ export function LanguageSelect() {
                                     hrefLang={code}
                                     lang={code}
                                     aria-current={selected ? 'true' : undefined}
-                                    onClick={() => setOpen(false)}
+                                    onClick={() => {
+                                        rememberLanguage(code);
+                                        setOpen(false);
+                                    }}
                                     className="flex items-center gap-3 rounded-sm px-3 py-2 hover:bg-overlay focus-visible:bg-overlay focus-visible:outline-none"
                                 >
                                     <span className={`w-5 font-mono text-xs leading-[1.4] uppercase ${selected ? 'text-accent' : 'text-fg-muted'}`}>{code}</span>

@@ -1,8 +1,8 @@
 // Kept free of path aliases and browser APIs: vite.config.ts imports it at build time.
-import { REPO_URL } from '../config/links';
-import { translations } from '../i18n/index';
-import { DEFAULT_LANGUAGE, LANGUAGES, type Language } from '../i18n/languages';
-import { PAGES, pagePath, type Page } from '../router/pages';
+import { REPO_URL } from '../config/links.ts';
+import { translations } from '../i18n/index.ts';
+import { DEFAULT_LANGUAGE, LANGUAGES, type Language } from '../i18n/languages.ts';
+import { PAGES, pagePath, type Page } from '../router/pages.ts';
 
 export const SITE_URL = 'https://sprac.ch';
 

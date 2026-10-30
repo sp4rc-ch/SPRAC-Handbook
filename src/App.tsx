@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { PageLayout } from '@/components/layout/PageLayout';
 import { detectLanguage } from '@/i18n/detectLanguage';
 import { LanguageContext } from '@/i18n/LanguageContext';
 import { DEFAULT_LANGUAGE } from '@/i18n/languages';
 import { Home } from '@/pages/Home/Home';
+import { LegalNotice } from '@/pages/LegalNotice/LegalNotice';
 import { NotFound } from '@/pages/NotFound/NotFound';
+import { PrivacyPolicy } from '@/pages/PrivacyPolicy/PrivacyPolicy';
 import { navigate, usePathname } from '@/router/navigation';
 import { parsePath } from '@/router/routes';
 import { usePageMeta } from '@/seo/usePageMeta';
@@ -27,9 +28,9 @@ export function App() {
     return (
         <LanguageContext value={route.language}>
             {route.page === 'home' && <Home />}
+            {route.page === 'legalNotice' && <LegalNotice />}
+            {route.page === 'privacyPolicy' && <PrivacyPolicy />}
             {route.page === 'notFound' && <NotFound />}
-            {/* Legal notice and privacy policy are not built yet. */}
-            {(route.page === 'legalNotice' || route.page === 'privacyPolicy') && <PageLayout />}
         </LanguageContext>
     );
 }

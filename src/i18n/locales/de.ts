@@ -1,4 +1,4 @@
-import type { Translation } from './en';
+import type { Translation } from './en.ts';
 
 export const de: Translation = {
     siteName: 'The SPRAC Handbook',
@@ -63,6 +63,175 @@ export const de: Translation = {
         copyright: '© 2026 The SPRAC Handbook',
         disclaimer: 'Community-Projekt. Keine Verbindung zur Schweizer Armee oder zu SPARC.',
         lastVerified: 'Zuletzt geprüft · Nov. 2026',
+    },
+    legal: {
+        lastUpdated: 'Zuletzt aktualisiert',
+        lastUpdatedDate: '30. Oktober 2026',
+        law: 'Recht',
+        repoOwner: 'Repo-Inhaber',
+        maintainer: 'Maintainer',
+        email: 'E-Mail (vo1n)',
+        purpose: 'Zweck',
+        retention: 'Aufbewahrung',
+        legalNotice: 'Impressum',
+        privacyPolicy: 'Datenschutzerklärung',
+    },
+    legalNotice: {
+        title: 'Impressum',
+        lead: 'Wer hinter dem SPRAC Handbook steht, wie du uns erreichst und was diese Website ist und was nicht.',
+        projectLabel: 'Projekt',
+        project: 'Nicht-kommerzielles Community-Projekt',
+        law: 'Schweizer Recht',
+        who: {
+            heading: 'Wer betreibt diese Website?',
+            body: 'Das SPRAC Handbook (sprac.ch) ist ein nicht-kommerzielles Open-Source-Community-Projekt von Studierenden aus der SPARC-Community. Es ist weder eine Firma noch ein eingetragener Verein.',
+        },
+        contact: {
+            heading: 'Kontakt',
+            repositoryLabel: 'Repository',
+            body: 'Für Fragen, Korrekturen oder rechtliche Anliegen schreib vo1n eine E-Mail. Wenn du einen inhaltlichen Fehler findest, kannst du auch ein Issue im Repository eröffnen.',
+        },
+        nonCommercial: {
+            heading: 'Nicht-kommerzielles Projekt',
+            body: 'Das SPRAC Handbook hat keine Werbung, keine gesponserten Inhalte, keine Affiliate-Links und keine kostenpflichtigen Angebote. Wir sammeln weder Geld noch Spenden und verkaufen nichts.',
+        },
+        notOfficial: {
+            heading: 'Keine offizielle Website',
+            body1: 'Das SPRAC Handbook ist ein inoffizielles Projekt. Es wird weder von der Schweizer Armee, dem Kommando Cyber, dem VBS, SPARC noch von den Firmen, die SPARC betreiben, betrieben, unterstützt oder geprüft.',
+            body2: 'Namen wie SPARC, Cyber Lehrgang (CYLG) und Cyber Bataillon 42 werden nur zur Beschreibung dieser Programme verwendet und gehören ihren jeweiligen Inhabern.',
+        },
+        accuracy: {
+            heading: 'Richtigkeit der Inhalte',
+            body1: 'Wir schreiben jede Seite sorgfältig und verlinken die offiziellen Quellen, auf die wir uns stützen. Programme, Anforderungen und Termine ändern sich, deshalb können wir nicht garantieren, dass die Inhalte jederzeit richtig, vollständig und aktuell sind.',
+            body2: 'Das Handbuch ist eine allgemeine Information. Es ist keine offizielle Auskunft und keine Beratung zu deiner persönlichen Militärdienstpflicht. Verbindliche Antworten erhältst du direkt bei den offiziellen Stellen, zum Beispiel bei deiner kantonalen Militärbehörde, beim Kommando Rekrutierung oder auf den offiziellen Programmseiten.',
+        },
+        externalLinks: {
+            heading: 'Externe Links',
+            body: 'Das Handbuch verlinkt auf externe Websites, etwa offizielle Programmseiten und unser Repository. Für deren Inhalte sind allein die jeweiligen Betreiber verantwortlich. Wir prüfen einen Link, wenn wir ihn hinzufügen, überwachen verlinkte Websites aber nicht laufend.',
+        },
+        copyright: {
+            heading: 'Urheberrecht und Lizenzen',
+            textsLabel: 'Texte',
+            codeLabel: 'Quellcode',
+            licenceNotChosen: 'Noch keine Lizenz gewählt, alle Rechte vorbehalten',
+            iconsLabel: 'Icons',
+            icons: 'Phosphor Icons · MIT-Lizenz',
+            fontsLabel: 'Schriften',
+            fonts: 'Space Grotesk, Geist, Geist Mono · SIL OFL 1.1',
+            body: 'Namen, Logos und zitierte Inhalte Dritter bleiben Eigentum ihrer Inhaber.',
+        },
+        otherTexts: 'Weitere rechtliche Texte',
+    },
+    privacy: {
+        title: 'Datenschutzerklärung',
+        lead: 'Welche Personendaten bearbeitet werden, wenn du das SPRAC Handbook besuchst, und welche Rechte du hast.',
+        appliesToLabel: 'Gilt für',
+        law: 'Schweizer DSG',
+        overview: {
+            heading: 'Worum geht es?',
+            body: 'Diese Datenschutzerklärung erklärt, wie Personendaten bearbeitet werden, wenn du sprac.ch besuchst, uns eine E-Mail schreibst oder in unserem Repository mitwirkst. Es gilt das Schweizer Bundesgesetz über den Datenschutz (DSG).',
+        },
+        responsible: {
+            heading: 'Wer ist verantwortlich?',
+            body: 'vo1n, Maintainer des SPRAC Handbook, ist für die Bearbeitung von Personendaten auf dieser Website verantwortlich. Inhaber des Repositorys ist An0n.',
+        },
+        visiting: {
+            heading: 'Besuch der Website',
+            intro: 'Wenn du das Handbuch öffnest, speichert der Hosting-Anbieter automatisch technische Daten in Server-Logdateien:',
+            items: [
+                'IP-Adresse deines Geräts',
+                'Datum und Uhrzeit der Anfrage',
+                'Aufgerufene Seite oder Datei',
+                'Verweisende Website, falls dein Browser sie übermittelt',
+                'Browsertyp und -version, Betriebssystem',
+                'Statuscode und übertragene Datenmenge',
+            ],
+            purpose: 'Website ausliefern, sicher betreiben, technische Fehler analysieren',
+            retention: 'Gelöscht nach 30 Tagen, ausser bei einem Sicherheitsvorfall',
+            outro: 'Wir verwenden diese Daten nicht, um dich zu identifizieren, und verknüpfen sie nicht mit anderen Daten.',
+        },
+        email: {
+            heading: 'Kontakt per E-Mail',
+            body: 'Wenn du uns schreibst, bearbeiten wir deine E-Mail-Adresse, den Namen oder das Pseudonym, das du verwendest, und den Inhalt deiner Nachricht.',
+            purpose: 'Deine Anfrage beantworten',
+            retention: 'Spätestens 12 Monate nach Ende des Austauschs',
+        },
+        repository: {
+            heading: 'Mitwirken im Repository',
+            body1Start: 'Code und Inhalte liegen in einem öffentlichen Repository auf ',
+            body1End: '. Issues, Kommentare und Änderungsvorschläge unterliegen den Nutzungsbedingungen und der Datenschutzerklärung dieser Plattform. Für deine Kontodaten ist der Plattformbetreiber verantwortlich.',
+            body2: 'Dein Benutzername und deine Beiträge sind öffentlich sichtbar und können Teil der Projektgeschichte bleiben. Deine eigenen Kommentare kannst du auf der Plattform bearbeiten oder löschen.',
+            body2Emphasis: 'Bitte nutze dafür nicht dein privates GitHub-Konto. Verwende ein separates Konto, zum Beispiel unter deinem SPARC-Alias.',
+        },
+        notDo: {
+            heading: 'Was wir nicht tun',
+            items: [
+                'Keine Benutzerkonten, Formulare oder Newsletter',
+                'Keine Zahlungen, Spenden oder Werbung',
+                'Keine Analyse, kein Tracking, kein Profiling',
+                'Keine automatisierten Einzelentscheidungen',
+                'Wir verkaufen oder vermieten nie Personendaten',
+            ],
+        },
+        cookies: {
+            heading: 'Cookies und lokaler Speicher',
+            body1: 'Wir verwenden keine Cookies für Analyse, Werbung oder Tracking.',
+            body2: 'Um deine Sprachwahl zu speichern, legt das Handbuch einen kleinen Eintrag im lokalen Speicher deines Browsers ab. Er bleibt auf deinem Gerät und wird nie an uns oder Dritte übermittelt.',
+            body3: 'Du kannst ihn jederzeit löschen, indem du die Websitedaten in deinen Browsereinstellungen entfernst. Die Website funktioniert auch ohne ihn; du wählst die Sprache dann einfach erneut.',
+        },
+        fonts: {
+            heading: 'Schriften, Icons und externe Inhalte',
+            body1: 'Schriften und Icons werden von unserem eigenen Hosting ausgeliefert. Wir laden keine Schriften von Google Fonts oder anderen externen Diensten.',
+            body2: 'Das Handbuch bettet keine Videos, Karten oder Social-Media-Plugins ein. Es enthält nur gewöhnliche Links. Erst wenn du einen Link anklickst, werden Daten an die verlinkte Website übermittelt; danach gilt deren Datenschutzerklärung.',
+        },
+        recipients: {
+            heading: 'Wer erhält deine Daten?',
+            items: [
+                { name: 'Hosting-Anbieter', text: ' (Infomaniak Network SA, Schweiz): liefert die Website aus und speichert Server-Logs, in unserem Auftrag und vertraglich gebunden.' },
+                { name: 'E-Mail-Anbieter', text: ' (Proton AG, Schweiz): speichert und übermittelt unsere E-Mails, in unserem Auftrag und vertraglich gebunden.' },
+                { name: 'Repository-Plattform', text: ' (GitHub Inc.): nur wenn du dort selbst mitwirkst, in eigener Verantwortung.' },
+                { name: 'Behörden und Gerichte', text: ', wenn wir gesetzlich zur Herausgabe verpflichtet sind.' },
+            ],
+        },
+        abroad: {
+            heading: 'Bekanntgabe ins Ausland',
+            intro: 'Wir bearbeiten Personendaten wenn möglich in der Schweiz. Einige Anbieter können Daten auch in diesen Staaten bearbeiten:',
+            columns: ['Staat', 'Dienst', 'Grundlage'],
+            rows: [
+                ['Schweiz', 'Hosting und Server-Logs (Infomaniak)', 'Schweiz: keine Bekanntgabe ins Ausland'],
+                ['Schweiz', 'E-Mail (Proton AG)', 'Schweiz: keine Bekanntgabe ins Ausland'],
+                ['USA', 'GitHub Inc., nur wenn du dort selbst mitwirkst', 'Swiss-U.S. Data Privacy Framework und Standardvertragsklauseln'],
+            ],
+            outro: 'In Staaten ohne angemessenen Datenschutz geben wir Personendaten nur gestützt auf geeignete Garantien, insbesondere Standardvertragsklauseln, oder eine gesetzliche Ausnahme bekannt. Eine Kopie dieser Garantien kannst du bei uns anfordern.',
+        },
+        security: {
+            heading: 'Wie schützen wir deine Daten?',
+            body: 'Das Handbuch ist eine statische Website: keine Datenbank, keine Benutzerkonten und keine Formulare. Ausser den oben beschriebenen Server-Logs und E-Mails gibt es bei uns keine Personendaten zu schützen. Die Website wird nur über eine verschlüsselte Verbindung (HTTPS/TLS) ausgeliefert, und der Zugang zu Hosting-, E-Mail- und Repository-Konten ist auf die Maintainer beschränkt.',
+        },
+        rights: {
+            heading: 'Welche Rechte hast du?',
+            intro: 'Nach dem DSG hast du das Recht:',
+            items: [
+                'Auskunft über die Personendaten zu verlangen, die wir über dich bearbeiten',
+                'Unrichtige Daten berichtigen zu lassen',
+                'Deine Daten löschen zu lassen',
+                'Der Bearbeitung deiner Daten zu widersprechen',
+            ],
+            practiceEmphasis: 'In der Praxis haben wir kaum Daten über dich.',
+            practice:
+                'Server-Logs können wir keiner Person zuordnen, und sie werden ohnehin nach 30 Tagen gelöscht. Die einzigen Daten, die wir dir tatsächlich zuordnen können, sind E-Mails, die du uns geschickt hast. Auf Anfrage sagen wir dir, was wir haben, meist nur diese E-Mails, und löschen sie.',
+            requestStart: 'Schick deine Anfrage an ',
+            requestEnd: '. Damit wir nur der richtigen Person antworten, antworten wir an die E-Mail-Adresse, zu der die Daten gehören. Anfragen sind kostenlos und werden in der Regel innert 30 Tagen beantwortet.',
+            complaint: 'Du kannst dich ausserdem beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) beschweren.',
+        },
+        youngPeople: {
+            heading: 'Junge Menschen',
+            body: 'Das Handbuch richtet sich auch an Jugendliche und junge Erwachsene.',
+        },
+        changes: {
+            heading: 'Änderungen dieser Erklärung',
+            body: 'Wir können diese Erklärung anpassen, zum Beispiel wenn wir das Hosting wechseln oder neue Funktionen hinzufügen. Es gilt die auf dieser Website veröffentlichte Fassung. Alle Änderungen sind in der öffentlichen Historie des Repositorys nachvollziehbar.',
+        },
     },
     notFound: {
         documentTitle: 'Seite nicht gefunden',

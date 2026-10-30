@@ -1,5 +1,5 @@
 // Kept free of path aliases and browser APIs: vite.config.ts imports it at build time.
-import type { Language } from '../i18n/languages';
+import type { Language } from '../i18n/languages.ts';
 
 /** URL segment for each page, placed after the language prefix. */
 export const PAGE_PATHS = {
