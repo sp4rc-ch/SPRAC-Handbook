@@ -3,6 +3,8 @@
 An unofficial handbook for everything related to SPARC, Cybat 42 and CyLg, for people taking part in or interested in these programs.
 The site is a static single-page app built with React, Vite and Tailwind CSS. It aggregates and organises information that is already public. It is maintained by the SPARC community and is not affiliated with SPARC, Cybat or CyLg.
 
+**Current version:** v0.1.0 (pre-launch)
+
 ## Table of contents
 
 - [Requirements](#requirements)
