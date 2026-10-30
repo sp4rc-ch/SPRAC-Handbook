@@ -1,4 +1,4 @@
-export const REPO_URL = 'https://github.com/sp4rc-ch/SPR4C-Handbook/';
+export const REPO_URL = 'https://github.com/sp4rc-ch/SPRAC-Handbook/';
 
 /** Placeholder until an issue tracker exists. */
 export const ISSUE_URL = '#';
