@@ -1,7 +1,7 @@
 /* TEAM */
 Repository owner: An0n
 Maintainer: vo1n
-Contact: 0bvo1n@proton.me
+Contact: vo1n-sh@proton.me
 From: Switzerland
 
 /* PROJECT */

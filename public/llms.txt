@@ -23,4 +23,4 @@ Every page also exists in German, French, Italian and Romansh under /de/, /fr/, 
 
 - [Source code](https://github.com/sp4rc-ch/SPRAC-Handbook/)
 - [Sitemap](https://sprac.ch/sitemap.xml)
-- Contact: 0bvo1n@proton.me (vo1n, maintainer)
+- Contact: vo1n-sh@proton.me (vo1n, maintainer)

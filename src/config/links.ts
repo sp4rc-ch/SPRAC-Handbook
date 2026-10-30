@@ -4,7 +4,7 @@ export const REPO_URL = 'https://github.com/sp4rc-ch/SPRAC-Handbook/';
 export const ISSUE_URL = '#';
 
 /** vo1n, maintainer: contact for questions, legal and privacy requests. */
-export const CONTACT_EMAIL = '0bvo1n@proton.me';
+export const CONTACT_EMAIL = 'vo1n-sh@proton.me';
 
 /** Federal Data Protection and Information Commissioner. */
 export const FDPIC_URL = 'https://www.edoeb.admin.ch';
