@@ -18,6 +18,13 @@ export function buildPath(language: Language, page: Page): string {
     return `${BASE}/${language}${segment ? `/${segment}` : ''}`;
 }
 
+/** Same page in another language, keeping whatever follows the language segment. */
+export function switchLanguage(pathname: string, language: Language): string {
+    const relative = pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
+    const [, ...rest] = relative.split('/').filter(Boolean);
+    return `${BASE}/${language}${rest.length ? `/${rest.join('/')}` : ''}`;
+}
+
 export function parsePath(pathname: string): Route {
     const relative = pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
     const [first, ...others] = relative.split('/').filter(Boolean);

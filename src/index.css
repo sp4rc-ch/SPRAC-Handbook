@@ -1,1 +1,48 @@
 @import 'tailwindcss';
+
+@font-face {
+    font-family: 'Geist';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('./assets/fonts/geist-latin.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Geist Mono';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('./assets/fonts/geist-mono-latin.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('./assets/fonts/space-grotesk-latin.woff2') format('woff2');
+}
+
+/* Design tokens from the SPARC Figma file */
+@theme {
+    --color-canvas: #0b0b0d;
+    --color-line: #252628;
+    --color-line-subtle: #242429;
+    --color-fg: #f9fafd;
+    --color-fg-muted: #a0a1a4;
+    --color-accent: #ebd04e;
+    --color-on-accent: #0b0b0d;
+
+    --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, monospace;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-md: 6px;
+}
+
+@layer base {
+    body {
+        @apply bg-canvas font-sans text-fg antialiased;
+    }
+}
