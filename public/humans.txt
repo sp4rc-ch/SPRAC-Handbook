@@ -1,17 +1,20 @@
 /* TEAM */
 Repository owner: An0n
 Maintainer: vo1n
+Contact: 0bvo1n@proton.me
 From: Switzerland
 
 /* PROJECT */
 Name: The SPRAC Handbook
-About: Unofficial, community-run knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42.
-Not affiliated with SPARC, the Swiss Armed Forces or the Cyber Command.
+About: Unofficial, non-commercial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42, made by students from the SPARC community.
+Not affiliated with SPARC, the Swiss Armed Forces or the Kommando Cyber.
 Source: https://github.com/sp4rc-ch/SPR4C-Handbook/
 
 /* SITE */
+Last update: 2026/10/30
 Languages: English, Deutsch, Français, Italiano, Rumantsch
 Standards: HTML5, CSS3, TypeScript
 Components: React, Vite, Tailwind CSS
+Hosting: Infomaniak (Switzerland)
 Icons: Phosphor Icons (MIT)
-Fonts: Geist, Geist Mono, Space Grotesk (SIL Open Font License)
+Fonts: Geist, Geist Mono, Space Grotesk (SIL Open Font License 1.1)
