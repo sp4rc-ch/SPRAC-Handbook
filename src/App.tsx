@@ -3,6 +3,7 @@ import { PageLayout } from '@/components/layout/PageLayout';
 import { detectLanguage } from '@/i18n/detectLanguage';
 import { LanguageContext } from '@/i18n/LanguageContext';
 import { DEFAULT_LANGUAGE } from '@/i18n/languages';
+import { Home } from '@/pages/Home/Home';
 import { NotFound } from '@/pages/NotFound/NotFound';
 import { navigate, usePathname } from '@/router/navigation';
 import { parsePath } from '@/router/routes';
@@ -25,8 +26,10 @@ export function App() {
 
     return (
         <LanguageContext value={route.language}>
-            {/* Home, legal notice and privacy policy are not built yet. */}
-            {route.page === 'notFound' ? <NotFound /> : <PageLayout />}
+            {route.page === 'home' && <Home />}
+            {route.page === 'notFound' && <NotFound />}
+            {/* Legal notice and privacy policy are not built yet. */}
+            {(route.page === 'legalNotice' || route.page === 'privacyPolicy') && <PageLayout />}
         </LanguageContext>
     );
 }

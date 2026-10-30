@@ -27,18 +27,30 @@
 /* Design tokens from the SPARC Figma file */
 @theme {
     --color-canvas: #0b0b0d;
+    --color-surface: #131316;
+    --color-elevated: #1b1b1f;
+    --color-overlay: #242429;
     --color-line: #252628;
     --color-line-subtle: #242429;
+    --color-line-strong: #707174;
     --color-fg: #f9fafd;
     --color-fg-muted: #a0a1a4;
+    --color-fg-subtle: #707174;
     --color-accent: #ebd04e;
+    --color-accent-hover: #f2db74;
+    --color-accent-subtle: #2b2400;
     --color-on-accent: #0b0b0d;
 
     --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'Geist Mono', ui-monospace, monospace;
     --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 
+    --radius-sm: 4px;
     --radius-md: 6px;
+    --radius-lg: 10px;
+    --radius-xl: 16px;
+
+    --shadow-dropdown: 0 16px 40px -8px rgb(0 0 0 / 0.55);
 }
 
 @layer base {

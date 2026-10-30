@@ -9,7 +9,7 @@ export function NotFound() {
     const t = useTranslation();
 
     return (
-        <PageLayout>
+        <PageLayout footer={false}>
             <section className="flex flex-1 flex-col items-center justify-center px-4 pt-12 pb-16 md:px-8 md:pt-16 md:pb-24 lg:px-20 lg:pt-24 lg:pb-32">
                 <div className="flex flex-col items-center gap-6 text-center">
                     <p className="font-mono text-xs leading-[1.2] font-medium tracking-[0.1em] text-accent uppercase">{t.notFound.eyebrow}</p>

@@ -6,7 +6,7 @@ import { Link } from '@/router/Link';
 import { usePathname } from '@/router/navigation';
 import { switchLanguage } from '@/router/routes';
 
-/** Trigger shows the current language code; the menu links to the same page in each language. */
+/** Trigger shows the current language code; the dropdown links to the same page in each language. */
 export function LanguageSelect() {
     const language = useLanguage();
     const t = useTranslation();
@@ -39,30 +39,36 @@ export function LanguageSelect() {
                 aria-expanded={open}
                 aria-controls={menuId}
                 onClick={() => setOpen((value) => !value)}
-                className="flex h-10 items-center gap-2 rounded-md border border-line px-4 text-sm leading-[1.2] font-medium uppercase transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className={`flex h-10 items-center gap-2 rounded-md border px-4 text-sm leading-[1.2] font-medium uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                    open ? 'border-accent bg-overlay' : 'border-line hover:border-line-strong hover:bg-overlay'
+                }`}
             >
                 <Icon name="globe" size={18} />
                 {language}
-                <Icon name="caret-down" size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+                <Icon name={open ? 'caret-up' : 'caret-down'} size={14} />
             </button>
 
             {open && (
-                <ul id={menuId} className="absolute right-0 z-10 mt-2 min-w-40 rounded-md border border-line bg-canvas py-1 shadow-lg shadow-black/40">
-                    {LANGUAGES.map((code) => (
-                        <li key={code}>
-                            <Link
-                                href={switchLanguage(pathname, code)}
-                                hrefLang={code}
-                                lang={code}
-                                aria-current={code === language ? 'true' : undefined}
-                                onClick={() => setOpen(false)}
-                                className={`flex items-center justify-between gap-4 px-4 py-2 text-sm hover:bg-white/5 focus-visible:bg-white/5 focus-visible:outline-none ${code === language ? 'text-accent' : 'text-fg'}`}
-                            >
-                                {LANGUAGE_NAMES[code]}
-                                <span className="font-mono text-xs text-fg-muted uppercase">{code}</span>
-                            </Link>
-                        </li>
-                    ))}
+                <ul id={menuId} className="absolute right-0 z-20 mt-2 flex w-[200px] flex-col gap-0.5 rounded-lg border border-line bg-elevated p-1 shadow-dropdown">
+                    {LANGUAGES.map((code) => {
+                        const selected = code === language;
+                        return (
+                            <li key={code}>
+                                <Link
+                                    href={switchLanguage(pathname, code)}
+                                    hrefLang={code}
+                                    lang={code}
+                                    aria-current={selected ? 'true' : undefined}
+                                    onClick={() => setOpen(false)}
+                                    className="flex items-center gap-3 rounded-sm px-3 py-2 hover:bg-overlay focus-visible:bg-overlay focus-visible:outline-none"
+                                >
+                                    <span className={`w-5 font-mono text-xs leading-[1.4] uppercase ${selected ? 'text-accent' : 'text-fg-muted'}`}>{code}</span>
+                                    <span className="flex-1 text-sm leading-[1.2] font-medium">{LANGUAGE_NAMES[code]}</span>
+                                    <Icon name="check" size={16} className={selected ? 'text-accent' : 'invisible'} />
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
             )}
         </div>
