@@ -39,7 +39,7 @@ export function DisclaimerDialog() {
     const [dragY, setDragY] = useState(0);
     const [dragging, setDragging] = useState(false);
     const drag = useRef({ startY: 0, startTime: 0 });
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const dialogRef = useRef<HTMLDivElement>(null);
     const titleId = useId();
     const { disclaimer } = en;
 
@@ -49,7 +49,8 @@ export function DisclaimerDialog() {
 
     useEffect(() => {
         if (!open) return;
-        buttonRef.current?.focus();
+        // The dialog itself, not the button: focusing the button would draw its keyboard focus ring on load.
+        dialogRef.current?.focus();
         const { overflow } = document.body.style;
         document.body.style.overflow = 'hidden';
         return () => {
@@ -92,15 +93,17 @@ export function DisclaimerDialog() {
         <div className="fixed inset-0 z-50 flex items-end justify-center md:items-center md:p-8">
             <div aria-hidden="true" className="absolute inset-0 animate-fade-in bg-black/64 backdrop-blur-[3px] motion-reduce:animate-none" />
             <div
+                ref={dialogRef}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={titleId}
+                tabIndex={-1}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
                 onPointerUp={onPointerEnd}
                 onPointerCancel={onPointerEnd}
                 style={dragY ? { transform: `translateY(${dragY}px)` } : undefined}
-                className={`relative flex w-full touch-none flex-col items-center gap-5 rounded-t-xl border-t border-line bg-surface px-4 pt-2 pb-10 shadow-sheet animate-sheet-in motion-reduce:animate-none md:w-[480px] md:touch-auto md:animate-dialog-in md:items-start md:gap-6 md:rounded-xl md:border md:p-8 md:shadow-dialog ${
+                className={`relative flex w-full outline-none touch-none flex-col items-center gap-5 rounded-t-xl border-t border-line bg-surface px-4 pt-2 pb-10 shadow-sheet animate-sheet-in motion-reduce:animate-none md:w-[480px] md:touch-auto md:animate-dialog-in md:items-start md:gap-6 md:rounded-xl md:border md:p-8 md:shadow-dialog ${
                     dragging ? '' : 'transition-transform duration-200'
                 }`}
             >
@@ -122,7 +125,6 @@ export function DisclaimerDialog() {
 
                 <div className="w-full pt-1 md:pt-0">
                     <button
-                        ref={buttonRef}
                         type="button"
                         onClick={dismiss}
                         className="inline-flex h-12 w-full items-center justify-center rounded-md bg-accent px-6 text-base leading-[1.2] font-medium whitespace-nowrap text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg"
