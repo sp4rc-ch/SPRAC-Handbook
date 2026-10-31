@@ -1,12 +1,10 @@
 import { PageLayout } from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/Button';
-import { useLanguage, useTranslation } from '@/i18n/LanguageContext';
+import { en as t } from '@/i18n/locales/en';
 import { buildPath } from '@/router/routes';
 import { ErrorCode } from './ErrorCode';
 
 export function NotFound() {
-    const language = useLanguage();
-    const t = useTranslation();
 
     return (
         <PageLayout footer={false}>
@@ -18,7 +16,7 @@ export function NotFound() {
                         <h1 className="font-display text-[28px] leading-[1.15] font-bold tracking-[-0.02em] md:text-[34px] lg:text-[40px]">{t.notFound.title}</h1>
                         <p className="text-lg leading-[1.6] text-fg-muted">{t.notFound.body}</p>
                     </div>
-                    <Button href={buildPath(language, 'home')} icon="house">
+                    <Button href={buildPath('home')} icon="house">
                         {t.notFound.backHome}
                     </Button>
                 </div>

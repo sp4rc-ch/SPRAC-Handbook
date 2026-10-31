@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { EXTERNAL_LINKS, REPO_URL } from '@/config/links';
-import { useLanguage, useTranslation } from '@/i18n/LanguageContext';
+import { en } from '@/i18n/locales/en';
 import { buildPath } from '@/router/routes';
 import { FooterLink } from './FooterLink';
 import { Logo } from './Logo';
@@ -16,8 +16,7 @@ function LinkGroup({ title, children }: { title: string; children: ReactNode }) 
 
 /** Desktop and iPad share one layout; on phones the groups and bottom bar are centred. */
 export function Footer() {
-    const language = useLanguage();
-    const { footer } = useTranslation();
+    const { footer } = en;
 
     return (
         <footer className="border-t border-line-subtle bg-canvas">
@@ -49,8 +48,8 @@ export function Footer() {
                             </FooterLink>
                         </LinkGroup>
                         <LinkGroup title={footer.legal}>
-                            <FooterLink href={buildPath(language, 'legalNotice')}>{footer.legalNotice}</FooterLink>
-                            <FooterLink href={buildPath(language, 'privacyPolicy')}>{footer.privacyPolicy}</FooterLink>
+                            <FooterLink href={buildPath('legalNotice')}>{footer.legalNotice}</FooterLink>
+                            <FooterLink href={buildPath('privacyPolicy')}>{footer.privacyPolicy}</FooterLink>
                         </LinkGroup>
                     </div>
                 </div>

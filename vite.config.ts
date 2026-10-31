@@ -4,8 +4,7 @@ import { pathToFileURL } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { build, defineConfig, type Plugin } from 'vite';
-import { translations } from './src/i18n/index.ts';
-import { DEFAULT_LANGUAGE, LANGUAGES } from './src/i18n/languages.ts';
+import { en } from './src/i18n/locales/en.ts';
 import { PAGES, pagePath } from './src/router/pages.ts';
 import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta.ts';
 
@@ -44,8 +43,8 @@ const OUTLET = '<!--prerender-->';
 const prerenderSlot = (pathname: string) => `<div id="root" data-prerendered="${pathname}">${OUTLET}</div>`;
 
 /**
- * Writes one HTML file per language and page (e.g. de/legal-notice/index.html) with its own
- * title, description, canonical, hreflang, Open Graph and JSON-LD, plus 404.html and sitemap.xml.
+ * Writes one HTML file per page (e.g. legal-notice/index.html) with its own
+ * title, description, canonical, Open Graph and JSON-LD, plus 404.html and sitemap.xml.
  * The host then answers every real route with 200 and the right <head>, instead of a 404
  * fallback that search engines would not index. The page body is filled in by prerender().
  */
@@ -59,31 +58,20 @@ function seoPages(): Plugin {
             if (index?.type !== 'asset') return this.error('index.html was not emitted');
 
             const template = String(index.source);
-            const render = (language: string, head: string, root = ROOT_DIV) =>
-                template
-                    .replace(/<!-- seo:start[\s\S]*?<!-- seo:end -->/, head)
-                    .replace(/<html lang="[^"]*">/, `<html lang="${language}">`)
-                    .replace(ROOT_DIV, root);
+            const render = (head: string, root = ROOT_DIV) => template.replace(/<!-- seo:start[\s\S]*?<!-- seo:end -->/, head).replace(ROOT_DIV, root);
 
-            for (const language of LANGUAGES) {
-                for (const page of PAGES) {
-                    const pathname = pagePath(language, page);
-                    this.emitFile({
-                        type: 'asset',
-                        fileName: `${pathname.slice(1)}index.html`,
-                        source: render(language, renderHeadTags(getPageMeta(language, page)), prerenderSlot(pathname)),
-                    });
-                }
+            for (const page of PAGES.filter((key) => key !== 'home')) {
+                const pathname = pagePath(page);
+                this.emitFile({ type: 'asset', fileName: `${pathname.slice(1)}index.html`, source: render(renderHeadTags(getPageMeta(page)), prerenderSlot(pathname)) });
             }
 
-            // "/" redirects to the visitor's language in the browser; for crawlers it carries the English home head.
-            index.source = render(DEFAULT_LANGUAGE, renderHeadTags(getPageMeta(DEFAULT_LANGUAGE, 'home')), prerenderSlot('/'));
+            index.source = render(renderHeadTags(getPageMeta('home')), prerenderSlot('/'));
 
-            const { siteName, notFound } = translations[DEFAULT_LANGUAGE];
+            const { siteName, notFound } = en;
             this.emitFile({
                 type: 'asset',
                 fileName: '404.html',
-                source: render(DEFAULT_LANGUAGE, `<title>${notFound.documentTitle} · ${siteName}</title>\n        <meta name="robots" content="noindex" />`),
+                source: render(`<title>${notFound.documentTitle} · ${siteName}</title>\n        <meta name="robots" content="noindex" />`),
             });
 
             this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: renderSitemap(new Date().toISOString().slice(0, 10)) });
@@ -113,7 +101,7 @@ function prerender(): Plugin {
             });
             const { render } = (await import(pathToFileURL(path.join(serverDir, 'entry-server.mjs')).href)) as { render: (pathname: string) => string };
 
-            const files = ['index.html', ...LANGUAGES.flatMap((language) => PAGES.map((page) => `${pagePath(language, page).slice(1)}index.html`))];
+            const files = PAGES.map((page) => `${pagePath(page).slice(1)}index.html`);
             for (const file of files) {
                 const filePath = path.join(outDir, file);
                 const html = await readFile(filePath, 'utf8');

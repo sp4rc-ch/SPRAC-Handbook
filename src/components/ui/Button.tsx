@@ -1,6 +1,6 @@
 import type { MouseEvent, ReactNode } from 'react';
 import type { IconName } from '@/config/assets';
-import { useTranslation } from '@/i18n/LanguageContext';
+import { en as t } from '@/i18n/locales/en';
 import { Link } from '@/router/Link';
 import { Icon } from './Icon';
 
@@ -24,7 +24,6 @@ const VARIANTS = {
 
 /** Button, size M (48px). Text on yellow is always ink. */
 export function Button({ href, children, variant = 'primary', external = false, icon, fullWidthOnMobile = false }: ButtonProps) {
-    const t = useTranslation();
     const className = [
         'inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-md px-6 text-base leading-[1.2] font-medium whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2',
         VARIANTS[variant],

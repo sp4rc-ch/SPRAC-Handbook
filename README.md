@@ -35,7 +35,7 @@ npm ci
 npm run dev
 ```
 
-Vite prints the local URL, normally `http://localhost:5173`. Opening `/` redirects to your browser language, for example `/en/`.
+Vite prints the local URL, normally `http://localhost:5173`.
 
 ## Usage
 
@@ -46,14 +46,14 @@ Vite prints the local URL, normally `http://localhost:5173`. Opening `/` redirec
 | `npm run preview` | Serve `dist/` locally to check the production build |
 | `npm run lint`    | Run ESLint                                          |
 
-`npm run build` writes one pre-rendered HTML file per language and page (`dist/de/legal-notice/index.html`, ...) plus `sitemap.xml` and `404.html`. Upload the contents of `dist/` to the web host. All page text lives in `src/i18n/locales/`, one file per language.
+`npm run build` writes one pre-rendered HTML file per page (`dist/legal-notice/index.html`, ...) plus `sitemap.xml` and `404.html`. Upload the contents of `dist/` to the web host. All page text lives in `src/i18n/locales/en.ts`.
 
 ## Project layout
 
 ```
 src/pages/        one folder per page: Home, LegalNotice, PrivacyPolicy, NotFound
-src/components/   layout/ (navbar, footer, language select), legal/ (legal page blocks), ui/ (button, icon, callout)
-src/i18n/         supported languages and locales/en.ts ... rm.ts with all page text
+src/components/   layout/ (navbar, footer), legal/ (legal page blocks), ui/ (button, icon, callout)
+src/i18n/         locales/en.ts with all page text
 src/router/       routes, URL building and client-side navigation
 src/seo/          per-page head tags, JSON-LD and the sitemap
 src/config/       external links, contact email, asset paths

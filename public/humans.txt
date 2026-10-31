@@ -12,7 +12,7 @@ Source: https://github.com/sp4rc-ch/SPRAC-Handbook/
 
 /* SITE */
 Last update: 2026/10/30
-Languages: English, Deutsch, Français, Italiano, Rumantsch
+Languages: English
 Standards: HTML5, CSS3, TypeScript
 Components: React, Vite, Tailwind CSS
 Hosting: Infomaniak (Switzerland)

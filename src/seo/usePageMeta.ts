@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { translations } from '@/i18n';
-import type { Language } from '@/i18n/languages';
+import { en } from '@/i18n/locales/en';
 import type { Page } from '@/router/pages';
 import { getPageMeta } from './meta';
 
@@ -29,25 +28,22 @@ function setNoIndex(noIndex: boolean) {
 }
 
 /**
- * Keeps <html lang>, title, description and canonical in sync during client-side navigation.
- * The full head (hreflang, Open Graph, JSON-LD) is written into each page's HTML at build time.
+ * Keeps title, description and canonical in sync during client-side navigation.
+ * The full head (Open Graph, JSON-LD) is written into each page's HTML at build time.
  */
-export function usePageMeta(language: Language, page: Page | 'notFound') {
+export function usePageMeta(page: Page | 'notFound') {
     useEffect(() => {
-        document.documentElement.lang = language;
-
         if (page === 'notFound') {
-            const t = translations[language];
-            document.title = `${t.notFound.documentTitle} · ${t.siteName}`;
+            document.title = `${en.notFound.documentTitle} · ${en.siteName}`;
             setCanonical(null);
             setNoIndex(true);
             return;
         }
 
-        const meta = getPageMeta(language, page);
+        const meta = getPageMeta(page);
         document.title = meta.title;
         setDescription(meta.description);
         setCanonical(meta.url);
         setNoIndex(false);
-    }, [language, page]);
+    }, [page]);
 }

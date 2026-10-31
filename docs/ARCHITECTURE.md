@@ -1,6 +1,6 @@
 # Architecture
 
-The SPRAC Handbook is a static website. There is no backend, database, login or form: the build produces plain HTML, CSS, JavaScript and images that any web host can serve. React renders the pages at build time and takes over in the browser for navigation and the language menu.
+The SPRAC Handbook is a static website. There is no backend, database, login or form: the build produces plain HTML, CSS, JavaScript and images that any web host can serve. React renders the pages at build time and takes over in the browser for navigation.
 
 ## System context
 
@@ -11,17 +11,16 @@ flowchart LR
     Visitor -.->|links only| External[GitHub, SPARC and admin.ch sites]
 ```
 
-Nothing is loaded from third parties: fonts, icons and images are served from the same host. The only data kept in the browser is the chosen language in `localStorage` (key `sprac.language`).
+Nothing is loaded from third parties: fonts, icons and images are served from the same host. Nothing is stored in the browser.
 
 ## Components
 
 ```mermaid
 flowchart TD
     main[main.tsx] --> App
-    App --> Ctx[LanguageContext]
-    Ctx --> Home & LegalNotice & PrivacyPolicy & NotFound
+    App --> Home & LegalNotice & PrivacyPolicy & NotFound
     Home & LegalNotice & PrivacyPolicy & NotFound --> PageLayout
-    PageLayout --> Navbar --> LanguageSelect
+    PageLayout --> Navbar
     PageLayout --> Footer
     LegalNotice & PrivacyPolicy --> LegalLayout
 ```
@@ -29,12 +28,12 @@ flowchart TD
 | Path | Responsibility |
 |---|---|
 | `src/main.tsx` | Mounts the app: hydrates pre-rendered HTML, otherwise renders from scratch |
-| `src/App.tsx` | Reads the URL, redirects paths without a language, picks the page |
+| `src/App.tsx` | Reads the URL and picks the page |
 | `src/pages/` | One component per page; `Home/` is split into one component per section |
-| `src/components/layout/` | Navbar, logo, language select, footer, page frame |
+| `src/components/layout/` | Navbar, logo, footer, page frame |
 | `src/components/legal/` | Building blocks shared by the legal notice and privacy policy |
 | `src/components/ui/` | Button, icon, callout |
-| `src/i18n/` | Language list, detection, `LanguageContext`, and all text in `locales/` |
+| `src/i18n/` | All page text in `locales/en.ts` |
 | `src/router/` | Route table (`pages.ts`), URL helpers (`routes.ts`), history navigation and `Link` |
 | `src/seo/` | Head tags, JSON-LD and sitemap (`meta.ts`); keeps them in sync in the browser (`usePageMeta.ts`) |
 | `src/config/` | External links, contact email, asset URLs and icon names |
@@ -44,29 +43,27 @@ flowchart TD
 
 ## Routing
 
-Every URL starts with a language: `/en/`, `/de/`, `/fr/`, `/it/`, `/rm/`. Pages follow it with a trailing slash:
+Pages use a trailing slash:
 
 | Path | Page |
 |---|---|
-| `/<lang>/` | Home (before-launch page) |
-| `/<lang>/legal-notice/` | Legal notice |
-| `/<lang>/privacy-policy/` | Privacy policy |
-| anything else under `/<lang>/` | Not found |
-
-`/` and paths without a language (for example `/legal-notice`) redirect in the browser to the remembered language, else the first supported browser language, else English (`src/i18n/detectLanguage.ts`). The language menu keeps the current page and only swaps the language segment.
+| `/` | Home (before-launch page) |
+| `/legal-notice/` | Legal notice |
+| `/privacy-policy/` | Privacy policy |
+| anything else | Not found |
 
 There is no router library. `src/router/navigation.ts` wraps the History API and exposes the current path through `useSyncExternalStore`; `Link` intercepts plain clicks so internal links do not reload the page.
 
-## Translations
+## Text
 
-`src/i18n/locales/en.ts` is the source of truth; its type (`Translation`) is enforced on the other four files, so a missing key fails the build. Components read text with `useTranslation()`. Language names in the menu are written in their own language (`LANGUAGE_NAMES`).
+The site is English only. `src/i18n/locales/en.ts` holds all page text and components import it directly.
 
 ## Build
 
 `npm run build` runs `tsc -b` and then `vite build`, which adds four steps through plugins in `vite.config.ts`:
 
 1. **Content Security Policy**: a strict same-origin CSP is injected as a `<meta>` tag into every page (build only, because the dev server needs inline styles).
-2. **Per-page HTML** (`seoPages`): for every language and page, a copy of `index.html` with its own title, description, canonical URL, hreflang links, Open Graph tags and JSON-LD, written to `<lang>/<page>/index.html`. Also writes `404.html` (with `noindex`) and `sitemap.xml`.
+2. **Per-page HTML** (`seoPages`): for every page, a copy of `index.html` with its own title, description, canonical URL, Open Graph tags and JSON-LD, written to `<page>/index.html`. Also writes `404.html` (with `noindex`) and `sitemap.xml`.
 3. **Pre-rendering** (`prerender`): builds `src/entry-server.ts` for Node, renders each page to HTML and puts it into its file. The text is then readable without JavaScript, which matters for AI crawlers.
 4. **Hydration**: in the browser, `main.tsx` compares `data-prerendered` on the root element with the current path. If they match, React hydrates the existing HTML; on `404.html` or in development it renders from scratch.
 

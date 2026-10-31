@@ -3,12 +3,11 @@ import { LegalLayout } from '@/components/legal/LegalLayout';
 import { LegalSection, Paragraph } from '@/components/legal/LegalSection';
 import { TextLink } from '@/components/legal/TextLink';
 import { CONTACT_EMAIL, REPO_URL } from '@/config/links';
-import { useLanguage, useTranslation } from '@/i18n/LanguageContext';
+import { en } from '@/i18n/locales/en';
 import { buildPath } from '@/router/routes';
 
 export function LegalNotice() {
-    const language = useLanguage();
-    const { legal, legalNotice: page } = useTranslation();
+    const { legal, legalNotice: page } = en;
 
     return (
         <LegalLayout
@@ -72,7 +71,7 @@ export function LegalNotice() {
 
             <LegalSection heading={page.otherTexts}>
                 <div>
-                    <TextLink href={buildPath(language, 'privacyPolicy')}>{legal.privacyPolicy}</TextLink>
+                    <TextLink href={buildPath('privacyPolicy')}>{legal.privacyPolicy}</TextLink>
                 </div>
             </LegalSection>
         </LegalLayout>

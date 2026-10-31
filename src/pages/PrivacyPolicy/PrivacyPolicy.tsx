@@ -5,12 +5,11 @@ import { LegalLayout } from '@/components/legal/LegalLayout';
 import { Emphasis, LegalSection, Paragraph } from '@/components/legal/LegalSection';
 import { TextLink } from '@/components/legal/TextLink';
 import { CONTACT_EMAIL, FDPIC_URL, REPO_URL } from '@/config/links';
-import { useLanguage, useTranslation } from '@/i18n/LanguageContext';
+import { en } from '@/i18n/locales/en';
 import { buildPath } from '@/router/routes';
 
 export function PrivacyPolicy() {
-    const language = useLanguage();
-    const { legal, privacy: page } = useTranslation();
+    const { legal, privacy: page } = en;
     const mail = (
         <a href={`mailto:${CONTACT_EMAIL}`} className="font-medium text-fg hover:text-accent">
             {CONTACT_EMAIL}
@@ -84,7 +83,6 @@ export function PrivacyPolicy() {
             <LegalSection heading={page.cookies.heading}>
                 <Paragraph>{page.cookies.body1}</Paragraph>
                 <Paragraph>{page.cookies.body2}</Paragraph>
-                <Paragraph>{page.cookies.body3}</Paragraph>
             </LegalSection>
 
             <LegalSection heading={page.fonts.heading}>
@@ -139,7 +137,7 @@ export function PrivacyPolicy() {
             <LegalSection heading={page.changes.heading}>
                 <Paragraph>{page.changes.body}</Paragraph>
                 <div>
-                    <TextLink href={buildPath(language, 'legalNotice')}>{legal.legalNotice}</TextLink>
+                    <TextLink href={buildPath('legalNotice')}>{legal.legalNotice}</TextLink>
                 </div>
             </LegalSection>
         </LegalLayout>

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import { useTranslation } from '@/i18n/LanguageContext';
+import { en as t } from '@/i18n/locales/en';
 import { Link } from '@/router/Link';
 
 type TextLinkProps = {
@@ -12,7 +12,6 @@ type TextLinkProps = {
 
 /** Yellow Label/L link used in the legal texts. */
 export function TextLink({ href, children, external = false }: TextLinkProps) {
-    const t = useTranslation();
     const className = 'inline-flex items-center gap-1 font-medium whitespace-nowrap text-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none';
 
     if (external) {

@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/Button';
 import { REPO_URL } from '@/config/links';
-import { useTranslation } from '@/i18n/LanguageContext';
+import { en } from '@/i18n/locales/en';
 import { StatusStrip } from './StatusStrip';
 
 export function LaunchSection() {
-    const { home } = useTranslation();
+    const { home } = en;
     const { launch } = home;
 
     return (

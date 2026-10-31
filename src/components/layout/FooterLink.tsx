@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import { useTranslation } from '@/i18n/LanguageContext';
+import { en as t } from '@/i18n/locales/en';
 import { Link } from '@/router/Link';
 
 type FooterLinkProps = {
@@ -11,7 +11,6 @@ type FooterLinkProps = {
 };
 
 export function FooterLink({ href, children, external = false }: FooterLinkProps) {
-    const t = useTranslation();
     const className = 'flex items-center gap-1 text-sm leading-[1.5] whitespace-nowrap text-fg-muted transition-colors hover:text-fg focus-visible:text-fg focus-visible:outline-none';
 
     if (external) {

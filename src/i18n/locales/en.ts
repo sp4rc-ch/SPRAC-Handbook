@@ -17,7 +17,6 @@ export const en = {
     },
     nav: {
         home: 'Home',
-        language: 'Language',
         newTab: '(opens in a new tab)',
     },
     home: {
@@ -170,8 +169,7 @@ export const en = {
         cookies: {
             heading: 'Cookies and local storage',
             body1: 'We do not use cookies for analytics, advertising or tracking.',
-            body2: "To remember your language choice, the handbook stores one small entry in your browser's local storage. It stays on your device and is never sent to us or to third parties.",
-            body3: 'You can delete it at any time by clearing the site data in your browser settings. The site still works without it; you just pick the language again.',
+            body2: "The handbook does not store anything in your browser's local storage either.",
         },
         fonts: {
             heading: 'Fonts, icons and external content',
@@ -230,6 +228,3 @@ export const en = {
         backHome: 'Back to home',
     },
 };
-
-/** Shape every locale must match. Derived from English so a missing key fails the build. */
-export type Translation = typeof en;

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/Button';
 import { Callout } from '@/components/ui/Callout';
 import { ISSUE_URL, REPO_URL } from '@/config/links';
-import { useTranslation } from '@/i18n/LanguageContext';
+import { en } from '@/i18n/locales/en';
 import { ContributeItem } from './ContributeItem';
 
 /**
@@ -9,7 +9,7 @@ import { ContributeItem } from './ContributeItem';
  * tablets put the ways in a row under the text, desktop puts them in a column beside it.
  */
 export function ContributeSection() {
-    const { home } = useTranslation();
+    const { home } = en;
     const { contribute } = home;
 
     return (

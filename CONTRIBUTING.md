@@ -35,26 +35,22 @@ npm run build
 - TypeScript in strict mode. Unused variables and parameters fail the build.
 - Formatting follows `.prettierrc`: 4 spaces, single quotes, semicolons, print width 200, Tailwind classes sorted by `prettier-plugin-tailwindcss`.
 - Files end without a trailing newline (see `.editorconfig`). Prettier adds one, so strip it again if you format a whole file.
-- Import from `src` with the `@/` alias, for example `@/components/ui/Button`. Files that `vite.config.ts` imports (`src/i18n`, `src/router/pages.ts`, `src/seo/meta.ts`) use relative imports with a `.ts` extension instead.
+- Import from `src` with the `@/` alias, for example `@/components/ui/Button`. Files that `vite.config.ts` imports (`src/i18n/locales/en.ts`, `src/router/pages.ts`, `src/seo/meta.ts`) use relative imports with a `.ts` extension instead.
 - Style with Tailwind utility classes and the design tokens in `src/index.css` (`bg-canvas`, `text-fg-muted`, `border-line`, `text-accent`, ...). Do not hard-code colours.
 - Icons: use `<Icon name="..." />` from `@/components/ui/Icon`. The allowed names are listed in `src/config/assets.ts` and match the Phosphor icons in `public/assets/icons/`.
 - No new runtime dependencies without discussing it in an issue first. The site only depends on React.
 
-## Text and translations
+## Text
 
-All visible text lives in `src/i18n/locales/`, one file per language: `en.ts`, `de.ts`, `fr.ts`, `it.ts`, `rm.ts`.
-
-- `en.ts` defines the shape. Add a new key there first, then to the other four files. The build fails if a language is missing a key.
-- Keep the five versions saying the same thing. If you can only write one language, say so in the pull request so someone else can translate.
-- Romansh (`rm.ts`) and the legal texts in all languages need review by a native speaker before launch.
+The site is English only. All visible text lives in `src/i18n/locales/en.ts`.
 
 ## Adding a page
 
 1. Add the URL segment to `PAGE_PATHS` in `src/router/pages.ts`.
-2. Add a title and description for it under `meta` in every locale file.
+2. Add a title and description for it under `meta` in `src/i18n/locales/en.ts`.
 3. Create the page in `src/pages/<Name>/<Name>.tsx` and render it in `src/App.tsx`.
 
-The sitemap, hreflang links and the pre-rendered HTML file for every language are generated from `PAGE_PATHS`, so there is nothing else to register.
+The sitemap and the pre-rendered HTML file are generated from `PAGE_PATHS`, so there is nothing else to register.
 
 ## Do not edit
 
