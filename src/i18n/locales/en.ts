@@ -15,6 +15,13 @@ export const en = {
             description: 'Which personal data the SPRAC Handbook processes, why, for how long, and which rights you have under Swiss data protection law.',
         },
     },
+    disclaimer: {
+        eyebrow: 'NOTICE',
+        title: 'Disclaimer',
+        body1: 'The content on this page was created by members of the SPARC community. The SPRAC Handbook is an unofficial, student-made knowledge base.',
+        body2: 'It is not affiliated with, endorsed by or speaking for the Swiss Armed Forces or SPARC. Information can be incomplete or out of date, so always check the official sources before you rely on it.',
+        confirm: 'I understand',
+    },
     nav: {
         home: 'Home',
         newTab: '(opens in a new tab)',
@@ -169,7 +176,8 @@ export const en = {
         cookies: {
             heading: 'Cookies and local storage',
             body1: 'We do not use cookies for analytics, advertising or tracking.',
-            body2: "The handbook does not store anything in your browser's local storage either.",
+            body2: "To remember that you have read the disclaimer, the handbook stores one small entry (key sprac.disclaimer-accepted, value true) in your browser's local storage. It stays on your device and is never sent to us or to third parties.",
+            body3: 'You can delete it at any time by clearing the site data in your browser settings. The site still works without it; the disclaimer is just shown again on your next visit.',
         },
         fonts: {
             heading: 'Fonts, icons and external content',

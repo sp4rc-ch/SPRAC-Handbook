@@ -11,7 +11,7 @@ flowchart LR
     Visitor -.->|links only| External[GitHub, SPARC and admin.ch sites]
 ```
 
-Nothing is loaded from third parties: fonts, icons and images are served from the same host. Nothing is stored in the browser.
+Nothing is loaded from third parties: fonts, icons and images are served from the same host. The only data kept in the browser is a flag in `localStorage` (key `sprac.disclaimer-accepted`) that records that the disclaimer was accepted.
 
 ## Components
 
@@ -32,7 +32,7 @@ flowchart TD
 | `src/pages/` | One component per page; `Home/` is split into one component per section |
 | `src/components/layout/` | Navbar, logo, footer, page frame |
 | `src/components/legal/` | Building blocks shared by the legal notice and privacy policy |
-| `src/components/ui/` | Button, icon, callout |
+| `src/components/ui/` | Button, icon, callout, first-visit disclaimer (`DisclaimerDialog`) |
 | `src/i18n/` | All page text in `locales/en.ts` |
 | `src/router/` | Route table (`pages.ts`), URL helpers (`routes.ts`), history navigation and `Link` |
 | `src/seo/` | Head tags, JSON-LD and sitemap (`meta.ts`); keeps them in sync in the browser (`usePageMeta.ts`) |

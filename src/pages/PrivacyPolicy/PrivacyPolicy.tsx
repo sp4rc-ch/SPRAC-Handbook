@@ -83,6 +83,7 @@ export function PrivacyPolicy() {
             <LegalSection heading={page.cookies.heading}>
                 <Paragraph>{page.cookies.body1}</Paragraph>
                 <Paragraph>{page.cookies.body2}</Paragraph>
+                <Paragraph>{page.cookies.body3}</Paragraph>
             </LegalSection>
 
             <LegalSection heading={page.fonts.heading}>

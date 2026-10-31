@@ -51,6 +51,31 @@
     --radius-xl: 16px;
 
     --shadow-dropdown: 0 16px 40px -8px rgb(0 0 0 / 0.55);
+    --shadow-dialog: 0 24px 32px rgb(0 0 0 / 0.5);
+    --shadow-sheet: 0 -12px 20px rgb(0 0 0 / 0.45);
+
+    --animate-fade-in: fade-in 200ms ease-out;
+    --animate-sheet-in: sheet-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --animate-dialog-in: dialog-in 200ms ease-out;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+    }
+
+    @keyframes sheet-in {
+        from {
+            transform: translateY(100%);
+        }
+    }
+
+    @keyframes dialog-in {
+        from {
+            opacity: 0;
+            transform: translateY(8px) scale(0.98);
+        }
+    }
 }
 
 @layer base {

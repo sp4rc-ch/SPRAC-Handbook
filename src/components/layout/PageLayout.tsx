@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { DisclaimerDialog } from '@/components/ui/DisclaimerDialog';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 
@@ -9,6 +10,7 @@ export function PageLayout({ children, footer = true }: { children?: ReactNode; 
             <Navbar />
             <main className="flex flex-1 flex-col">{children}</main>
             {footer && <Footer />}
+            <DisclaimerDialog />
         </div>
     );
 }
