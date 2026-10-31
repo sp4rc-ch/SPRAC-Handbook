@@ -1,7 +1,11 @@
 # The SPRAC Handbook
 
-An unofficial handbook for everything related to SPARC, Cybat 42 and CyLg, for people taking part in or interested in these programs.
-The site is a static single-page app built with React, Vite and Tailwind CSS. It aggregates and organises information that is already public. It is maintained by the SPARC community and is not affiliated with SPARC, Cybat or CyLg.
+This is a **community-driven project maintained by the SPARC Community** to provide comprehensive and correct information and resources regarding to SPARC, CyLg, and Cybat.
+
+> [!WARNING]
+> All the content found here is or was found on the vast and wide internet. This handbook only aggregates and organizes the information for easier access. We do not claim ownership of any of the content. All the content found here was already approved/meant for distribution.
+>
+> **We are not affiliated with SPARC, Cybat, or CyLg in any official way.** We try our best to provide accurate information, but **we cannot guarantee its completeness or reliability, since the information is constantly changing and being updated.**
 
 **Current version:** v0.1.0 (pre-launch)
 
@@ -31,16 +35,16 @@ npm ci
 npm run dev
 ```
 
-Vite prints the local URL, normally `http://localhost:5173`. Opening `/` redirects to your browser language, for example `/de/`.
+Vite prints the local URL, normally `http://localhost:5173`. Opening `/` redirects to your browser language, for example `/en/`.
 
 ## Usage
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Start the dev server with hot reload |
-| `npm run build` | Type-check, then build the static site into `dist/` |
+| Command           | What it does                                        |
+| ----------------- | --------------------------------------------------- |
+| `npm run dev`     | Start the dev server with hot reload                |
+| `npm run build`   | Type-check, then build the static site into `dist/` |
 | `npm run preview` | Serve `dist/` locally to check the production build |
-| `npm run lint` | Run ESLint |
+| `npm run lint`    | Run ESLint                                          |
 
 `npm run build` writes one pre-rendered HTML file per language and page (`dist/de/legal-notice/index.html`, ...) plus `sitemap.xml` and `404.html`. Upload the contents of `dist/` to the web host. All page text lives in `src/i18n/locales/`, one file per language.
 
@@ -66,18 +70,13 @@ docs/             architecture notes
 
 Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Report problems on the [issue tracker](https://github.com/sp4rc-ch/SPRAC-Handbook/issues).
 
-## Maintainers
+## Acknowledgements
 
-| Name | Role |
-|---|---|
-| An0n | Repository owner |
-| vo1n | Maintainer |
-
-See [CONTRIBUTORS.md](CONTRIBUTORS.md) for who built what.
+- [@voin-sh | Vo1n](https://github.com/vo1n-sh) (Technical Lead SPRAC Handbook) for building and desigining the whole website.
 
 ## Contact
 
-- **Threema:** search for the maintainers' aliases, An0n or vo1n, in Threema and send a message.
+- **Threema:** [Join the Community (requires a SPARC Threema ID)](https://threema.id/87YD3CY3?text=Hello%20There,%0AI%20would%20like%20to%20join%20the%20SPARC%20Community!%20I%20herby%20accept%20the%20Community%20rules,%20which%20is%20the%20SPARC%20Code%20of%20Conduct%2E%0ACheers%0A%3Cyour%20hackername,%20and%20questions%20if%20any%3E) | [General Inquiries](https://threema.id/87YD3CY3) | Technical Lead: Vo1n on Threema
 - **GitHub:** bugs and content suggestions go on the [issue tracker](https://github.com/sp4rc-ch/SPRAC-Handbook/issues).
 
 ## License

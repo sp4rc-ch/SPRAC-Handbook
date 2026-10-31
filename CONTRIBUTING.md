@@ -75,10 +75,10 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `chore`. Lowercase, imperativ
 
 ## Branches
 
-| Branch | Purpose |
-|---|---|
-| `main` | Production. Only maintainers merge into it, for a release. |
-| `dev` | Newest state of the project. Only maintainers merge into it. |
+| Branch            | Purpose                                                       |
+| ----------------- | ------------------------------------------------------------- |
+| `main`            | Production. Only maintainers merge into it, for a release.    |
+| `dev`             | Newest state of the project. Only maintainers merge into it.  |
 | `feature/<topic>` | One remote branch per change. This is where pull requests go. |
 
 Never open a pull request against `main` or `dev`.

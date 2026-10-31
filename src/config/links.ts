@@ -1,10 +1,10 @@
 export const REPO_URL = 'https://github.com/sp4rc-ch/SPRAC-Handbook/';
 
 /** Placeholder until an issue tracker exists. */
-export const ISSUE_URL = '#';
+export const ISSUE_URL = 'https://github.com/sp4rc-ch/SPRAC-Handbook/issues';
 
 /** vo1n, maintainer: contact for questions, legal and privacy requests. */
-export const CONTACT_EMAIL = 'vo1n-sh@proton.me';
+export const CONTACT_EMAIL = 'contact@sprac.ch';
 
 /** Federal Data Protection and Information Commissioner. */
 export const FDPIC_URL = 'https://www.edoeb.admin.ch';
