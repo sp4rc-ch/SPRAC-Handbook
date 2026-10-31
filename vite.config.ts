@@ -13,6 +13,8 @@ import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta.ts';
  * requests. JSON-LD is a data block and is not affected. Build only, because the Vite dev
  * server injects inline styles for hot reload. frame-ancestors, HSTS and Permissions-Policy
  * cannot be set from a <meta> tag and must come from the host as HTTP headers.
+ * No upgrade-insecure-requests: it would rewrite the CSS and JS URLs to https when previewing over
+ * plain http on the network. The host already redirects http to https (public/.htaccess).
  */
 const CONTENT_SECURITY_POLICY = [
     "default-src 'self'",
@@ -25,7 +27,6 @@ const CONTENT_SECURITY_POLICY = [
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'none'",
-    'upgrade-insecure-requests',
 ].join('; ');
 
 function contentSecurityPolicy(): Plugin {
