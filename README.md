@@ -7,7 +7,7 @@ This is a **community-driven project maintained by the SPARC Community** to prov
 >
 > **We are not affiliated with SPARC, Cybat, or CyLg in any official way.** We try our best to provide accurate information, but **we cannot guarantee its completeness or reliability, since the information is constantly changing and being updated.**
 
-**Current version:** v0.1.0 (pre-launch)
+
 
 ## Table of contents
 
