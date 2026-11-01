@@ -1,7 +1,6 @@
 /* TEAM */
-Repository owner: An0n
-Maintainer: vo1n
-Contact: vo1n-sh@proton.me
+Team: SPARC Community
+Contact: contact@sprac.ch
 From: Switzerland
 
 /* PROJECT */
