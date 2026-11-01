@@ -1,0 +1,6 @@
+# Security contact for sprac.ch (RFC 9116).
+# Please report vulnerabilities privately to the address below, not in a public issue.
+Contact: mailto:contact@sprac.ch
+Expires: 2027-10-29T23:00:00.000Z
+Preferred-Languages: en, de, fr, it
+Canonical: https://sprac.ch/.well-known/security.txt

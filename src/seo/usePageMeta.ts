@@ -1,0 +1,49 @@
+import { useEffect } from 'react';
+import { en } from '@/i18n/locales/en';
+import type { Page } from '@/router/pages';
+import { getPageMeta } from './meta';
+
+function upsert<T extends HTMLElement>(selector: string, create: () => T): T {
+    const existing = document.head.querySelector<T>(selector);
+    if (existing) return existing;
+    const element = create();
+    document.head.append(element);
+    return element;
+}
+
+function setDescription(content: string) {
+    upsert('meta[name="description"]', () => Object.assign(document.createElement('meta'), { name: 'description' })).content = content;
+}
+
+function setCanonical(href: string | null) {
+    const link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (href === null) return link?.remove();
+    upsert('link[rel="canonical"]', () => Object.assign(document.createElement('link'), { rel: 'canonical' })).href = href;
+}
+
+function setNoIndex(noIndex: boolean) {
+    const robots = document.head.querySelector('meta[name="robots"]');
+    if (!noIndex) return robots?.remove();
+    upsert('meta[name="robots"]', () => Object.assign(document.createElement('meta'), { name: 'robots' })).content = 'noindex';
+}
+
+/**
+ * Keeps title, description and canonical in sync during client-side navigation.
+ * The full head (Open Graph, JSON-LD) is written into each page's HTML at build time.
+ */
+export function usePageMeta(page: Page | 'notFound') {
+    useEffect(() => {
+        if (page === 'notFound') {
+            document.title = `${en.notFound.documentTitle} · ${en.siteName}`;
+            setCanonical(null);
+            setNoIndex(true);
+            return;
+        }
+
+        const meta = getPageMeta(page);
+        document.title = meta.title;
+        setDescription(meta.description);
+        setCanonical(meta.url);
+        setNoIndex(false);
+    }, [page]);
+}
