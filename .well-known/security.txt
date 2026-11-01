@@ -1,6 +1,8 @@
 # Security contact for sprac.ch (RFC 9116).
 # Please report vulnerabilities privately to the address below, not in a public issue.
+# 
+# Are you just visiting for fun and you are not part of SPARC? Join the program (and the community!): https://sparc-cyberdefence.ch/us/
 Contact: mailto:contact@sprac.ch
 Expires: 2027-10-29T23:00:00.000Z
-Preferred-Languages: en, de, fr, it
+Preferred-Languages: en
 Canonical: https://sprac.ch/.well-known/security.txt
