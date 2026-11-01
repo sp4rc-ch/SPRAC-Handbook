@@ -21,19 +21,27 @@ export function LegalNotice() {
         >
             <LegalSection heading={page.who.heading}>
                 <Paragraph>{page.who.body}</Paragraph>
-                <DetailList
-                    rows={[
-                        { label: legal.repoOwner, value: 'An0n' },
-                        { label: legal.maintainer, value: 'vo1n' },
-                    ]}
-                />
             </LegalSection>
 
             <LegalSection heading={page.contact.heading}>
                 <DetailList
                     rows={[
-                        { label: legal.email, value: <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-accent">{CONTACT_EMAIL}</a> },
-                        { label: page.contact.repositoryLabel, value: <TextLink href={REPO_URL} external>GitHub</TextLink> },
+                        {
+                            label: legal.email,
+                            value: (
+                                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-accent">
+                                    {CONTACT_EMAIL}
+                                </a>
+                            ),
+                        },
+                        {
+                            label: page.contact.repositoryLabel,
+                            value: (
+                                <TextLink href={REPO_URL} external>
+                                    GitHub
+                                </TextLink>
+                            ),
+                        },
                     ]}
                 />
                 <Paragraph>{page.contact.body}</Paragraph>

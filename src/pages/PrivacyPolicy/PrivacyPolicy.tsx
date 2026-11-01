@@ -11,7 +11,7 @@ import { buildPath } from '@/router/routes';
 export function PrivacyPolicy() {
     const { legal, privacy: page } = en;
     const mail = (
-        <a href={`mailto:${CONTACT_EMAIL}`} className="font-medium text-fg hover:text-accent">
+        <a href={`mailto:${CONTACT_EMAIL}`} className="text-fg hover:text-accent font-medium">
             {CONTACT_EMAIL}
         </a>
     );
@@ -32,13 +32,7 @@ export function PrivacyPolicy() {
 
             <LegalSection heading={page.responsible.heading}>
                 <Paragraph>{page.responsible.body}</Paragraph>
-                <DetailList
-                    rows={[
-                        { label: legal.repoOwner, value: 'An0n' },
-                        { label: legal.maintainer, value: 'vo1n' },
-                        { label: legal.email, value: mail },
-                    ]}
-                />
+                <DetailList rows={[{ label: legal.email, value: mail }]} />
             </LegalSection>
 
             <LegalSection heading={page.visiting.heading}>

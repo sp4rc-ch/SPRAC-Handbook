@@ -18,8 +18,8 @@ export const en = {
     disclaimer: {
         eyebrow: 'NOTICE',
         title: 'Disclaimer',
-        body1: 'The content on this page was created by members of the SPARC community. The SPRAC Handbook is an unofficial, student-made knowledge base.',
-        body2: 'It is not affiliated with, endorsed by or speaking for the Swiss Armed Forces or SPARC. Information can be incomplete or out of date, so always check the official sources before you rely on it.',
+        body1: 'All the content found here is or was found on the vast and wide internet. This handbook only aggregates and organizes the information for easier access. We do not claim ownership of any of the content. All the content found here was already approved/meant for distribution.',
+        body2: 'We (the SPARC Community) are not affiliated with SPARC, Cyber Bataillon 42 (CyBat), or the Cyber-Lehrgang (CyLg) in any official way. We try our best to provide accurate information, but we cannot guarantee its completeness or reliability, since the information is constantly changing and being updated.',
         confirm: 'I understand',
     },
     nav: {
@@ -39,8 +39,7 @@ export const en = {
         },
         contribute: {
             title: 'Spotted a problem? Open an issue.',
-            introStart:
-                'Before launch we only take issues. Found a wrong fact, a broken link or a typo? Open an issue in the repo. Pull requests for new pages or UI changes are paused until launch.',
+            introStart: 'Before launch we only take issues. Found a wrong fact, a broken link or a typo? Open an issue in the repo. Pull requests for new pages or UI changes are paused until launch.',
             introEmphasis: 'Contributions are only accepted from SPARC students and people associated with SPARC.',
             code: '$ git checkout -b fix/typo',
             openIssue: 'Open an issue',
@@ -55,7 +54,7 @@ export const en = {
         },
     },
     footer: {
-        tagline: 'An unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. Made by students from the SPARC community, sourced from official pages.',
+        tagline: 'An unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42, created by students from the SPARC community and sourced from publicly available information.',
         resources: 'Resources',
         contribute: 'Contribute on GitHub',
         officialSites: 'Official sites',
@@ -76,7 +75,7 @@ export const en = {
         law: 'Law',
         repoOwner: 'Repo owner',
         maintainer: 'Maintainer',
-        email: 'Email (vo1n)',
+        email: 'Email',
         purpose: 'Purpose',
         retention: 'Retention',
         legalNotice: 'Legal notice',
@@ -139,7 +138,7 @@ export const en = {
         },
         responsible: {
             heading: 'Who is responsible?',
-            body: 'vo1n, maintainer of The SPRAC Handbook, is responsible for the processing of personal data on this website. The repository is owned by An0n.',
+            body: 'The SPRAC Handbook is an independent, non-commercial, open-source community knowledge project created by members of the SPARC community.',
         },
         visiting: {
             heading: 'Visiting the website',
@@ -171,7 +170,13 @@ export const en = {
         },
         notDo: {
             heading: 'What we do not do',
-            items: ['No user accounts, forms or newsletter', 'No payments, donations or ads', 'No analytics, tracking or profiling', 'No automated individual decisions', 'We never sell or rent personal data'],
+            items: [
+                'No user accounts, forms or newsletter',
+                'No payments, donations or ads',
+                'No analytics, tracking or profiling',
+                'No automated individual decisions',
+                'We never sell or rent personal data',
+            ],
         },
         cookies: {
             heading: 'Cookies and local storage',
