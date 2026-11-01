@@ -71,11 +71,11 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 
 ## Acknowledgements
 
-- [@voin-sh | Vo1n](https://github.com/vo1n-sh) (Technical Lead SPRAC Handbook) for building and desigining the whole website.
+- [@voin-sh](https://github.com/vo1n-sh) | [vo1n](https://threema.id/P4MM574Y) (Technical Lead SPRAC Handbook) for building and desigining the whole website.
 
 ## Contact
 
-- **Threema:** [Join the Community (requires a SPARC Threema ID)](https://threema.id/87YD3CY3?text=Hello%20There,%0AI%20would%20like%20to%20join%20the%20SPARC%20Community!%20I%20herby%20accept%20the%20Community%20rules,%20which%20is%20the%20SPARC%20Code%20of%20Conduct%2E%0ACheers%0A%3Cyour%20hackername,%20and%20questions%20if%20any%3E) | [General Inquiries](https://threema.id/87YD3CY3) | Technical Lead: Vo1n on Threema
+- **Threema:** [Join the Community (requires a SPARC Threema ID)](https://threema.id/87YD3CY3?text=Hello%20There,%0AI%20would%20like%20to%20join%20the%20SPARC%20Community!%20I%20herby%20accept%20the%20Community%20rules,%20which%20is%20the%20SPARC%20Code%20of%20Conduct%2E%0ACheers%0A%3Cyour%20hackername,%20and%20questions%20if%20any%3E) | [General Inquiries](https://threema.id/87YD3CY3) | [Technical Lead](https://threema.id/P4MM574Y)
 - **GitHub:** bugs and content suggestions go on the [issue tracker](https://github.com/sp4rc-ch/SPRAC-Handbook/issues).
 
 ## License

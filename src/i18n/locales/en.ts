@@ -192,7 +192,10 @@ export const en = {
         recipients: {
             heading: 'Who receives your data?',
             items: [
-                { name: 'Hosting provider', text: ' (Infomaniak Network SA, Switzerland): delivers the site and stores server logs, on our behalf and bound by contract.' },
+                {
+                    name: 'Hosting provider',
+                    text: ' (GitHub Pages): delivers the site and stores  IP addresses. See their Privacy Policy: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection',
+                },
                 { name: 'Email provider', text: ' (Proton AG, Switzerland): stores and transmits our emails, on our behalf and bound by contract.' },
                 { name: 'Repository platform', text: ' (GitHub Inc.): only if you contribute there yourself, under its own responsibility.' },
                 { name: 'Authorities and courts', text: ', if we are legally obliged to disclose data.' },
@@ -203,7 +206,7 @@ export const en = {
             intro: 'We aim to process personal data in Switzerland. Some providers may also process data in these states:',
             columns: ['State', 'Service', 'Basis'] as [string, string, string],
             rows: [
-                ['Switzerland', 'Hosting and server logs (Infomaniak)', 'Switzerland: no disclosure abroad'],
+                ['USA', 'Hosted by GitHub Pages (part of GitHub Inc.)', 'Swiss-U.S. Data Privacy Framework and standard contractual clauses'],
                 ['Switzerland', 'Email (Proton AG)', 'Switzerland: no disclosure abroad'],
                 ['USA', 'GitHub Inc., only if you contribute there yourself', 'Swiss-U.S. Data Privacy Framework and standard contractual clauses'],
             ] as [string, string, string][],

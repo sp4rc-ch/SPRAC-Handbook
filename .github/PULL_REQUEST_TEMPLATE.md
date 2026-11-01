@@ -10,4 +10,3 @@
 - [ ] `npm run build` passes
 - [ ] New facts link to an official source
 - [ ] I checked the change at phone, tablet and desktop width
-- [ ] I did not edit `CONTRIBUTORS.md`
