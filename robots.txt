@@ -1,0 +1,5 @@
+# The SPRAC Handbook. Every page is public; search and AI crawlers are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://sprac.ch/sitemap.xml
