@@ -1,0 +1,64 @@
+name: CD
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+# One deployment at a time; a newer push cancels a queued one but never one in progress.
+concurrency:
+    group: pages-${{ github.ref }}
+    cancel-in-progress: false
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: npm
+
+            - name: Install dependencies
+              run: npm ci
+
+              # Get the current github pages config
+            - name: Configure GitHub Pages
+              id: pages
+              uses: actions/configure-pages@v5
+
+              # and use them for the build (so we can change where it deploys too, without changing code)
+            - name: Build
+              run: npm run build
+              env:
+                  BASE_PATH: ${{ steps.pages.outputs.base_path }}
+                  SITE_ORIGIN: ${{ steps.pages.outputs.origin }}
+
+            - name: Upload Pages artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: ./dist
+
+    deploy:
+        if: github.event_name != 'pull_request'
+        needs: build
+        runs-on: ubuntu-latest
+        permissions:
+            pages: write
+            id-token: write
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4

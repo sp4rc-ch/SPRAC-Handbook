@@ -8,6 +8,14 @@ import { en } from './src/i18n/locales/en.ts';
 import { PAGES, pagePath } from './src/router/pages.ts';
 import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta.ts';
 
+const basePath = (process.env.BASE_PATH ?? '').replace(/^\/+|\/+$/g, ''); // remove leading and trailing slash
+const BASE = basePath ? `/${basePath}/` : '/'; // add them safely
+const SITE_URL = `${(process.env.SITE_ORIGIN ?? 'https://sprac.ch').replace(/\/+$/, '')}${BASE.slice(0, -1)}`; // builds the "real" site url
+
+// fix possible issues in browsers when builders tweak (and used in meta.ts)
+const define = { __SITE_URL__: JSON.stringify(SITE_URL) };
+Object.assign(globalThis, { __SITE_URL__: SITE_URL });
+
 /**
  * Same-origin only: the build has no inline scripts or styles, no eval and no third-party
  * requests. JSON-LD is a data block and is not affected. Build only, because the Vite dev
@@ -63,10 +71,10 @@ function seoPages(): Plugin {
 
             for (const page of PAGES.filter((key) => key !== 'home')) {
                 const pathname = pagePath(page);
-                this.emitFile({ type: 'asset', fileName: `${pathname.slice(1)}index.html`, source: render(renderHeadTags(getPageMeta(page)), prerenderSlot(pathname)) });
+                this.emitFile({ type: 'asset', fileName: `${pathname.slice(1)}index.html`, source: render(renderHeadTags(getPageMeta(page)), prerenderSlot(`${BASE}${pathname.slice(1)}`)) });
             }
 
-            index.source = render(renderHeadTags(getPageMeta('home')), prerenderSlot('/'));
+            index.source = render(renderHeadTags(getPageMeta('home')), prerenderSlot(BASE));
 
             const { siteName, notFound } = en;
             this.emitFile({
@@ -97,6 +105,8 @@ function prerender(): Plugin {
             await build({
                 configFile: false,
                 logLevel: 'warn',
+                base: BASE,
+                define,
                 resolve: { alias: { '@': path.resolve(import.meta.dirname, './src') } },
                 build: { ssr: 'src/entry-server.ts', outDir: serverDir, emptyOutDir: true, rollupOptions: { output: { entryFileNames: 'entry-server.mjs' } } },
             });
@@ -115,6 +125,8 @@ function prerender(): Plugin {
 }
 
 export default defineConfig({
+    base: BASE,
+    define,
     plugins: [react(), tailwindcss(), contentSecurityPolicy(), seoPages(), prerender()],
     resolve: {
         alias: {

@@ -3,10 +3,15 @@ import { REPO_URL } from '../config/links.ts';
 import { en } from '../i18n/locales/en.ts';
 import { PAGES, pagePath, type Page } from '../router/pages.ts';
 
-export const SITE_URL = 'https://sprac.ch';
+/*
+ * Public address of the site, including the subpath. vite.config.ts sets it through `define` in the bundles, and on globalThis.
+ */
+declare const __SITE_URL__: string;
 
-const OG_IMAGE = { url: `${SITE_URL}/assets/social/og-image.png`, width: 1200, height: 630 };
-const LOGO_URL = `${SITE_URL}/assets/logos/sparc-community-patch-512.png`;
+const siteUrl = () => __SITE_URL__;
+
+const OG_IMAGE = { path: '/assets/social/og-image.png', width: 1200, height: 630 };
+const LOGO_PATH = '/assets/logos/sparc-community-patch-512.png';
 
 export type PageMeta = {
     page: Page;
@@ -16,7 +21,7 @@ export type PageMeta = {
 };
 
 export function pageUrl(page: Page): string {
-    return `${SITE_URL}${pagePath(page)}`;
+    return `${siteUrl()}${pagePath(page)}`;
 }
 
 export function getPageMeta(page: Page): PageMeta {
@@ -36,6 +41,7 @@ function escape(value: string): string {
 
 /** schema.org graph: the site, the community behind it, and this page. */
 function structuredData(meta: PageMeta): string {
+    const SITE_URL = siteUrl();
     const graph = {
         '@context': 'https://schema.org',
         '@graph': [
@@ -44,7 +50,7 @@ function structuredData(meta: PageMeta): string {
                 '@id': `${SITE_URL}/#organization`,
                 name: 'SPARC Community',
                 url: SITE_URL,
-                logo: LOGO_URL,
+                logo: `${SITE_URL}${LOGO_PATH}`,
                 sameAs: [REPO_URL],
             },
             {
@@ -81,7 +87,7 @@ export function renderHeadTags(meta: PageMeta): string {
         `<meta property="og:title" content="${escape(meta.title)}" />`,
         `<meta property="og:description" content="${escape(meta.description)}" />`,
         `<meta property="og:url" content="${meta.url}" />`,
-        `<meta property="og:image" content="${OG_IMAGE.url}" />`,
+        `<meta property="og:image" content="${siteUrl()}${OG_IMAGE.path}" />`,
         `<meta property="og:image:width" content="${OG_IMAGE.width}" />`,
         `<meta property="og:image:height" content="${OG_IMAGE.height}" />`,
         `<meta property="og:image:alt" content="SPARC Community patch" />`,
@@ -96,10 +102,5 @@ export function renderHeadTags(meta: PageMeta): string {
 export function renderSitemap(lastmod: string): string {
     const urls = PAGES.map((page) => `    <url>\n        <loc>${pageUrl(page)}</loc>\n        <lastmod>${lastmod}</lastmod>\n    </url>`);
 
-    return [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        ...urls,
-        '</urlset>',
-    ].join('\n');
+    return ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', ...urls, '</urlset>'].join('\n');
 }

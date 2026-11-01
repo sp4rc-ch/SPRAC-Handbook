@@ -17,7 +17,6 @@ This is a **community-driven project maintained by the SPARC Community** to prov
 - [Project layout](#project-layout)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
-- [Maintainers](#maintainers)
 - [Contact](#contact)
 - [License](#license)
 
