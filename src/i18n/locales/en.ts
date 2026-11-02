@@ -26,33 +26,6 @@ export const en = {
         home: 'Home',
         newTab: '(opens in a new tab)',
     },
-    home: {
-        launch: {
-            headlineStart: 'Launching around the ',
-            headlineHighlight: 'first Advent.',
-            intro: "The SPRAC Handbook is an unofficial, student-made knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. We're still writing and fact-checking every page. Until launch, you can help by reporting issues in the repo.",
-            statusLabel: 'Status',
-            statusValue: 'Work in progress',
-            launchLabel: 'Estimated launch',
-            launchValue: 'End of Nov or early Dec 2026',
-            checkRepo: 'Check out the repo',
-        },
-        contribute: {
-            title: 'Spotted a problem? Open an issue.',
-            introStart: 'Before launch we only take issues. Found a wrong fact, a broken link or a typo? Open an issue in the repo. Pull requests for new pages or UI changes are paused until launch.',
-            introEmphasis: 'Contributions are only accepted from SPARC students and people associated with SPARC.',
-            code: '$ git checkout -b fix/typo',
-            openIssue: 'Open an issue',
-            viewRepo: 'View the repo',
-            ways: {
-                fact: { title: 'Wrong or outdated fact', description: 'Dates, numbers, requirements or contacts that changed.' },
-                link: { title: 'Broken link', description: 'A link that 404s or points to the wrong page.' },
-                typo: { title: 'Typo or unclear text', description: 'Spelling, grammar or confusing wording.' },
-            },
-            privacyNote:
-                "Privacy first: don't open issues or comment with a GitHub account that shows your real name or other personal info. Use a separate account, for example with your SPARC alias.",
-        },
-    },
     footer: {
         tagline: 'An unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42, created by students from the SPARC community and sourced from publicly available information.',
         resources: 'Resources',
