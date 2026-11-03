@@ -1,14 +1,27 @@
 # Contributing
 
-Thanks for helping with The SPRAC Handbook. This file covers who can contribute, setup, conventions and the pull request flow. For an overview of the project see the [README](README.md); for how the code fits together see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Thanks for helping with SPRAC Handbook. This file covers who can contribute, setup, conventions and the pull request flow. For an overview of the project see the [README](README.md) and for how the code fits together see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-## Before launch: issues only
+## What you can change
 
-Until launch (end of November or early December 2026) we only take issues: a wrong or outdated fact, a broken link, a typo or unclear wording. Pull requests for new pages or UI changes are paused until launch.
+### Allowed:
+Update information that is not true anymore. Do not forget to add the source of your information under the section that you change and the date of change next to "last verified". Open a pull request and a maintainer reviews it.
 
-Contributions are only accepted from SPARC students and people associated with SPARC.
+- Markdown and page content of the topic pages
+- Images and files in `public/assets/` (except `icons/` and `logos/`, see [Do not edit](#do-not-edit))
 
-**Privacy:** do not open issues or comment with a GitHub account that shows your real name or other personal information. Use a separate account, for example with your SPARC alias.
+### Allowed only with agreement of a maintainer:
+Open an issue and describe the change before you write any code.
+
+- UI: components, styles and design
+- Layout: page structure and navigation
+
+### Not allowed:
+Maintainers only. Pull requests that change these files get closed.
+
+- `README.md`
+- `CONTRIBUTING.md`
+- The CI/CD pipeline and workflows
 
 ## Setup
 
@@ -40,9 +53,9 @@ npm run build
 - Icons: use `<Icon name="..." />` from `@/components/ui/Icon`. The allowed names are listed in `src/config/assets.ts` and match the Phosphor icons in `public/assets/icons/`.
 - No new runtime dependencies without discussing it in an issue first. The site only depends on React.
 
-## Text
+## Content
 
-The site is English only. All visible text lives in `src/i18n/locales/en.ts`.
+The site is English only. All visible content lives in page specific markdown files. This makes editing and updating content much easier.
 
 ## Adding a page
 
@@ -52,14 +65,13 @@ The site is English only. All visible text lives in `src/i18n/locales/en.ts`.
 
 The sitemap and the pre-rendered HTML file are generated from `PAGE_PATHS`, so there is nothing else to register.
 
-## Do not edit
+## AI-assisted contributions
 
-- `CONTRIBUTORS.md` is updated by the maintainers on every version change.
-- `public/assets/icons/` and `public/assets/logos/` are maintained by the maintainers only. Do not add, change or replace these files in a pull request. If an icon or logo is missing or wrong, open an issue.
+Small AI assistance is fine, for example a suggestion or a fixed typo. The majority of the code you submit must be written by you. This matters because the project may move to Codeberg later, and its Terms of Use ban projects that mostly consist of AI-generated code. The rule covers any generative AI tool, including local models. You are responsible for everything you submit, so read and understand it before you open a pull request.
 
 ## Commits
 
-One logical change per commit, in the format `type: short description`:
+Commit messages follow the format `type: short description`.
 
 ```
 feat: add legal notice page
@@ -67,7 +79,34 @@ fix: mobile footer alignment
 docs: update contributing guide
 ```
 
-Types: `feat`, `fix`, `docs`, `style`, `refactor`, `chore`. Lowercase, imperative ("add", not "added"), no period, first line under about 50 characters.
+### Types
+
+| Type       | Use for                                       |
+| ---------- | --------------------------------------------- |
+| `feat`     | New feature or visible addition               |
+| `fix`      | Bug fix or correction                         |
+| `docs`     | `README`, `CONTRIBUTING` or `docs/` only      |
+| `style`    | Formatting only, no change in behavior        |
+| `refactor` | Restructuring without a change in behavior    |
+| `chore`    | Tooling, dependencies, configuration, CI      |
+
+### Rules
+
+1. Write the type in lowercase, followed by a colon and one space.
+2. Start the description in lowercase and do not end it with a period.
+3. Keep the first line short, about 50 characters and at most 72.
+4. Use the imperative: "fix url", not "fixed url" or "fixes url".
+5. Make one logical change per commit.
+6. Say what changed, not how: `fix: mobile view`, not `fix: change css`.
+7. Add a body after a blank line only if the reason for the change is not obvious.
+
+### Examples to avoid
+
+| Instead of                          | Write                                                                                               |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `update Readme.md`                  | `docs: update readme`                                                                               |
+| `init`                              | `chore: init project`                                                                               |
+| `Add disclaimer dialog, favicon...` | Three commits: `feat: add disclaimer dialog`, `fix: update favicon`, `refactor: restructure footer` |
 
 ## Branches
 
@@ -79,7 +118,7 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `chore`. Lowercase, imperativ
 
 Never open a pull request against `main` or `dev`.
 
-## Pull requests (after launch)
+## Pull requests
 
 1. Start from the newest `dev`:
 
@@ -92,3 +131,7 @@ Never open a pull request against `main` or `dev`.
 2. Keep the change focused, then run `npm run lint` and `npm run build`.
 3. Push your branch and open a pull request into the remote `feature/<topic>` branch, not into `dev` or `main`. Fill in the template.
 4. A maintainer reviews it, merges the feature branch into `dev`, and later merges `dev` into `main` for a release. Releases are tagged with semantic versions (`v1.2.3`).
+
+## Final words
+
+Thank you for reading our contributing guideline carefully and wanting to contribute to our community project :)
