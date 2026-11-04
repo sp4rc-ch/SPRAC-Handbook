@@ -68,8 +68,8 @@ export function LegalNotice() {
             <LegalSection heading={page.copyright.heading}>
                 <DetailList
                     rows={[
-                        { label: page.copyright.textsLabel, value: page.copyright.licenceNotChosen },
-                        { label: page.copyright.codeLabel, value: page.copyright.licenceNotChosen },
+                        { label: page.copyright.textsLabel, value: page.copyright.licence },
+                        { label: page.copyright.codeLabel, value: page.copyright.licence },
                         { label: page.copyright.iconsLabel, value: page.copyright.icons },
                         { label: page.copyright.fontsLabel, value: page.copyright.fonts },
                     ]}

@@ -104,4 +104,3 @@ Security contact details are in `public/.well-known/security.txt` (RFC 9116).
 - The "Open an issue" button points to `#` until an issue tracker is set up (`ISSUE_URL` in `src/config/links.ts`).
 - The full-site navbar (Programs, Path, FAQ, Glossary) and the extra footer links are not built yet, because those pages do not exist yet.
 - Romansh text and the legal texts in German, French, Italian and Romansh still need review by native speakers.
-- No licence is chosen yet; the legal notice says "all rights reserved".

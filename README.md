@@ -80,4 +80,4 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 
 ## License
 
-No license has been chosen yet. One will be added later. Until then, all rights are reserved by the contributors.
+Source code and texts are released under the [MIT License](LICENSE). Names, logos and quoted material of third parties remain the property of their owners.
