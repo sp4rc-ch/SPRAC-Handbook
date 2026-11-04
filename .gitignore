@@ -67,8 +67,8 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Claude Code local settings
-.claude/settings.local.json
+# Claude Code local files: settings, skills (SKILL.md) and anything else it keeps in this folder
+.claude/
 
 # Local scratch files
 *.ignore
