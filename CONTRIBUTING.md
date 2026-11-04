@@ -2,13 +2,28 @@
 
 Thanks for helping with SPRAC Handbook. This file covers who can contribute, setup, conventions and the pull request flow. For an overview of the project see the [README](README.md) and for how the code fits together see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
+## Getting access
+
+New contributors need to be verified before they can contribute:
+
+1. Send your GitHub account link to An0n on Threema: [Contact An0n on Threema](https://threema.id/87YD3CY3)
+2. An0n adds you to the contributor team of this repository in the `sprac-ch` organisation.
+
+This is a security measure. It prevents people from impersonating SPARC Community members.
+
+> [!WARNING]
+> Use a burner account for opsec reasons.
+>
+> Questions about SPARC should not be discussed here (as in not on GitHub, or any public forum for that matter).
+> Please contact either [SPARC directly](https://sparc-cyberdefence.ch/us/contact/) or, if community-related, [An0n](https://threema.id/87YD3CY3).
+
 ## What you can change
 
 ### Allowed:
 Update information that is not true anymore. Do not forget to add the source of your information under the section that you change and the date of change next to "last verified". Open a pull request and a maintainer reviews it.
 
 - Markdown and page content of the topic pages
-- Images and files in `public/assets/` (except `icons/` and `logos/`, see [Do not edit](#do-not-edit))
+- Images and files in `public/assets/` (except `icons/` and `logos/`)
 
 ### Allowed only with agreement of a maintainer:
 Open an issue and describe the change before you write any code.
@@ -47,7 +62,7 @@ npm run build
 
 - TypeScript in strict mode. Unused variables and parameters fail the build.
 - Formatting follows `.prettierrc`: 4 spaces, single quotes, semicolons, print width 200, Tailwind classes sorted by `prettier-plugin-tailwindcss`.
-- Files end without a trailing newline (see `.editorconfig`). Prettier adds one, so strip it again if you format a whole file.
+- Files end with exactly one final newline and no blank line after it (see `.editorconfig`). Prettier adds it for you.
 - Import from `src` with the `@/` alias, for example `@/components/ui/Button`. Files that `vite.config.ts` imports (`src/i18n/locales/en.ts`, `src/router/pages.ts`, `src/seo/meta.ts`) use relative imports with a `.ts` extension instead.
 - Style with Tailwind utility classes and the design tokens in `src/index.css` (`bg-canvas`, `text-fg-muted`, `border-line`, `text-accent`, ...). Do not hard-code colours.
 - Icons: use `<Icon name="..." />` from `@/components/ui/Icon`. The allowed names are listed in `src/config/assets.ts` and match the Phosphor icons in `public/assets/icons/`.
@@ -110,27 +125,65 @@ docs: update contributing guide
 
 ## Branches
 
-| Branch            | Purpose                                                       |
-| ----------------- | ------------------------------------------------------------- |
-| `main`            | Production. Only maintainers merge into it, for a release.    |
-| `dev`             | Newest state of the project. Only maintainers merge into it.  |
-| `feature/<topic>` | One remote branch per change. This is where pull requests go. |
+| Branch            | Purpose                                                                  |
+| ----------------- | ------------------------------------------------------------------------ |
+| `main`            | Production. Only maintainers merge into it, for a release.               |
+| `dev`             | Newest state of the project. Pull requests go here, maintainers merge.   |
+| `feature/<topic>` | One branch per change. You create it from `dev`.                         |
 
-Never open a pull request against `main` or `dev`.
+Never push directly to `main` or `dev`.
 
-## Pull requests
+## Workflow
 
-1. Start from the newest `dev`:
+As a contributor you have write access to this repository, so there is no need to fork it. Work on a branch and never push directly to `main` or `dev`.
+
+1. Clone the repository:
 
     ```bash
-    git checkout dev
-    git pull origin dev
-    git checkout -b feature/<topic>
+    git clone https://github.com/sprac-ch/handbook.git
+    cd handbook
     ```
 
-2. Keep the change focused, then run `npm run lint` and `npm run build`.
-3. Push your branch and open a pull request into the remote `feature/<topic>` branch, not into `dev` or `main`. Fill in the template.
-4. A maintainer reviews it, merges the feature branch into `dev`, and later merges `dev` into `main` for a release. Releases are tagged with semantic versions (`v1.2.3`).
+2. Make sure your commit identity does not leak personal data. Use your burner account details, for example the GitHub noreply address:
+
+    ```bash
+    git config user.name "your-burner-username"
+    git config user.email "your-burner-username@users.noreply.github.com"
+    ```
+
+3. Create a feature branch from an up-to-date `dev`:
+
+    ```bash
+    git switch dev
+    git pull
+    git switch -c feature/short-description
+    ```
+
+4. Make your change. Check [What you can change](#what-you-can-change) first, and open an issue before you touch UI or layout. Install the dependencies once with `npm ci`, keep the change focused, then run both checks:
+
+    ```bash
+    npm run lint
+    npm run build
+    ```
+
+5. Commit using the [commit format](#commits) above, for example `fix: update sparc entry requirements`:
+
+    ```bash
+    git add .
+    git commit -m "fix: update sparc entry requirements"
+    ```
+
+6. Push your branch to the repository:
+
+    ```bash
+    git push -u origin feature/short-description
+    ```
+
+7. Open a pull request from your branch into `dev`, fill in the template and wait for review. If changes are requested, push further commits to the same branch.
+
+A maintainer reviews the pull request and merges it into `dev`. Later they merge `dev` into `main` for a release. Releases are tagged with semantic versions (`v1.2.3`).
+
+For suggestions, use the [issue tracker](https://github.com/sprac-ch/handbook/issues).
 
 ## Final words
 
