@@ -1,5 +1,8 @@
 export const REPO_URL = 'https://github.com/sp4rc-ch/SPRAC-Handbook/';
 
+/** The student wiki, the sister site to the handbook. */
+export const WIKI_URL = 'https://wiki.sprac.ch';
+
 /** Placeholder until an issue tracker exists. */
 export const ISSUE_URL = 'https://github.com/sp4rc-ch/SPRAC-Handbook/issues';
 

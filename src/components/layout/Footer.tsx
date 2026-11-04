@@ -22,13 +22,16 @@ export function Footer() {
         <footer className="border-t border-line-subtle bg-canvas">
             <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-4 pt-12 pb-8 md:gap-10 md:px-8 lg:px-20 lg:pt-16">
                 <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
                         <Logo />
                         <p className="text-sm leading-[1.5] text-fg-muted md:w-[236px] lg:w-[340px]">{footer.tagline}</p>
                     </div>
 
                     <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-6 lg:gap-20">
                         <LinkGroup title={footer.resources}>
+                            {/* Contacts and Further reading are not built yet: placeholders. */}
+                            <FooterLink href="#">{footer.contacts}</FooterLink>
+                            <FooterLink href="#">{footer.furtherReading}</FooterLink>
                             <FooterLink href={REPO_URL} external>
                                 {footer.contribute}
                             </FooterLink>

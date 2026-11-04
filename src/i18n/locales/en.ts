@@ -25,10 +25,26 @@ export const en = {
     nav: {
         home: 'Home',
         newTab: '(opens in a new tab)',
+        homepage: 'Homepage',
+        programs: 'Programs',
+        path: 'Path',
+        glossary: 'Glossary',
+        wiki: 'Wiki',
+        primary: 'Main',
+        openMenu: 'Open menu',
+        closeMenu: 'Close menu',
+        /** Programs dropdown and mobile menu. Logo is a mark in public/assets/logos. */
+        programItems: [
+            { id: 'sparc', name: 'SPARC', logo: 'mark-sparc-course', text: 'Talent program before the RS' },
+            { id: 'cylg', name: 'CyLG', logo: 'mark-cylg', text: 'Cyber Lehrgang during service' },
+            { id: 'cybat', name: 'Cy Bat 42', logo: 'mark-cybat-42', text: 'The cyber battalion of the army' },
+        ] as { id: string; name: string; logo: string; text: string }[],
     },
     footer: {
-        tagline: 'An unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42, created by students from the SPARC community and sourced from publicly available information.',
+        tagline: 'An unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. Made by students from the SPARC community, sourced from official pages.',
         resources: 'Resources',
+        contacts: 'Contacts',
+        furtherReading: 'Further reading',
         contribute: 'Contribute on GitHub',
         officialSites: 'Official sites',
         cyberMiliz: 'Cyber-Miliz · CYLG',
@@ -39,7 +55,7 @@ export const en = {
         privacyPolicy: 'Privacy policy',
         copyright: '© 2026 SPRAC Handbook',
         disclaimer: 'Community project. Not affiliated with the Swiss Armed Forces or SPARC.',
-        lastVerified: 'Last verified · Nov 2026',
+        lastVerified: 'Last verified · Dec 2026',
     },
     home: {
         hero: {

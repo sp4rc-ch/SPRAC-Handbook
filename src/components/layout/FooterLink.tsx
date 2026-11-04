@@ -23,6 +23,15 @@ export function FooterLink({ href, children, external = false }: FooterLinkProps
         );
     }
 
+    // A bare "#" is a placeholder for a page that is not built yet: keep the link, do not jump.
+    if (href === '#') {
+        return (
+            <a href={href} onClick={(event) => event.preventDefault()} className={className}>
+                {children}
+            </a>
+        );
+    }
+
     return (
         <Link href={href} className={className}>
             {children}
