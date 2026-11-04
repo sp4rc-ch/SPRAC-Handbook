@@ -1,12 +1,12 @@
-import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
-import { MenuButton } from '@/components/ui/MenuButton';
 import { SmartLink } from '@/components/ui/SmartLink';
 import { getSite } from '@/content/site';
 import { usePathname } from '@/router/navigation';
 import { linkKind, resolveHref } from '@/router/href';
 import { Logo } from './Logo';
+import { MobileNav } from './MobileNav';
 import { ProgramMenuItem } from './ProgramMenuItem';
 
 /** Matches the `md` breakpoint: from here the links sit in the bar, below it they live in the burger menu. */
@@ -93,50 +93,6 @@ function ProgramsDropdown({ active }: { active: boolean }) {
     );
 }
 
-/** Full-screen menu for phones, shown under the bar: the Programs menu, the other links and the button. */
-function MobileMenu({ id, onNavigate }: { id: string; onNavigate: () => void }) {
-    const { nav, labels } = getSite();
-    const row = 'flex items-center justify-between px-3 py-4 font-display text-lg leading-[1.4] font-medium tracking-[-0.005em] text-fg';
-    // The first link is the Homepage: on phones the logo already leads there.
-    const items = nav.items.slice(1);
-    const hasPrograms = items.some((item) => item.href === undefined);
-    const links = items.filter((item) => item.href !== undefined);
-
-    return (
-        <div
-            id={id}
-            onClick={(event) => (event.target as Element).closest('a') && onNavigate()}
-            className="fixed inset-x-0 top-14 bottom-0 z-40 animate-fade-in overflow-y-auto bg-canvas md:hidden"
-        >
-            <nav aria-label={labels.mainNavigation} className="flex flex-col gap-6 px-4 py-6">
-                {hasPrograms && (
-                    <div className="flex flex-col gap-1">
-                        <p className="px-3 pb-1 font-mono text-xs leading-[1.2] font-medium tracking-[0.1em] text-fg-muted uppercase">{nav.programsLabel}</p>
-                        {nav.programs.map((program) => (
-                            <ProgramMenuItem key={program.name} name={program.name} text={program.text} logo={program.logo} href={program.href} />
-                        ))}
-                    </div>
-                )}
-                <div className="flex flex-col">
-                    {links.map((item, index) => (
-                        <SmartLink key={item.label} href={item.href!} className={`${row} border-t border-line-subtle ${index === links.length - 1 ? 'border-b' : ''}`}>
-                            {item.label}
-                            <Icon name="caret-right" size={20} />
-                        </SmartLink>
-                    ))}
-                    <div className="flex px-3 py-4">
-                        <div className="flex flex-1 [&>a]:flex-1">
-                            <Button href={nav.button.href} iconSrc={nav.button.icon}>
-                                {nav.button.label}
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    );
-}
-
 /** 56px on phones, 64px on tablets, 72px on desktop. Phones: logo and burger, the rest lives in the menu. */
 export function Navbar() {
     const { nav, labels } = getSite();
@@ -145,7 +101,7 @@ export function Navbar() {
     const [openAt, setOpenAt] = useState<string | null>(null);
     const menuOpen = openAt === pathname;
     const menuId = useId();
-    const closeMenu = () => setOpenAt(null);
+    const closeMenu = useCallback(() => setOpenAt(null), []);
 
     // Also close it whenever the bar grows wide enough to show the links.
     useEffect(() => {
@@ -155,16 +111,11 @@ export function Navbar() {
         return () => query.removeEventListener('change', onChange);
     }, []);
 
-    // While the menu is open the page behind it must not scroll; Escape closes it.
+    // While the menu is open the page behind it must not scroll.
     useEffect(() => {
         if (!menuOpen) return;
         document.documentElement.classList.add('overflow-hidden');
-        const onKeyDown = (event: KeyboardEvent) => event.key === 'Escape' && setOpenAt(null);
-        document.addEventListener('keydown', onKeyDown);
-        return () => {
-            document.documentElement.classList.remove('overflow-hidden');
-            document.removeEventListener('keydown', onKeyDown);
-        };
+        return () => document.documentElement.classList.remove('overflow-hidden');
     }, [menuOpen]);
 
     return (
@@ -185,11 +136,8 @@ export function Navbar() {
                         {nav.button.label}
                     </Button>
                 </nav>
-                <div className="md:hidden">
-                    <MenuButton open={menuOpen} onClick={() => setOpenAt(menuOpen ? null : pathname)} label={menuOpen ? labels.closeMenu : labels.openMenu} controls={menuId} />
-                </div>
+                <MobileNav open={menuOpen} onToggle={() => setOpenAt(menuOpen ? null : pathname)} onClose={closeMenu} panelId={menuId} />
             </div>
-            {menuOpen && <MobileMenu id={menuId} onNavigate={closeMenu} />}
         </header>
     );
 }

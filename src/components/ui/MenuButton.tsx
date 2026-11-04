@@ -1,31 +1,34 @@
+import type { Ref } from 'react';
+
 type MenuButtonProps = {
     open: boolean;
     onClick: () => void;
     label: string;
     controls: string;
+    ref?: Ref<HTMLButtonElement>;
 };
 
-const BAR = 'absolute left-[3px] h-[1.5px] w-[18px] rounded-full bg-current transition-[transform,opacity] duration-200 ease-out motion-reduce:transition-none';
+const BAR = 'absolute left-[11px] h-0.5 w-[18px] rounded-[1px] bg-current';
 
 /**
- * Burger for phones, 40px hit area, no background. Animation "Pick out": the middle bar is pulled out
- * to the right, then the top and bottom bars meet in the middle and cross into an X. Closing plays it backwards.
+ * The burger as in the Figma frame "Menu Button / G Pick out": a 40px button with three 18 x 2px bars at x = 11 and
+ * y = 12, 19 and 26 (custom bars, not an icon). The bars are only drawn here. They are moved by `useMenuMotion`,
+ * which finds them through their `data-bar` attributes, so they animate in step with the menu panel.
  */
-export function MenuButton({ open, onClick, label, controls }: MenuButtonProps) {
+export function MenuButton({ open, onClick, label, controls, ref }: MenuButtonProps) {
     return (
         <button
+            ref={ref}
             type="button"
             onClick={onClick}
             aria-label={label}
             aria-expanded={open}
             aria-controls={controls}
-            className="group flex size-10 shrink-0 items-center justify-center rounded-md text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="relative block size-10 shrink-0 overflow-hidden rounded-md text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-            <span aria-hidden="true" className="relative block size-6">
-                <span className={`${BAR} top-[5.25px] group-aria-expanded:translate-y-1.5 group-aria-expanded:rotate-45 group-aria-expanded:delay-150`} />
-                <span className={`${BAR} top-[11.25px] delay-150 group-aria-expanded:translate-x-3 group-aria-expanded:opacity-0 group-aria-expanded:delay-0`} />
-                <span className={`${BAR} top-[17.25px] group-aria-expanded:-translate-y-1.5 group-aria-expanded:-rotate-45 group-aria-expanded:delay-150`} />
-            </span>
+            <span aria-hidden="true" data-bar="top" className={`${BAR} top-[12px]`} />
+            <span aria-hidden="true" data-bar="middle" className={`${BAR} top-[19px]`} />
+            <span aria-hidden="true" data-bar="bottom" className={`${BAR} top-[26px]`} />
         </button>
     );
 }

@@ -66,7 +66,7 @@ npm run build
 - Import from `src` with the `@/` alias, for example `@/components/ui/Button`. Files that `vite.config.ts` imports (`src/content/markdown.ts`, `src/content/siteMeta.ts`, `src/router/pages.ts`, `src/seo/meta.ts`) use relative imports with a `.ts` extension instead.
 - Style with Tailwind utility classes and the design tokens in `src/index.css` (`bg-canvas`, `text-fg-muted`, `border-line`, `text-accent`, ...). Do not hard-code colours.
 - Icons: use `<Icon name="..." />` from `@/components/ui/Icon`. The allowed names are listed in `src/config/assets.ts` and match the Phosphor icons in `public/assets/icons/`.
-- No new runtime dependencies without discussing it in an issue first. The site only depends on React.
+- No new runtime dependencies without discussing it in an issue first. The site depends on React and `motion` (for the mobile menu animation) and nothing else.
 
 ## Content
 

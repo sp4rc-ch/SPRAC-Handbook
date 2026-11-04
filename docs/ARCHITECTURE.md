@@ -33,7 +33,7 @@ flowchart TD
 | `src/main.tsx`           | Mounts the app: hydrates pre-rendered HTML, otherwise renders from scratch                                                              |
 | `src/App.tsx`            | Reads the URL and picks the page                                                                                                        |
 | `src/pages/`             | One component per page; `Home/` is split into one component per section                                                                 |
-| `src/components/layout/` | Navbar, logo, footer, page frame                                                                                                        |
+| `src/components/layout/` | Navbar, logo, footer, page frame, the mobile menu (`MobileNav.tsx`) and its animation (`useMenuMotion.ts`)                              |
 | `src/components/legal/`  | Building blocks shared by the legal notice and privacy policy                                                                           |
 | `src/components/ui/`     | Button, icon, callout, first-visit disclaimer (`DisclaimerDialog`)                                                                      |
 | `content/`               | All page text and the paths of icons and logos, one Markdown file per page (see [CONTENT.md](CONTENT.md))                               |
@@ -62,7 +62,7 @@ There is no router library. `src/router/navigation.ts` wraps the History API and
 
 ## Content
 
-The site is English only. All page text lives in Markdown files in `content/`, named after the page's URL. A small parser in `src/content/markdown.ts` reads them (the site depends on nothing but React), and one reader per page turns a file into the typed data its components use. The files are bundled as text at build time, so the browser and the pre-render read the same content. `vite.config.ts` reads the front matter of the files directly to write each page's title, description and sitemap entry. The format is described in [CONTENT.md](CONTENT.md).
+The site is English only. All page text lives in Markdown files in `content/`, named after the page's URL. A small parser in `src/content/markdown.ts` reads them (the site only adds `motion` to React, so there is no Markdown library), and one reader per page turns a file into the typed data its components use. The files are bundled as text at build time, so the browser and the pre-render read the same content. `vite.config.ts` reads the front matter of the files directly to write each page's title, description and sitemap entry. The format is described in [CONTENT.md](CONTENT.md).
 
 ## Build
 

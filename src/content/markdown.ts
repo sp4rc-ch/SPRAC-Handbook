@@ -4,7 +4,7 @@
  * A small reader for the Markdown dialect the content files use (see docs/CONTENT.md).
  * It understands: front matter, headings, paragraphs, bullet and numbered lists, tables,
  * quotes and images, plus **bold**, *italic*, `code`, [links](url) and ![images](path) inside text.
- * Everything else is plain text. There is no dependency on purpose: the site only depends on React.
+ * Everything else is plain text. There is no dependency on purpose: the site only depends on React and motion, and a parser is not worth a third.
  */
 
 export type Block =
