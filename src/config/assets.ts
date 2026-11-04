@@ -85,6 +85,7 @@ export type IconName =
     | 'x-logo'
     | 'youtube-logo'
     | 'envelope-simple'
+    | 'phone'
     | 'rss';
 
 export const LOGO_URL = asset('logos/sparc-community-patch-256.png');

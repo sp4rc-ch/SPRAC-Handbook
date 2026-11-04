@@ -1,3 +1,6 @@
+type Tile = { icon: 'globe' | 'users-three' | 'clock' | 'terminal-window' | 'calendar-blank' | 'key' | 'lock'; title: string; text: string };
+type Course = [code: string, name: string, description: string];
+
 export const en = {
     siteName: 'SPRAC Handbook',
     /** Search result title and description per page. */
@@ -5,6 +8,10 @@ export const en = {
         home: {
             title: 'SPRAC Handbook · SPARC, CYLG and CYBAT explained',
             description: 'Unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. What they are, how they are built and where to read more.',
+        },
+        sparc: {
+            title: 'SPARC',
+            description: 'SPARC explained: what the Swiss Army cyber training programme is, who it is for, what you learn, how to join, rules, costs and official links.',
         },
         legalNotice: {
             title: 'Legal notice',
@@ -119,6 +126,147 @@ export const en = {
                 { icon: 'link-simple', title: 'Add a source', text: 'Link official pages, factsheets or articles.' },
             ] as { icon: 'file-text' | 'pencil-simple' | 'link-simple'; title: string; text: string }[],
             privacy: 'Privacy first: do not open issues or comment with a GitHub account that shows your real name or other personal info. Use a separate account, for example with your SPARC hackername.',
+        },
+    },
+    sparc: {
+        name: 'SPARC',
+        editPage: 'Edit this page',
+        hero: {
+            intro: 'The Swiss Army’s cyber training programme for young people, from IT basics up to a cyber security role you choose.',
+            find: 'Find an onboarding event',
+            official: 'Official SPARC site',
+            note: 'SPARC improves your chances, it is not a ticket in. Selection for the Cyber Lehrgang happens in recruit school.',
+        },
+        glance: {
+            title: 'At a glance',
+            facts: [
+                ['Cost', 'Free, you pay travel to experience days'],
+                ['Time', '200 to 300 h'],
+                ['Age', '16 or older'],
+                ['Language', 'English'],
+                ['Format', 'Online + experience days'],
+            ] as [string, string][],
+        },
+        what: {
+            title: 'What SPARC is',
+            text: 'Private Swiss companies build and run SPARC, with Consulteer AG as operator, and the Army pays for it. SPARC is not part of the Army itself, and the name is not an acronym: it comes from “sparkling”.',
+            source: 'Source: sparc-cyberdefence.ch · Last verified 31 Oct 2026',
+        },
+        forYou: {
+            title: 'Is it for you?',
+            intro: 'You need no IT background: the Explorer level starts from zero. What matters most is good English and the discipline to learn on your own.',
+            requirements: 'Requirements',
+            requirementItems: ['Swiss citizenship', 'A laptop or PC and a smartphone with a current Android or iOS'],
+            cases: [
+                { icon: 'globe', title: 'Swiss abroad', text: 'Possible. Onboarding has to be in person and the registered letter needs a Swiss address.' },
+                { icon: 'users-three', title: 'Women', text: 'Nothing in the SPARC rules excludes you, and SPARC links to Women in Cyber.' },
+                { icon: 'clock', title: 'RS in a few weeks?', text: 'Still worth it. SPARC says every course adds value, even if you cannot finish.' },
+            ] as Tile[],
+            source: 'Source: sparc-cyberdefence.ch · Last verified 31 Oct 2026',
+        },
+        learn: {
+            title: 'What you learn',
+            intro: 'Three levels that build on each other.',
+            levels: [
+                {
+                    title: 'Explorer',
+                    text: 'IT basics you need for everything after.',
+                    courses: [
+                        ['1010', 'Discover the Cyber World', 'Use the platform, know the SPARC and military cyber path, recognise common threats and protect yourself.'],
+                        ['2010', 'Basic Skills of a Cyber Warrior', 'Problem solving, learning technique, critical thinking, ethics and SMART goals.'],
+                        ['2020', 'Coding Basics in Python', 'Variables, conditions, loops, functions, recursion, classes and inheritance.'],
+                        ['2040', 'Network Engineering Basics', 'OSI and TCP/IP, Wireshark, switching, routing, firewalls, DNS, DHCP, SSH and encryption.'],
+                        ['2050', 'Linux Engineering Basics', 'Command line, users and permissions, packages, network setup, processes and services.'],
+                        ['2060', 'Windows Engineering Basics', 'Windows client and server, Active Directory, group policies, LDAP, Kerberos and PowerShell.'],
+                        ['2070', 'Web Technologies Basics', 'HTML, CSS, JavaScript, HTTP and HTTPS, REST APIs, SQL, backend and cookie authentication.'],
+                    ] as Course[],
+                },
+                {
+                    title: 'Defender',
+                    text: 'The core concepts of cyber security and a defender’s skills.',
+                    courses: [
+                        ['3010', 'Security Basics, Frameworks, Blue Team', 'Core security concepts and defender skills. Courses 3010, 3011 and 3020.'],
+                        ['3080', 'Open Source Intelligence and Operations', 'Finding and using open source intelligence.'],
+                        ['3140', 'Network, Linux, Windows or Web Security', 'Specialise in one technology area. Courses 3140 to 3170.'],
+                    ] as Course[],
+                },
+                {
+                    title: 'Operator',
+                    text: 'Both levels combined, in depth, in one role you choose.',
+                    courses: [
+                        ['4010', 'Cyber Defence', 'Blue team: protect and defend systems.'],
+                        ['4020', 'Offensive Operations', 'Red team: attack to find weaknesses.'],
+                        ['4030', 'Digital Forensics and Incident Response', 'Investigate incidents and find out what happened.'],
+                        ['4040', 'Cyber Threat Intelligence', 'Track and analyse threat actors.'],
+                    ] as Course[],
+                },
+            ],
+            source: 'Source: sparc-cyberdefence.ch · Last verified 31 Oct 2026',
+        },
+        how: {
+            title: 'How it works',
+            intro: 'A mix of online learning and in-person days.',
+            tiles: [
+                { icon: 'clock', title: 'Self-paced', text: 'No classes and no set learning times. Spread over six months, 250 hours is roughly 10 hours a week.' },
+                { icon: 'terminal-window', title: 'Labs and quizzes', text: 'Hands-on challenges run in virtual labs and are checked automatically. Quizzes and tests are for self-checking.' },
+                { icon: 'users-three', title: 'Support on Threema', text: 'Ask the SPARC team on Threema. A big community of SPARC students helps with problems there too.' },
+                { icon: 'calendar-blank', title: 'Experience days', text: 'The only fixed dates: up to 75 people, workshops, team challenges and expert talks.' },
+            ] as Tile[],
+            source: 'Source: sparc-cyberdefence.ch · Last verified 31 Oct 2026',
+        },
+        join: {
+            title: 'How to join',
+            intro: 'There is no online-only registration. Joining starts at an in-person onboarding event.',
+            steps: [
+                ['Sign up for an onboarding event', 'Register in advance on events.sparc-cyberdefence.ch.'],
+                ['Go in person', 'Bring a valid ID or passport, your AHV number and the completed registration form.'],
+                ['Activate your V-Login', 'Register the V-Login as soon as the letter arrives.'],
+                ['Log in and start', 'Use the yellow Login button on the SPARC site and take courses 1010 and 2010 first.'],
+                ['Set up your account', 'Pick your hacker name under My Account and activate Threema.'],
+            ] as [string, string][],
+            accounts: [
+                { icon: 'key', title: 'V-Login', text: 'Your login for the SPARC platform.' },
+                { icon: 'lock', title: 'Threema', text: 'Used for event info and check-in. Keep your Threema Safe password, without it you need a new account.' },
+            ] as Tile[],
+            source: 'Source: sparc-cyberdefence.ch · Last verified 31 Oct 2026',
+        },
+        rules: {
+            title: 'Rules and deadlines',
+            intro: 'SPARC is very flexible. These are the only limits.',
+            items: [
+                ['Finish before recruit school starts', 'Or by the end of your 24th year.'],
+                ['Attend at least one experience day', 'It has a fixed date, so plan it in.'],
+                ['Accounts inactive for two years are deleted', 'Pausing just means not logging in. You can come back while you are still eligible.'],
+            ] as [string, string][],
+            source: 'Source: sparc-cyberdefence.ch · Last verified 31 Oct 2026',
+        },
+        get: {
+            title: 'What you get',
+            youGet: 'You get',
+            youGetItems: ['A certificate for each completed course', 'The basics the Cyber Lehrgang builds on: since 2024 its content is based on SPARC'],
+            youDoNotGet: 'You do not get',
+            youDoNotGetItems: ['An exam or an overall SPARC diploma, yet', 'Formal recognition of SPARC itself'],
+            source: 'Source: sparc-cyberdefence.ch · vtg.admin.ch · Last verified 31 Oct 2026',
+        },
+        links: {
+            title: 'Help and official links',
+            intro: 'For anything official, go to the source.',
+            rows: [
+                { label: 'Programme info, FAQ and roadmap', value: 'sparc-cyberdefence.ch', icon: 'arrow-up-right', link: 'sparc' },
+                { label: 'Onboarding and experience days', value: 'events.sparc-cyberdefence.ch', icon: 'arrow-up-right', link: 'sparcEvents' },
+                { label: 'Questions, accessibility, Threema reset', value: 'info@sparc-cyberdefence.ch', icon: 'envelope-simple', link: 'sparcEmail' },
+                { label: 'V-Login problems', value: '+41 58 465 22 22', icon: 'phone', link: 'sparcPhone' },
+                { label: 'New V-Login letter (say it is for SPARC)', value: 'idp.viam.admin.ch/selfadmin/newletter', icon: 'arrow-up-right', link: 'vlogin' },
+                { label: 'Army overview', value: 'vtg.admin.ch', icon: 'arrow-up-right', link: 'vtg' },
+            ] as { label: string; value: string; icon: 'arrow-up-right' | 'envelope-simple' | 'phone'; link: 'sparc' | 'sparcEvents' | 'sparcEmail' | 'sparcPhone' | 'vlogin' | 'vtg' }[],
+            source: 'Source: sparc-cyberdefence.ch · vtg.admin.ch · Last verified 31 Oct 2026',
+        },
+        next: {
+            eyebrow: 'Next on the path',
+            title: 'Cyber Lehrgang',
+            text: '40 weeks during recruit school, ending as sergeant. Tell your superior in RS week 1 that you want to take part in the selection.',
+            path: 'See the full path',
+            read: 'Read about CyLG',
         },
     },
     /** Labels shared by the legal notice and the privacy policy. */

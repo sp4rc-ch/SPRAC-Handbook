@@ -6,7 +6,7 @@ import { WIKI_URL } from '@/config/links';
 import { en as t } from '@/i18n/locales/en';
 import { Link } from '@/router/Link';
 import { usePathname } from '@/router/navigation';
-import { buildPath, parsePath } from '@/router/routes';
+import { buildPath, isProgramPage, parsePath, programHref } from '@/router/routes';
 import { Logo } from './Logo';
 import { ProgramMenuItem } from './ProgramMenuItem';
 
@@ -43,7 +43,7 @@ function NavLink({ href, active = false, children }: { href: string; active?: bo
 }
 
 /** Nav dropdown: opens the Programs menu 8px under the trigger, caret flips up while open. */
-function ProgramsDropdown() {
+function ProgramsDropdown({ active }: { active: boolean }) {
     const [open, setOpen] = useState(false);
     const wrapper = useRef<HTMLDivElement>(null);
     const trigger = useRef<HTMLButtonElement>(null);
@@ -81,11 +81,11 @@ function ProgramsDropdown() {
                 aria-expanded={open}
                 aria-controls={menuId}
                 onClick={() => setOpen((value) => !value)}
-                className={`flex items-start gap-2 pt-3 pb-2 ${LABEL} ${open ? 'text-fg' : 'text-fg-muted hover:text-fg'} transition-colors focus-visible:text-fg focus-visible:outline-none`}
+                className={`flex items-start gap-2 pt-3 pb-2 ${LABEL} ${open || active ? 'text-fg' : 'text-fg-muted hover:text-fg'} transition-colors focus-visible:text-fg focus-visible:outline-none`}
             >
                 <span className="flex flex-col gap-1">
                     {t.nav.programs}
-                    <span className="h-0.5 w-full" />
+                    <span className={`h-0.5 w-full ${active ? 'bg-accent' : ''}`} />
                 </span>
                 <span className="flex h-[19px] items-center">
                     <Icon name={open ? 'caret-up' : 'caret-down'} size={16} />
@@ -95,7 +95,7 @@ function ProgramsDropdown() {
                 <div id={menuId} className="absolute top-full left-0 z-50 mt-2 flex w-[368px] animate-fade-in flex-col gap-0.5 rounded-lg border border-line bg-elevated p-1 shadow-dropdown">
                     <p className="px-3 pt-2.5 pb-1.5 font-mono text-xs leading-[1.2] font-medium tracking-[0.1em] text-fg-muted uppercase">{t.nav.programs}</p>
                     {t.nav.programItems.map((item) => (
-                        <ProgramMenuItem key={item.id} name={item.name} text={item.text} logo={item.logo} href="#" />
+                        <ProgramMenuItem key={item.id} name={item.name} text={item.text} logo={item.logo} href={programHref(item.id)} />
                     ))}
                 </div>
             )}
@@ -117,7 +117,7 @@ function MobileMenu({ id, onNavigate }: { id: string; onNavigate: () => void }) 
                 <div className="flex flex-col gap-1">
                     <p className="px-3 pb-1 font-mono text-xs leading-[1.2] font-medium tracking-[0.1em] text-fg-muted uppercase">{t.nav.programs}</p>
                     {t.nav.programItems.map((item) => (
-                        <ProgramMenuItem key={item.id} name={item.name} text={item.text} logo={item.logo} href="#" />
+                        <ProgramMenuItem key={item.id} name={item.name} text={item.text} logo={item.logo} href={programHref(item.id)} />
                     ))}
                 </div>
                 <div className="flex flex-col">
@@ -145,7 +145,8 @@ function MobileMenu({ id, onNavigate }: { id: string; onNavigate: () => void }) 
 /** 56px on phones, 64px on tablets, 72px on desktop. Phones: logo and burger, the rest lives in the menu. */
 export function Navbar() {
     const pathname = usePathname();
-    const onHome = parsePath(pathname) === 'home';
+    const current = parsePath(pathname);
+    const onHome = current === 'home';
     // The menu is open for one page only: a page change closes it.
     const [openAt, setOpenAt] = useState<string | null>(null);
     const menuOpen = openAt === pathname;
@@ -180,7 +181,7 @@ export function Navbar() {
                     <NavLink href={buildPath('home')} active={onHome}>
                         {t.nav.homepage}
                     </NavLink>
-                    <ProgramsDropdown />
+                    <ProgramsDropdown active={isProgramPage(current)} />
                     <NavLink href="#">{t.nav.path}</NavLink>
                     <NavLink href="#">{t.nav.glossary}</NavLink>
                     <Button href={WIKI_URL} external icon="arrow-up-right">

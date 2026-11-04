@@ -5,6 +5,7 @@ import { ContributeItem } from '@/components/ui/ContributeItem';
 import { ProgramCard } from '@/components/ui/ProgramCard';
 import { ISSUE_URL, REPO_URL } from '@/config/links';
 import { en as t } from '@/i18n/locales/en';
+import { programHref } from '@/router/routes';
 
 /** Homepage: hero, the three programs, contribute on GitHub. Desktop 1440, iPad 834, iPhone 393. */
 export function Home() {
@@ -36,7 +37,7 @@ export function Home() {
                     </div>
                     <div className="grid gap-4 md:grid-cols-3 lg:gap-6">
                         {programs.cards.map((card) => (
-                            <ProgramCard key={card.id} name={card.name} logo={card.logo} text={card.text} facts={card.facts} href="#" />
+                            <ProgramCard key={card.id} name={card.name} logo={card.logo} text={card.text} facts={card.facts} href={programHref(card.id)} />
                         ))}
                     </div>
                     <Callout>{programs.note}</Callout>

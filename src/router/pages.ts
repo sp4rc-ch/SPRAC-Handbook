@@ -2,6 +2,7 @@
 /** URL segment for each page, relative to the deploy base path (BASE_PATH, see vite.config.ts). */
 export const PAGE_PATHS = {
     home: '',
+    sparc: 'sparc',
     legalNotice: 'legal-notice',
     privacyPolicy: 'privacy-policy',
 } as const;
