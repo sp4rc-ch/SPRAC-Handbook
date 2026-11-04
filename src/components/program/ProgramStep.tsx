@@ -1,3 +1,5 @@
+import { Inline } from '@/components/content/Inline';
+
 type ProgramStepProps = {
     number: number;
     title: string;
@@ -12,7 +14,9 @@ export function ProgramStep({ number, title, text }: ProgramStepProps) {
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-line-strong bg-canvas font-mono text-sm leading-[1.6] text-fg">{number}</span>
                 <h3 className="min-w-0 flex-1 text-base leading-[1.2] font-medium text-fg">{title}</h3>
             </div>
-            <p className="pl-14 text-sm leading-[1.5] text-fg-muted">{text}</p>
+            <p className="pl-14 text-sm leading-[1.5] text-fg-muted">
+                <Inline text={text} />
+            </p>
         </li>
     );
 }

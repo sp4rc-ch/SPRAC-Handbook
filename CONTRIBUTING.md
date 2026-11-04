@@ -22,7 +22,7 @@ This is a security measure. It prevents people from impersonating SPARC Communit
 ### Allowed:
 Update information that is not true anymore. Do not forget to add the source of your information under the section that you change and the date of change next to "last verified". Open a pull request and a maintainer reviews it.
 
-- Markdown and page content of the topic pages
+- Text, icon paths and logo paths in the Markdown files in `content/` (see [docs/CONTENT.md](docs/CONTENT.md))
 - Images and files in `public/assets/` (except `icons/` and `logos/`)
 
 ### Allowed only with agreement of a maintainer:
@@ -56,29 +56,29 @@ npm run lint
 npm run build
 ```
 
-`npm run build` type-checks the whole project, including every translation file.
+`npm run build` type-checks the whole project and reads every Markdown file in `content/`. If a file is missing something the page needs, the build stops and tells you which file and what.
 
 ## Code style
 
 - TypeScript in strict mode. Unused variables and parameters fail the build.
 - Formatting follows `.prettierrc`: 4 spaces, single quotes, semicolons, print width 200, Tailwind classes sorted by `prettier-plugin-tailwindcss`.
 - Files end with exactly one final newline and no blank line after it (see `.editorconfig`). Prettier adds it for you.
-- Import from `src` with the `@/` alias, for example `@/components/ui/Button`. Files that `vite.config.ts` imports (`src/i18n/locales/en.ts`, `src/router/pages.ts`, `src/seo/meta.ts`) use relative imports with a `.ts` extension instead.
+- Import from `src` with the `@/` alias, for example `@/components/ui/Button`. Files that `vite.config.ts` imports (`src/content/markdown.ts`, `src/content/siteMeta.ts`, `src/router/pages.ts`, `src/seo/meta.ts`) use relative imports with a `.ts` extension instead.
 - Style with Tailwind utility classes and the design tokens in `src/index.css` (`bg-canvas`, `text-fg-muted`, `border-line`, `text-accent`, ...). Do not hard-code colours.
 - Icons: use `<Icon name="..." />` from `@/components/ui/Icon`. The allowed names are listed in `src/config/assets.ts` and match the Phosphor icons in `public/assets/icons/`.
 - No new runtime dependencies without discussing it in an issue first. The site only depends on React.
 
 ## Content
 
-The site is English only. All visible content lives in page specific markdown files. This makes editing and updating content much easier.
+The site is English only. All visible content lives in page specific Markdown files in `content/`, one per page, plus `content/site.md` for the navbar, footer and disclaimer. The paths of the icons and logos a page shows are written in the same file, so text and assets are changed in one place. The format is explained in [docs/CONTENT.md](docs/CONTENT.md). Each page has an "Edit this page" button that opens its Markdown file on the `dev` branch.
 
 ## Adding a page
 
 1. Add the URL segment to `PAGE_PATHS` in `src/router/pages.ts`.
-2. Add a title and description for it under `meta` in `src/i18n/locales/en.ts`.
-3. Create the page in `src/pages/<Name>/<Name>.tsx` and render it in `src/App.tsx`.
+2. Create `content/<segment>.md` with a `title` and a `description` in the front matter.
+3. Write a reader for the file in `src/content/` and the page in `src/pages/<Name>/<Name>.tsx`, and render it in `src/App.tsx`.
 
-The sitemap and the pre-rendered HTML file are generated from `PAGE_PATHS`, so there is nothing else to register.
+The sitemap, the title in search results and the pre-rendered HTML file are generated from `PAGE_PATHS` and the front matter, so there is nothing else to register.
 
 ## AI-assisted contributions
 

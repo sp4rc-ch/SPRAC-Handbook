@@ -1,20 +1,19 @@
-import type { MouseEvent, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { IconName } from '@/config/assets';
-import { en as t } from '@/i18n/locales/en';
-import { Link } from '@/router/Link';
 import { Icon } from './Icon';
+import { SmartLink } from './SmartLink';
 
 type ButtonProps = {
     href: string;
     children: ReactNode;
     /** Primary for the one main action per view, secondary for alternatives. */
     variant?: 'primary' | 'secondary';
-    /** Opens in a new tab and skips client-side routing. */
-    external?: boolean;
     /** M is 48px (hero, forms), S is 36px (cards). */
     size?: 'm' | 's';
-    /** Trailing icon, 18px (16px at size S). */
+    /** Trailing icon from the design (18px, 16px at size S). */
     icon?: IconName;
+    /** Trailing icon written in a content file, as a path from public/. Wins over `icon`. */
+    iconSrc?: string;
     /** Stretch to the container width on phones, as in the iPhone frames. */
     fullWidthOnMobile?: boolean;
 };
@@ -29,51 +28,18 @@ const VARIANTS = {
     secondary: 'border border-line-strong text-fg hover:border-fg hover:bg-overlay focus-visible:outline-accent',
 };
 
-/** Button, size M (48px) or S (36px). Text on yellow is always ink. */
-export function Button({ href, children, variant = 'primary', size = 'm', external = false, icon, fullWidthOnMobile = false }: ButtonProps) {
+/** Button, size M (48px) or S (36px). Text on yellow is always ink. The address decides how it behaves, see SmartLink. */
+export function Button({ href, children, variant = 'primary', size = 'm', icon, iconSrc, fullWidthOnMobile = false }: ButtonProps) {
     const className = [
         `inline-flex ${SIZES[size].box} shrink-0 items-center justify-center gap-2 rounded-md leading-[1.2] font-medium whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2`,
         VARIANTS[variant],
         fullWidthOnMobile ? 'w-full md:w-auto' : '',
     ].join(' ');
 
-    const content = (
-        <>
-            {children}
-            {icon && <Icon name={icon} size={SIZES[size].icon} />}
-        </>
-    );
-
-    // A bare "#" is a placeholder target: keep the button, but don't jump or open a tab.
-    if (href === '#') {
-        return (
-            <a href={href} onClick={(event: MouseEvent) => event.preventDefault()} className={className}>
-                {content}
-            </a>
-        );
-    }
-
-    // In-page anchor such as "#programs": a plain link, the router must not take it over.
-    if (href.startsWith('#')) {
-        return (
-            <a href={href} className={className}>
-                {content}
-            </a>
-        );
-    }
-
-    if (external) {
-        return (
-            <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-                {content}
-                <span className="sr-only">{t.nav.newTab}</span>
-            </a>
-        );
-    }
-
     return (
-        <Link href={href} className={className}>
-            {content}
-        </Link>
+        <SmartLink href={href} className={className}>
+            {children}
+            {(iconSrc || icon) && <Icon name={icon} src={iconSrc} size={SIZES[size].icon} />}
+        </SmartLink>
     );
 }

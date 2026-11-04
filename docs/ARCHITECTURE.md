@@ -36,10 +36,11 @@ flowchart TD
 | `src/components/layout/` | Navbar, logo, footer, page frame                                                                                                        |
 | `src/components/legal/`  | Building blocks shared by the legal notice and privacy policy                                                                           |
 | `src/components/ui/`     | Button, icon, callout, first-visit disclaimer (`DisclaimerDialog`)                                                                      |
-| `src/i18n/`              | All page text in `locales/en.ts`                                                                                                        |
+| `content/`               | All page text and the paths of icons and logos, one Markdown file per page (see [CONTENT.md](CONTENT.md))                               |
+| `src/content/`           | Reads the Markdown files: parser (`markdown.ts`), one reader per page, page titles for search results (`siteMeta.ts`)                   |
 | `src/router/`            | Route table (`pages.ts`), URL helpers (`routes.ts`), history navigation and `Link`                                                      |
 | `src/seo/`               | Head tags, JSON-LD and sitemap (`meta.ts`); keeps them in sync in the browser (`usePageMeta.ts`)                                        |
-| `src/config/`            | External links, contact email, asset URLs and icon names                                                                                |
+| `src/config/`            | Repository address, asset URLs and icon names                                                                                           |
 | `src/entry-server.ts`    | Renders one path to HTML at build time                                                                                                  |
 | `vite.config.ts`         | Build plugins: CSP, per-page HTML files, sitemap, pre-rendering                                                                         |
 | `public/`                | Served unchanged: favicons, icons, logos, social image, `robots.txt`, `llms.txt`, `humans.txt`, `.htaccess`, `.well-known/security.txt` |
@@ -50,16 +51,17 @@ Pages use a trailing slash:
 
 | Path               | Page                      |
 | ------------------ | ------------------------- |
-| `/`                | Home (before-launch page) |
+| `/`                | Home                      |
+| `/sparc/`          | SPARC                     |
 | `/legal-notice/`   | Legal notice              |
 | `/privacy-policy/` | Privacy policy            |
 | anything else      | Not found                 |
 
 There is no router library. `src/router/navigation.ts` wraps the History API and exposes the current path through `useSyncExternalStore`; `Link` intercepts plain clicks so internal links do not reload the page.
 
-## Text
+## Content
 
-The site is English only. `src/i18n/locales/en.ts` holds all page text and components import it directly.
+The site is English only. All page text lives in Markdown files in `content/`, named after the page's URL. A small parser in `src/content/markdown.ts` reads them (the site depends on nothing but React), and one reader per page turns a file into the typed data its components use. The files are bundled as text at build time, so the browser and the pre-render read the same content. `vite.config.ts` reads the front matter of the files directly to write each page's title, description and sitemap entry. The format is described in [CONTENT.md](CONTENT.md).
 
 ## Build
 
@@ -78,14 +80,14 @@ The site can be served from a subpath. Two environment variables, read in `vite.
 
 | Variable      | Default            | Effect                                                                                                                                                                                                   |
 | ------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `BASE_PATH`   | `/`                | Subpath the site is served from, e.g. `/SPRAC-Handbook`. Becomes Vite's `base`, so asset URLs, `import.meta.env.BASE_URL` (used by `buildPath` and `asset`) and `%BASE_URL%` in `index.html` include it. |
+| `BASE_PATH`   | `/`                | Subpath the site is served from, e.g. `/handbook`. Becomes Vite's `base`, so asset URLs, `import.meta.env.BASE_URL` (used by `buildPath` and `publicUrl`) and `%BASE_URL%` in `index.html` include it. |
 | `SITE_ORIGIN` | `https://sprac.ch` | Origin for canonical, Open Graph, JSON-LD and sitemap URLs; the base path is appended.                                                                                                                   |
 
 Internal links always go through `buildPath` and public files through `asset`, **never hard-code `/...` paths**.
 
 ## Deployment
 
-`.github/workflows/cd.yml` builds on every push and pull request to `main` and deploys pushes to GitHub Pages at `https://sp4rc-ch.github.io/SPRAC-Handbook/`. It takes `BASE_PATH` and `SITE_ORIGIN` from `actions/configure-pages`, so a custom domain set in the repository settings switches the build to the root of that domain. The repository's Pages source must be set to "GitHub Actions".
+`.github/workflows/cd.yml` builds on every push and pull request to `main` and deploys pushes to GitHub Pages at `https://sprac-ch.github.io/handbook/`. It takes `BASE_PATH` and `SITE_ORIGIN` from `actions/configure-pages`, so a custom domain set in the repository settings switches the build to the root of that domain. The repository's Pages source must be set to "GitHub Actions".
 
 ## Hosting and security
 

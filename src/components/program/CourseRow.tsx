@@ -1,3 +1,5 @@
+import { Inline } from '@/components/content/Inline';
+
 type CourseRowProps = {
     code: string;
     name: string;
@@ -11,7 +13,9 @@ export function CourseRow({ code, name, description }: CourseRowProps) {
             <span className="w-12 shrink-0 font-mono text-sm leading-[1.6] text-accent">{code}</span>
             <span className="flex min-w-0 flex-1 flex-col gap-1">
                 <span className="w-full text-base leading-[1.2] font-medium text-fg">{name}</span>
-                <span className="w-full text-sm leading-[1.5] text-fg-muted">{description}</span>
+                <span className="w-full text-sm leading-[1.5] text-fg-muted">
+                    <Inline text={description} />
+                </span>
             </span>
         </li>
     );

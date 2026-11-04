@@ -1,32 +1,43 @@
 import type { ReactNode } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import { en as t } from '@/i18n/locales/en';
-import { Link } from '@/router/Link';
+import { SmartLink } from '@/components/ui/SmartLink';
+import { linkKind } from '@/router/href';
 
 type TextLinkProps = {
     href: string;
     children: ReactNode;
-    /** External links get arrow-up-right and a new tab; internal ones end with →. */
-    external?: boolean;
 };
 
-/** Yellow Label/L link used in the legal texts. */
-export function TextLink({ href, children, external = false }: TextLinkProps) {
-    const className = 'inline-flex items-center gap-1 font-medium whitespace-nowrap text-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none';
+const YELLOW = 'inline-flex items-center gap-1 font-medium whitespace-nowrap text-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none';
+const PLAIN = 'font-medium text-fg hover:text-accent focus-visible:text-accent focus-visible:outline-none';
 
-    if (external) {
+/**
+ * Link inside running text. Links to other sites are yellow with arrow-up-right, links to pages of this site
+ * end with →, and mail, phone and in-page links are plain.
+ */
+export function TextLink({ href, children }: TextLinkProps) {
+    const kind = linkKind(href);
+
+    if (kind === 'external') {
         return (
-            <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+            <SmartLink href={href} className={YELLOW}>
                 {children}
                 <Icon name="arrow-up-right" size={16} />
-                <span className="sr-only">{t.nav.newTab}</span>
-            </a>
+            </SmartLink>
+        );
+    }
+
+    if (kind === 'internal') {
+        return (
+            <SmartLink href={href} className={YELLOW}>
+                {children} <span aria-hidden="true">→</span>
+            </SmartLink>
         );
     }
 
     return (
-        <Link href={href} className={className}>
-            {children} <span aria-hidden="true">→</span>
-        </Link>
+        <SmartLink href={href} className={PLAIN}>
+            {children}
+        </SmartLink>
     );
 }

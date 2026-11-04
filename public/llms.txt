@@ -19,6 +19,6 @@ The site has not launched yet; the estimated launch is the end of November or ea
 
 ## Optional
 
-- [Source code](https://github.com/sp4rc-ch/SPRAC-Handbook/)
+- [Source code](https://github.com/sprac-ch/handbook/)
 - [Sitemap](https://sprac.ch/sitemap.xml)
 - Contact: vo1n-sh@proton.me (vo1n, maintainer)

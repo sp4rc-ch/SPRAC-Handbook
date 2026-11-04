@@ -1,12 +1,16 @@
+import { readFileSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { build, defineConfig, type Plugin } from 'vite';
-import { en } from './src/i18n/locales/en.ts';
+import { buildSiteMeta } from './src/content/siteMeta.ts';
 import { PAGES, pagePath } from './src/router/pages.ts';
 import { getPageMeta, renderHeadTags, renderSitemap } from './src/seo/meta.ts';
+
+/** Site name and the title and description of every page: the front matter of the files in content/. */
+const siteMeta = buildSiteMeta((name) => readFileSync(path.resolve(import.meta.dirname, 'content', `${name}.md`), 'utf8'));
 
 const basePath = (process.env.BASE_PATH ?? '').replace(/^\/+|\/+$/g, ''); // remove leading and trailing slash
 const BASE = basePath ? `/${basePath}/` : '/'; // add them safely
@@ -71,16 +75,15 @@ function seoPages(): Plugin {
 
             for (const page of PAGES.filter((key) => key !== 'home')) {
                 const pathname = pagePath(page);
-                this.emitFile({ type: 'asset', fileName: `${pathname.slice(1)}index.html`, source: render(renderHeadTags(getPageMeta(page)), prerenderSlot(`${BASE}${pathname.slice(1)}`)) });
+                this.emitFile({ type: 'asset', fileName: `${pathname.slice(1)}index.html`, source: render(renderHeadTags(siteMeta, getPageMeta(siteMeta, page)), prerenderSlot(`${BASE}${pathname.slice(1)}`)) });
             }
 
-            index.source = render(renderHeadTags(getPageMeta('home')), prerenderSlot(BASE));
+            index.source = render(renderHeadTags(siteMeta, getPageMeta(siteMeta, 'home')), prerenderSlot(BASE));
 
-            const { siteName, notFound } = en;
             this.emitFile({
                 type: 'asset',
                 fileName: '404.html',
-                source: render(`<title>${notFound.documentTitle} · ${siteName}</title>\n        <meta name="robots" content="noindex" />`),
+                source: render(`<title>${siteMeta.notFoundTitle} · ${siteMeta.siteName}</title>\n        <meta name="robots" content="noindex" />`),
             });
 
             this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: renderSitemap(new Date().toISOString().slice(0, 10)) });

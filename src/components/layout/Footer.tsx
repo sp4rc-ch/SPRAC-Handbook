@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
-import { EXTERNAL_LINKS, REPO_URL } from '@/config/links';
-import { en } from '@/i18n/locales/en';
-import { buildPath } from '@/router/routes';
+import { getSite } from '@/content/site';
 import { FooterLink } from './FooterLink';
 import { Logo } from './Logo';
 
@@ -14,9 +12,9 @@ function LinkGroup({ title, children }: { title: string; children: ReactNode }) 
     );
 }
 
-/** Desktop and iPad share one layout; on phones the groups and bottom bar are centred. */
+/** Desktop and iPad share one layout; on phones the groups and bottom bar are centred. Content: content/site.md. */
 export function Footer() {
-    const { footer } = en;
+    const { footer } = getSite();
 
     return (
         <footer className="border-t border-line-subtle bg-canvas">
@@ -28,32 +26,15 @@ export function Footer() {
                     </div>
 
                     <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-6 lg:gap-20">
-                        <LinkGroup title={footer.resources}>
-                            {/* Contacts and Further reading are not built yet: placeholders. */}
-                            <FooterLink href="#">{footer.contacts}</FooterLink>
-                            <FooterLink href="#">{footer.furtherReading}</FooterLink>
-                            <FooterLink href={REPO_URL} external>
-                                {footer.contribute}
-                            </FooterLink>
-                        </LinkGroup>
-                        <LinkGroup title={footer.officialSites}>
-                            <FooterLink href={EXTERNAL_LINKS.sparc} external>
-                                SPARC
-                            </FooterLink>
-                            <FooterLink href={EXTERNAL_LINKS.cyberMiliz} external>
-                                {footer.cyberMiliz}
-                            </FooterLink>
-                            <FooterLink href={EXTERNAL_LINKS.cyberBattalion42} external>
-                                {footer.cyberBattalion42}
-                            </FooterLink>
-                            <FooterLink href={EXTERNAL_LINKS.kommandoCyber} external>
-                                {footer.kommandoCyber}
-                            </FooterLink>
-                        </LinkGroup>
-                        <LinkGroup title={footer.legal}>
-                            <FooterLink href={buildPath('legalNotice')}>{footer.legalNotice}</FooterLink>
-                            <FooterLink href={buildPath('privacyPolicy')}>{footer.privacyPolicy}</FooterLink>
-                        </LinkGroup>
+                        {footer.groups.map((group) => (
+                            <LinkGroup key={group.title} title={group.title}>
+                                {group.links.map((link) => (
+                                    <FooterLink key={link.label} href={link.href}>
+                                        {link.label}
+                                    </FooterLink>
+                                ))}
+                            </LinkGroup>
+                        ))}
                     </div>
                 </div>
 

@@ -1,9 +1,11 @@
+import { Inline } from '@/components/content/Inline';
+
 type DataTableProps = {
-    columns: [string, string, string];
-    rows: [string, string, string][];
+    columns: string[];
+    rows: string[][];
 };
 
-/** Three-column table from tablet up; on phones each row becomes a card with labelled fields. */
+/** Table from tablet up (first column is the row heading); on phones each row becomes a card with labelled fields. */
 export function DataTable({ columns, rows }: DataTableProps) {
     return (
         <>
@@ -21,11 +23,11 @@ export function DataTable({ columns, rows }: DataTableProps) {
                     {rows.map(([first, ...rest], rowIndex) => (
                         <tr key={rowIndex}>
                             <th scope="row" className={`px-4 py-3.5 align-top leading-[1.2] font-medium ${rowIndex < rows.length - 1 ? 'border-b border-line-subtle' : ''}`}>
-                                {first}
+                                <Inline text={first} />
                             </th>
                             {rest.map((cell, cellIndex) => (
                                 <td key={cellIndex} className={`px-4 py-3.5 align-top leading-[1.5] text-fg-muted ${rowIndex < rows.length - 1 ? 'border-b border-line-subtle' : ''}`}>
-                                    {cell}
+                                    <Inline text={cell} />
                                 </td>
                             ))}
                         </tr>
@@ -40,7 +42,7 @@ export function DataTable({ columns, rows }: DataTableProps) {
                             {row.map((cell, cellIndex) => (
                                 <div key={cellIndex} className="flex flex-col gap-1">
                                     <dt className="font-mono text-xs leading-[1.2] font-medium tracking-[0.1em] text-fg-subtle uppercase">{columns[cellIndex]}</dt>
-                                    <dd className={`text-sm ${cellIndex === 0 ? 'leading-[1.2] font-medium' : 'leading-[1.5] text-fg-muted'}`}>{cell}</dd>
+                                    <dd className={`text-sm ${cellIndex === 0 ? 'leading-[1.2] font-medium' : 'leading-[1.5] text-fg-muted'}`}><Inline text={cell} /></dd>
                                 </div>
                             ))}
                         </dl>

@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type PointerEvent } from 'react';
-import { en } from '@/i18n/locales/en';
+import { Inline } from '@/components/content/Inline';
+import { getSite } from '@/content/site';
 
 /** The only thing the site stores in the browser, as described in the privacy policy. */
 const STORAGE_KEY = 'sprac.disclaimer-accepted';
@@ -41,7 +42,7 @@ export function DisclaimerDialog() {
     const drag = useRef({ startY: 0, startTime: 0 });
     const dialogRef = useRef<HTMLDivElement>(null);
     const titleId = useId();
-    const { disclaimer } = en;
+    const { disclaimer } = getSite();
 
     useEffect(() => {
         if (!hasAccepted()) setOpen(true);
@@ -119,8 +120,11 @@ export function DisclaimerDialog() {
                 </div>
 
                 <div className="flex w-full flex-col gap-3 text-sm leading-[1.5] text-fg-muted md:text-base md:leading-[1.6]">
-                    <p>{disclaimer.body1}</p>
-                    <p>{disclaimer.body2}</p>
+                    {disclaimer.body.map((text) => (
+                        <p key={text}>
+                            <Inline text={text} />
+                        </p>
+                    ))}
                 </div>
 
                 <div className="w-full pt-1 md:pt-0">

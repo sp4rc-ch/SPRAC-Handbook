@@ -1,9 +1,9 @@
-/** URL of a file in public/assets, respecting the deploy base path. */
-export function asset(path: string): string {
-    return `${import.meta.env.BASE_URL}assets/${path}`;
+/** URL of a file in public/ ("assets/icons/globe.svg", as written in the content files), respecting the deploy base path. */
+export function publicUrl(path: string): string {
+    return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 }
 
-/** Phosphor icons exported from the Figma "Icons" page, in public/assets/icons. */
+/** Phosphor icons exported from the Figma "Icons" page, in public/assets/icons. Names are for icons that belong to the design itself; icons shown as content are paths in the Markdown files. */
 export type IconName =
     // Navigation
     | 'list'
@@ -87,5 +87,3 @@ export type IconName =
     | 'envelope-simple'
     | 'phone'
     | 'rss';
-
-export const LOGO_URL = asset('logos/sparc-community-patch-256.png');

@@ -19,3 +19,8 @@ export function pagePath(page: Page): string {
     const segment = PAGE_PATHS[page];
     return `/${segment ? `${segment}/` : ''}`;
 }
+
+/** Name of the page's content file in `content/` (without `.md`): the URL segment, or `home` for the start page. */
+export function contentName(page: Page): string {
+    return PAGE_PATHS[page] || 'home';
+}

@@ -28,8 +28,8 @@ This is a **community-driven project maintained by the SPARC Community** to prov
 ## Quick start
 
 ```bash
-git clone https://github.com/sp4rc-ch/SPRAC-Handbook.git
-cd SPRAC-Handbook
+git clone https://github.com/sprac-ch/handbook.git
+cd handbook
 npm ci
 npm run dev
 ```
@@ -45,19 +45,20 @@ Vite prints the local URL, normally `http://localhost:5173`.
 | `npm run preview` | Serve `dist/` locally to check the production build |
 | `npm run lint`    | Run ESLint                                          |
 
-`npm run build` writes one pre-rendered HTML file per page (`dist/legal-notice/index.html`, ...) plus `sitemap.xml` and `404.html`. Upload the contents of `dist/` to the web host. All page text lives in `src/i18n/locales/en.ts`.
+`npm run build` writes one pre-rendered HTML file per page (`dist/legal-notice/index.html`, ...) plus `sitemap.xml` and `404.html`. Upload the contents of `dist/` to the web host. All page text lives in Markdown files in `content/`, see [docs/CONTENT.md](docs/CONTENT.md).
 
 ## Project layout
 
 ```
-src/pages/        one folder per page: Home, LegalNotice, PrivacyPolicy, NotFound
+content/          all page text and asset paths, one Markdown file per page
+src/pages/        one folder per page: Home, Sparc, LegalNotice, PrivacyPolicy, NotFound
 src/components/   layout/ (navbar, footer), legal/ (legal page blocks), ui/ (button, icon, callout)
-src/i18n/         locales/en.ts with all page text
+src/content/      reads the Markdown files in content/
 src/router/       routes, URL building and client-side navigation
 src/seo/          per-page head tags, JSON-LD and the sitemap
-src/config/       external links, contact email, asset paths
+src/config/       repository address, asset paths
 public/           copied as is: favicons, assets/icons, assets/logos, robots.txt, llms.txt, .htaccess, .well-known/
-docs/             architecture notes
+docs/             architecture notes and the content format
 ```
 
 ## Documentation
@@ -67,7 +68,7 @@ docs/             architecture notes
 
 ## Contributing
 
-Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Report problems on the [issue tracker](https://github.com/sp4rc-ch/SPRAC-Handbook/issues).
+Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Report problems on the [issue tracker](https://github.com/sprac-ch/handbook/issues).
 
 ## Acknowledgements
 
@@ -76,7 +77,7 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 ## Contact
 
 - **Threema:** [Join the Community (requires a SPARC Threema ID)](https://threema.id/87YD3CY3?text=Hello%20There,%0AI%20would%20like%20to%20join%20the%20SPARC%20Community!%20I%20herby%20accept%20the%20Community%20rules,%20which%20is%20the%20SPARC%20Code%20of%20Conduct%2E%0ACheers%0A%3Cyour%20hackername,%20and%20questions%20if%20any%3E) | [General Inquiries](https://threema.id/87YD3CY3) | [Technical Lead](https://threema.id/P4MM574Y)
-- **GitHub:** bugs and content suggestions go on the [issue tracker](https://github.com/sp4rc-ch/SPRAC-Handbook/issues).
+- **GitHub:** bugs and content suggestions go on the [issue tracker](https://github.com/sprac-ch/handbook/issues).
 
 ## License
 

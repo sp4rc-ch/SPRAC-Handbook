@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { en } from '@/i18n/locales/en';
+import { getSiteMeta } from '@/content/source';
 import type { Page } from '@/router/pages';
 import { getPageMeta } from './meta';
 
@@ -33,14 +33,16 @@ function setNoIndex(noIndex: boolean) {
  */
 export function usePageMeta(page: Page | 'notFound') {
     useEffect(() => {
+        const site = getSiteMeta();
+
         if (page === 'notFound') {
-            document.title = `${en.notFound.documentTitle} · ${en.siteName}`;
+            document.title = `${site.notFoundTitle} · ${site.siteName}`;
             setCanonical(null);
             setNoIndex(true);
             return;
         }
 
-        const meta = getPageMeta(page);
+        const meta = getPageMeta(site, page);
         document.title = meta.title;
         setDescription(meta.description);
         setCanonical(meta.url);

@@ -1,8 +1,9 @@
-import type { IconName } from '@/config/assets';
+import { Inline } from '@/components/content/Inline';
 import { Icon } from './Icon';
 
 type ContributeItemProps = {
-    icon: IconName;
+    /** Path to the icon in public/, as written in the content file. */
+    icon: string;
     title: string;
     children: string;
     className?: string;
@@ -13,11 +14,13 @@ export function ContributeItem({ icon, title, children, className = '' }: Contri
     return (
         <li className={`flex items-start gap-4 ${className}`}>
             <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-line-subtle bg-overlay text-accent">
-                <Icon name={icon} size={20} />
+                <Icon src={icon} size={20} />
             </span>
             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                 <p className="text-base leading-[1.2] font-medium text-fg">{title}</p>
-                <p className="text-sm leading-[1.5] text-fg-muted">{children}</p>
+                <p className="text-sm leading-[1.5] text-fg-muted">
+                    <Inline text={children} />
+                </p>
             </div>
         </li>
     );
