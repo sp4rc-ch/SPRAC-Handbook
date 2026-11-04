@@ -1,4 +1,4 @@
-# The SPRAC Handbook. Every page is public; search and AI crawlers are welcome.
+# SPRAC Handbook. Every page is public; search and AI crawlers are welcome.
 User-agent: *
 Allow: /
 

@@ -1,4 +1,4 @@
-# The SPRAC Handbook
+# SPRAC Handbook
 
 > Unofficial knowledge base on SPARC, the Cyber Lehrgang (CYLG) and Cyber Bataillon 42 (CYBAT): what they are, how they are built and where to read more. Made by students from the SPARC community and not affiliated with SPARC, the Swiss Armed Forces or the Kommando Cyber.
 

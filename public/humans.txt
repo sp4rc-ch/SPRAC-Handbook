@@ -4,7 +4,7 @@ Contact: contact@sprac.ch
 From: Switzerland
 
 /* PROJECT */
-Name: The SPRAC Handbook
+Name: SPRAC Handbook
 About: Unofficial, non-commercial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42, made by students from the SPARC community.
 Not affiliated with SPARC, the Swiss Armed Forces or the Kommando Cyber.
 Source: https://github.com/sp4rc-ch/SPRAC-Handbook/

@@ -1,9 +1,9 @@
 export const en = {
-    siteName: 'The SPRAC Handbook',
+    siteName: 'SPRAC Handbook',
     /** Search result title and description per page. */
     meta: {
         home: {
-            title: 'The SPRAC Handbook · SPARC, CYLG and CYBAT explained',
+            title: 'SPRAC Handbook · SPARC, CYLG and CYBAT explained',
             description: 'Unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. What they are, how they are built and where to read more.',
         },
         legalNotice: {
@@ -37,9 +37,73 @@ export const en = {
         legal: 'Legal',
         legalNotice: 'Legal notice',
         privacyPolicy: 'Privacy policy',
-        copyright: '© 2026 The SPRAC Handbook',
+        copyright: '© 2026 SPRAC Handbook',
         disclaimer: 'Community project. Not affiliated with the Swiss Armed Forces or SPARC.',
         lastVerified: 'Last verified · Nov 2026',
+    },
+    home: {
+        hero: {
+            titleLead: 'Your path into Swiss Army',
+            titleAccent: 'cyber.',
+            intro: 'SPRAC Handbook is an unofficial, student-made knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. What each program is, how it works, who can join and where to read more.',
+            explore: 'Explore programs',
+            path: 'See the path',
+        },
+        programs: {
+            title: 'Three programs, one path.',
+            intro: 'Start with SPARC before recruit school, join the Cyber Lehrgang during RS and serve in Cyber Bataillon 42 after. Here is the short version of each.',
+            readMore: 'Read more',
+            note: 'SPARC improves your chances; it is not a ticket in. Selection for the Cyber Lehrgang happens in recruit school.',
+            cards: [
+                {
+                    id: 'sparc',
+                    name: 'SPARC',
+                    logo: 'mark-sparc-course',
+                    text: "The Army's free, self-paced cyber pre-training. Explorer, Defender and Operator levels, all in English.",
+                    facts: [
+                        ['Who', 'Swiss, 16+, before RS'],
+                        ['Cost', 'Free'],
+                        ['Time', '200-300 h online'],
+                    ],
+                },
+                {
+                    id: 'cylg',
+                    name: 'CyLG',
+                    logo: 'mark-cylg',
+                    text: 'The 40-week Cyber Lehrgang at Jassbach barracks. Technical and leadership training, ending as sergeant.',
+                    facts: [
+                        ['Apply', 'In RS week 1'],
+                        ['Length', '40 weeks · 800 h'],
+                        ['Result', 'sergeant, federal exam access'],
+                    ],
+                },
+                {
+                    id: 'cybat',
+                    name: 'Cy Bat 42',
+                    logo: 'mark-cybat-42',
+                    text: 'Cyber Bataillon 42, the militia unit doing real cyber defence for Kommando Cyber since 2022.',
+                    facts: [
+                        ['Since', '1 January 2022'],
+                        ['Service', 'About 3 weeks Refresher Course per year'],
+                        ['Entry', 'CyLG or lateral entry'],
+                    ],
+                },
+            ] as { id: string; name: string; logo: string; text: string; facts: [string, string][] }[],
+        },
+        contribute: {
+            title: 'Built by students. Improved by you.',
+            body: 'The handbook is open source on GitHub. Read CONTRIBUTING.md for contribution guidelines.',
+            commandPrompt: '$',
+            command: 'git checkout -b fix/your-fix',
+            github: 'Contribute on GitHub',
+            issue: 'Open an issue',
+            ways: [
+                { icon: 'file-text', title: 'Add content', text: 'Write a new page or expand an existing topic.' },
+                { icon: 'pencil-simple', title: 'Fix a fact', text: 'Update outdated dates, numbers or contacts.' },
+                { icon: 'link-simple', title: 'Add a source', text: 'Link official pages, factsheets or articles.' },
+            ] as { icon: 'file-text' | 'pencil-simple' | 'link-simple'; title: string; text: string }[],
+            privacy: 'Privacy first: do not open issues or comment with a GitHub account that shows your real name or other personal info. Use a separate account, for example with your SPARC hackername.',
+        },
     },
     /** Labels shared by the legal notice and the privacy policy. */
     legal: {
@@ -56,13 +120,13 @@ export const en = {
     },
     legalNotice: {
         title: 'Legal notice',
-        lead: 'Who is behind The SPRAC Handbook, how to reach us and what this site is and is not.',
+        lead: 'Who is behind SPRAC Handbook, how to reach us and what this site is and is not.',
         projectLabel: 'Project',
         project: 'Non-commercial community project',
         law: 'Swiss law',
         who: {
             heading: 'Who runs this website?',
-            body: 'The SPRAC Handbook (sprac.ch) is a non-commercial, open-source community project made by students from the SPARC community. It is not a company and not a registered association.',
+            body: 'SPRAC Handbook (sprac.ch) is a non-commercial, open-source community project made by students from the SPARC community. It is not a company and not a registered association.',
         },
         contact: {
             heading: 'Contact',
@@ -71,11 +135,11 @@ export const en = {
         },
         nonCommercial: {
             heading: 'Non-commercial project',
-            body: 'The SPRAC Handbook has no advertising, no sponsored content, no affiliate links and no paid services. We do not collect money or donations and we do not sell anything.',
+            body: 'SPRAC Handbook has no advertising, no sponsored content, no affiliate links and no paid services. We do not collect money or donations and we do not sell anything.',
         },
         notOfficial: {
             heading: 'Not an official website',
-            body1: 'The SPRAC Handbook is an unofficial project. It is not operated, endorsed or reviewed by the Swiss Armed Forces, the Kommando Cyber, the DDPS, SPARC or the companies that run SPARC.',
+            body1: 'SPRAC Handbook is an unofficial project. It is not operated, endorsed or reviewed by the Swiss Armed Forces, the Kommando Cyber, the DDPS, SPARC or the companies that run SPARC.',
             body2: 'Names such as SPARC, Cyber Lehrgang (CYLG) and Cyber Bataillon 42 are used only to describe these programmes and belong to their respective owners.',
         },
         accuracy: {
@@ -102,7 +166,7 @@ export const en = {
     },
     privacy: {
         title: 'Privacy policy',
-        lead: 'What personal data is processed when you visit The SPRAC Handbook, and what your rights are.',
+        lead: 'What personal data is processed when you visit SPRAC Handbook, and what your rights are.',
         appliesToLabel: 'Applies to',
         law: 'Swiss FADP',
         overview: {
@@ -111,7 +175,7 @@ export const en = {
         },
         responsible: {
             heading: 'Who is responsible?',
-            body: 'The SPRAC Handbook is an independent, non-commercial, open-source community knowledge project created by members of the SPARC community.',
+            body: 'SPRAC Handbook is an independent, non-commercial, open-source community knowledge project created by members of the SPARC community.',
         },
         visiting: {
             heading: 'Visiting the website',

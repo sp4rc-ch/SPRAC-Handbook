@@ -1,4 +1,4 @@
-# The SPRAC Handbook
+# SPRAC Handbook
 
 This is a **community-driven project maintained by the SPARC Community** to provide comprehensive and correct information and resources regarding to SPARC, CyLg, and Cybat.
 
