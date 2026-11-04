@@ -229,3 +229,11 @@ export function plainText(text: string): string {
         .replace(/\s+/g, ' ')
         .trim();
 }
+
+/** "How to get in" -> "how-to-get-in": the address of a section, for links like `#how-to-get-in`. */
+export function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}

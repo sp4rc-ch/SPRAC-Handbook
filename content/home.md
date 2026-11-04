@@ -43,7 +43,7 @@ The 40-week Cyber Lehrgang at Jassbach barracks. Technical and leadership traini
 - Length: 40 weeks · 800 h
 - Result: sergeant, federal exam access
 
-[Read more](#)
+[Read more](/cylg/)
 
 ### Cy Bat 42
 

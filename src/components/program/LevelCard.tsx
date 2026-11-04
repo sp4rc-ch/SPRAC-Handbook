@@ -1,5 +1,5 @@
 import { Inline } from '@/components/content/Inline';
-import type { Course } from '@/content/sparc';
+import type { Course } from '@/content/program';
 import { CourseRow } from './CourseRow';
 
 type LevelCardProps = {

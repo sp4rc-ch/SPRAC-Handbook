@@ -31,7 +31,7 @@ logo: assets/logos/sparc-community-patch-256.png
 | Name | Logo | Description | Link |
 | --- | --- | --- | --- |
 | SPARC | ![](assets/logos/mark-sparc-course.svg) | Talent program before the RS | /sparc/ |
-| CyLG | ![](assets/logos/mark-cylg.svg) | Cyber Lehrgang during service | # |
+| CyLG | ![](assets/logos/mark-cylg.svg) | Cyber Lehrgang during service | /cylg/ |
 | Cy Bat 42 | ![](assets/logos/mark-cybat-42.svg) | The cyber battalion of the army | # |
 
 ## Footer

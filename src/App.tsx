@@ -1,3 +1,4 @@
+import { Cylg } from '@/pages/Cylg/Cylg';
 import { Home } from '@/pages/Home/Home';
 import { LegalNotice } from '@/pages/LegalNotice/LegalNotice';
 import { NotFound } from '@/pages/NotFound/NotFound';
@@ -16,6 +17,7 @@ export function App() {
         <>
             {page === 'home' && <Home />}
             {page === 'sparc' && <Sparc />}
+            {page === 'cylg' && <Cylg />}
             {page === 'legalNotice' && <LegalNotice />}
             {page === 'privacyPolicy' && <PrivacyPolicy />}
             {page === 'notFound' && <NotFound />}

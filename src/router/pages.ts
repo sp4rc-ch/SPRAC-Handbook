@@ -3,6 +3,7 @@
 export const PAGE_PATHS = {
     home: '',
     sparc: 'sparc',
+    cylg: 'cylg',
     legalNotice: 'legal-notice',
     privacyPolicy: 'privacy-policy',
 } as const;

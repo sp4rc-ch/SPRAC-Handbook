@@ -7,6 +7,7 @@ All text of the site, and the paths of the icons and logos it shows, live in Mar
 | `content/site.md`             | Shared by all pages: navbar, footer, first-visit disclaimer, labels |
 | `content/home.md`             | Homepage (`/`)                                                     |
 | `content/sparc.md`            | SPARC page (`/sparc/`)                                             |
+| `content/cylg.md`             | Cyber Lehrgang page (`/cylg/`)                                     |
 | `content/legal-notice.md`     | Legal notice (`/legal-notice/`)                                    |
 | `content/privacy-policy.md`   | Privacy policy (`/privacy-policy/`)                                |
 | `content/not-found.md`        | The 404 page                                                       |
@@ -60,23 +61,38 @@ A page has a fixed layout, so its sections come in a fixed order. Inside a secti
 
 Anything written after a `###` heading belongs to that part, up to the next heading. Put intro text, `Source:` lines and notes (`> ...`) before the first `###` of a section.
 
-### `sparc.md`
+### Program pages: `sparc.md` and `cylg.md`
 
-1. `# SPARC`: the logo as an image, the intro paragraph, a list of two links (the yellow button, then the outlined one) and a `>` note.
+SPARC and the Cyber Lehrgang share one frame and are read by the same code (`src/content/program.ts`). A program page is:
+
+1. `# Name`: the program's logo as an image, the intro paragraph, a list of two links (the yellow button, then the outlined one) and a `>` note.
 2. `## At a glance`: a list of `Label: value` lines.
-3. Then these sections, in this order: *What SPARC is*, *Is it for you?*, *What you learn*, *How it works*, *How to join*, *Rules and deadlines*, *What you get*, *Help and official links*, *Next on the path*.
+3. Then one `##` section per entry of the page's layout, in that order. Each section has one of these kinds:
+
+| Kind           | What you write in the section                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `text`         | Paragraphs only                                                                                                     |
+| `tiles`        | `###` tiles: an icon, then a sentence                                                                               |
+| `requirements` | `###` checklists (a list) shown side by side, then `###` tiles                                                      |
+| `levels`       | One `###` per card, with a sentence and a table `Code \| Name \| What it covers`                                     |
+| `steps`        | A numbered list (the first line of a step is its title, the indented line below is its text), then `###` tiles      |
+| `rules`        | A list in the same form as the steps                                                                                |
+| `yesno`        | Two `###` parts with a list each: "You get", then "You do not get"                                                  |
+| `links`        | A table `What for \| Shown as \| Icon \| Link`                                                                      |
+
+4. The last section, "Next on the path": one `###` card with a logo, a sentence and a list of two links (outlined, then yellow).
+
+The order of the sections:
+
+- `sparc.md`: *What SPARC is* (`text`), *Is it for you?* (`requirements`), *What you learn* (`levels`), *How it works* (`tiles`), *How to join* (`steps`), *Rules and deadlines* (`rules`), *What you get* (`yesno`), *Help and official links* (`links`).
+- `cylg.md`: *What the CYLG is* (`tiles`), *Is it for you?* (`requirements`), *What you learn* (`levels`), *How to get in* (`steps`), *During the course* (`tiles`), *Commitments and deadlines* (`rules`), *What you get* (`yesno`), *Help and official links* (`links`).
 
 Details:
 
 - A paragraph that starts with `Source:` is the source line shown at the end of its section.
-- *Is it for you?*: the first `###` is the requirements list, every other `###` is a tile (an icon, then a sentence).
-- *What you learn*: one `###` per level, with a sentence and a table `Code | Course | What it covers`.
-- *How it works*: one `###` tile per card.
-- *How to join*: a numbered list (the first line of each step is its title, the indented line below is its text), then a `###` tile per account.
-- *Rules and deadlines*: a list in the same form as the steps.
-- *What you get*: two `###` parts, the first for "You get", the second for "You do not get", each with a list.
-- *Help and official links*: a table `What for | Shown as | Icon | Link`.
-- *Next on the path*: one `###` card with a logo, a sentence and a list of two links (outlined, then yellow).
+- Tiles come in rows of three when the number of tiles divides by three, otherwise in rows of two.
+- Every section can be linked to with its title: `[How to get in](#how-to-get-in)` scrolls to the section called "How to get in".
+- The page title is shown smaller on phones when it is longer than 8 characters.
 
 ### `home.md`
 
@@ -107,7 +123,7 @@ Details:
 
 1. Add the URL segment to `PAGE_PATHS` in `src/router/pages.ts`.
 2. Create `content/<segment>.md` with `title` and `description`.
-3. Write a reader for it in `src/content/` (see `sparc.ts`) and a page component in `src/pages/`, and render it in `src/App.tsx`.
+3. Write a reader for it in `src/content/` and a page component in `src/pages/`, and render it in `src/App.tsx`. A program page only needs its list of section kinds (see `cylg.ts`) and a page component that shows `ProgramPageView` (see `pages/Cylg/Cylg.tsx`).
 
 The sitemap, the title in search results and the pre-rendered HTML file come from steps 1 and 2.
 

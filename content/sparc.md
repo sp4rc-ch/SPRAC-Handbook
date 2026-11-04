@@ -213,4 +213,4 @@ Source: sparc-cyberdefence.ch · vtg.admin.ch · Last verified 31 Oct 2026
 40 weeks during recruit school, ending as sergeant. Tell your superior in RS week 1 that you want to take part in the selection.
 
 - [See the full path](#)
-- [Read about CyLG ![](assets/icons/arrow-right.svg)](#)
+- [Read about CyLG ![](assets/icons/arrow-right.svg)](/cylg/)
