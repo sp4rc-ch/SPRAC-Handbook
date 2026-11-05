@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 import type { IconName } from '@/config/assets';
 import { Icon } from './Icon';
 import { SmartLink } from './SmartLink';
@@ -14,6 +14,9 @@ type ButtonProps = {
     icon?: IconName;
     /** Trailing icon written in a content file, as a path from public/. Wins over `icon`. */
     iconSrc?: string;
+    /** Where the icon sits: after the label (default) or before it, like the arrow of "Go back". */
+    iconPosition?: 'start' | 'end';
+    onClick?: MouseEventHandler<HTMLAnchorElement>;
     /** Stretch to the container width on phones, as in the iPhone frames. */
     fullWidthOnMobile?: boolean;
 };
@@ -30,17 +33,21 @@ const VARIANTS = {
 };
 
 /** Button, size M (48px) or S (36px). Text on yellow is always ink. The address decides how it behaves, see SmartLink. */
-export function Button({ href, children, variant = 'primary', size = 'm', icon, iconSrc, fullWidthOnMobile = false }: ButtonProps) {
+export function Button({ href, children, variant = 'primary', size = 'm', icon, iconSrc, iconPosition = 'end', onClick, fullWidthOnMobile = false }: ButtonProps) {
     const className = [
         `inline-flex ${SIZES[size].box} shrink-0 items-center justify-center gap-2 rounded-md leading-[1.2] font-medium whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2`,
         VARIANTS[variant],
         fullWidthOnMobile ? 'w-full md:w-auto' : '',
     ].join(' ');
 
+    const hasIcon = Boolean(iconSrc || icon);
+    const iconElement = <Icon name={icon} src={iconSrc} size={SIZES[size].icon} />;
+
     return (
-        <SmartLink href={href} className={className}>
+        <SmartLink href={href} className={className} onClick={onClick}>
+            {hasIcon && iconPosition === 'start' && iconElement}
             {children}
-            {(iconSrc || icon) && <Icon name={icon} src={iconSrc} size={SIZES[size].icon} />}
+            {hasIcon && iconPosition === 'end' && iconElement}
         </SmartLink>
     );
 }

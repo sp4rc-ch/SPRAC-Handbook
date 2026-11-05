@@ -1,8 +1,19 @@
+import type { MouseEvent } from 'react';
 import { Inline } from '@/components/content/Inline';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/Button';
 import { getNotFound } from '@/content/notFound';
 import { ErrorCode } from './ErrorCode';
+
+/**
+ * Goes back to the page the visitor came from. Without an earlier page in this tab (the address was opened directly)
+ * the click is left alone and the link goes to its own address, the home page.
+ */
+function goBack(event: MouseEvent<HTMLAnchorElement>) {
+    if (window.history.length <= 1) return;
+    event.preventDefault();
+    window.history.back();
+}
 
 /** Shown for every address that does not exist. Content: content/not-found.md. */
 export function NotFound() {
@@ -20,7 +31,7 @@ export function NotFound() {
                             <Inline text={page.text} />
                         </p>
                     </div>
-                    <Button href={page.button.href} iconSrc={page.button.icon}>
+                    <Button href={page.button.href} iconSrc={page.button.icon} iconPosition="start" onClick={goBack}>
                         {page.button.label}
                     </Button>
                 </div>

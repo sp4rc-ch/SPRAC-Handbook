@@ -132,7 +132,7 @@ Details:
 
 ### `not-found.md`
 
-`eyebrow:` in the front matter, `# Title`, a paragraph and a list with one link (the button).
+`eyebrow:` in the front matter, `# Title`, a paragraph and a list with one link (the button). The button goes back to the page the visitor came from; its address (`/`) is only used when there is no earlier page, for example when the address was opened directly.
 
 ## Adding a page
 

@@ -9,4 +9,4 @@ eyebrow: ERR_NOT_FOUND · 0x194
 
 This page doesn't exist or was moved.
 
-- [Back to home ![](assets/icons/house.svg)](/)
+- [Go back ![](assets/icons/arrow-left.svg)](/)

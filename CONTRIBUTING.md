@@ -72,11 +72,14 @@ npm run build
 
 The site is English only. All visible content lives in page specific Markdown files in `content/`, one per page, plus `content/site.md` for the navbar, footer and disclaimer. The paths of the icons and logos a page shows are written in the same file, so text and assets are changed in one place. The format is explained in [docs/CONTENT.md](docs/CONTENT.md). Each page has an "Edit this page" button that opens its Markdown file on the `dev` branch.
 
+If you change how a content file is structured (a new section, a new kind of list, a new page), update [docs/CONTENT.md](docs/CONTENT.md) in the same pull request, so the format described there always matches what the code reads.
+
 ## Adding a page
 
 1. Add the URL segment to `PAGE_PATHS` in `src/router/pages.ts`.
 2. Create `content/<segment>.md` with a `title` and a `description` in the front matter.
 3. Write a reader for the file in `src/content/` and the page in `src/pages/<Name>/<Name>.tsx`, and render it in `src/App.tsx`.
+4. Describe the format of the new file in [docs/CONTENT.md](docs/CONTENT.md) and add the path to the table in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 The sitemap, the title in search results and the pre-rendered HTML file are generated from `PAGE_PATHS` and the front matter, so there is nothing else to register.
 
