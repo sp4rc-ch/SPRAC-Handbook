@@ -6,8 +6,8 @@ import { SmartLink } from './SmartLink';
 type ButtonProps = {
     href: string;
     children: ReactNode;
-    /** Primary for the one main action per view, secondary for alternatives. */
-    variant?: 'primary' | 'secondary';
+    /** Primary for the one main action per view, secondary for alternatives, ghost for low-emphasis actions. */
+    variant?: 'primary' | 'secondary' | 'ghost';
     /** M is 48px (hero, forms), S is 36px (cards). */
     size?: 'm' | 's';
     /** Trailing icon from the design (18px, 16px at size S). */
@@ -26,6 +26,7 @@ const SIZES = {
 const VARIANTS = {
     primary: 'bg-accent text-on-accent hover:bg-accent-hover focus-visible:outline-fg',
     secondary: 'border border-line-strong text-fg hover:border-fg hover:bg-overlay focus-visible:outline-accent',
+    ghost: 'text-fg hover:bg-overlay focus-visible:outline-accent',
 };
 
 /** Button, size M (48px) or S (36px). Text on yellow is always ink. The address decides how it behaves, see SmartLink. */

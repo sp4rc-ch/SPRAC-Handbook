@@ -189,5 +189,5 @@ Source: vtg.admin.ch · armee.ch · Last verified 31 Oct 2026
 
 Not in the army yet? Free online cyber training before recruit school is the best first step.
 
-- [See the full path](#)
+- [See the full path](/path/)
 - [Read about SPARC ![](assets/icons/arrow-right.svg)](/sparc/)

@@ -13,7 +13,7 @@ description: Unofficial knowledge base on SPARC, the Cyber Lehrgang and Cyber Ba
 SPRAC Handbook is an unofficial, student-made knowledge base on SPARC, the Cyber Lehrgang and Cyber Bataillon 42. What each program is, how it works, who can join and where to read more.
 
 - [Explore programs ![](assets/icons/arrow-right.svg)](#programs)
-- [See the path](#)
+- [See the path](/path/)
 
 ## Three programs, one path.
 

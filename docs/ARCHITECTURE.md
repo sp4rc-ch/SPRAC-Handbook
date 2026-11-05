@@ -37,7 +37,7 @@ flowchart TD
 | `src/components/legal/`  | Building blocks shared by the legal notice and privacy policy                                                                           |
 | `src/components/ui/`     | Button, icon, callout, first-visit disclaimer (`DisclaimerDialog`)                                                                      |
 | `content/`               | All page text and the paths of icons and logos, one Markdown file per page (see [CONTENT.md](CONTENT.md))                               |
-| `src/content/`           | Reads the Markdown files: parser (`markdown.ts`), one reader per page (`program.ts` is shared by SPARC and CyLG), page titles (`siteMeta.ts`) |
+| `src/content/`           | Reads the Markdown files: parser (`markdown.ts`), one reader per page (`program.ts` is shared by SPARC, CyLG and Cy Bat 42), page titles (`siteMeta.ts`) |
 | `src/router/`            | Route table (`pages.ts`), URL helpers (`routes.ts`), history navigation and `Link`                                                      |
 | `src/seo/`               | Head tags, JSON-LD and sitemap (`meta.ts`); keeps them in sync in the browser (`usePageMeta.ts`)                                        |
 | `src/config/`            | Repository address, asset URLs and icon names                                                                                           |
@@ -55,6 +55,7 @@ Pages use a trailing slash:
 | `/sparc/`          | SPARC                     |
 | `/cylg/`           | Cyber Lehrgang            |
 | `/cybat42/`        | Cyber Bataillon 42        |
+| `/path/`           | Path                      |
 | `/legal-notice/`   | Legal notice              |
 | `/privacy-policy/` | Privacy policy            |
 | anything else      | Not found                 |

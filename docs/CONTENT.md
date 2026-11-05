@@ -9,6 +9,7 @@ All text of the site, and the paths of the icons and logos it shows, live in Mar
 | `content/sparc.md`            | SPARC page (`/sparc/`)                                             |
 | `content/cylg.md`             | Cyber Lehrgang page (`/cylg/`)                                     |
 | `content/cybat42.md`          | Cyber Bataillon 42 page (`/cybat42/`)                              |
+| `content/path.md`             | Path page (`/path/`)                                               |
 | `content/legal-notice.md`     | Legal notice (`/legal-notice/`)                                    |
 | `content/privacy-policy.md`   | Privacy policy (`/privacy-policy/`)                                |
 | `content/not-found.md`        | The 404 page                                                       |
@@ -96,6 +97,17 @@ Details:
 - Tiles come in rows of three when the number of tiles divides by three, otherwise in rows of two.
 - Every section can be linked to with its title: `[How to get in](#how-to-get-in)` scrolls to the section called "How to get in".
 - The page title is shown smaller on phones when it is longer than 8 characters.
+
+### `path.md`
+
+1. `# Title`: the headline, the lead paragraph and a list of two links (the yellow button, then the outlined one).
+2. `## The route`: a `>` note (shown under the route card), a list of two legend labels (main route, lateral entry), then one `###` per stop with a logo, the phase (first paragraph), a list of badges and a sentence. The `###` without a logo is the lateral entry strip: a sentence and a list with one link. A badge is yellow by default; start it with `neutral:`, `warning:` or `info:` for another colour (`- warning: Compulsory`).
+3. `## Where are you now?`: an intro, a line `Default: 16+` (the chip that is selected first), a `Source:` line, then one `###` per chip (the heading is the chip). Inside it:
+   - `####` the title of the panel, then its sentence and a list with one link (the button);
+   - `#####` three boxes in this order: *By when* (the text, optionally a second line below it), *You need* (a list) and *Where* (a list of `Text: [address](url)`);
+   - an optional fourth `#####` box with a sentence and a list of topics (shown as grey badges).
+4. `## Who to ask`: an intro, a `Source:` line and a table `What for | Shown as | Icon | Link`.
+5. `## Ready?`: one `###` card with a sentence and a list of two links (yellow, then outlined).
 
 ### `home.md`
 

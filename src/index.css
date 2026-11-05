@@ -40,6 +40,10 @@
     --color-accent-hover: #f2db74;
     --color-accent-subtle: #2b2400;
     --color-on-accent: #0b0b0d;
+    --color-warning: #fe860d;
+    --color-warning-subtle: #371800;
+    --color-info: #6dadfe;
+    --color-info-subtle: #032145;
 
     --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'Geist Mono', ui-monospace, monospace;

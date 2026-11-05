@@ -237,5 +237,5 @@ Source: vtg.admin.ch · armee.ch · Last verified 31 Oct 2026
 
 The militia unit many graduates serve in afterwards, and how to join it later through lateral entry.
 
-- [See the full path](#)
-- [Read about Cy Bat 42 ![](assets/icons/arrow-right.svg)](#)
+- [See the full path](/path/)
+- [Read about Cy Bat 42 ![](assets/icons/arrow-right.svg)](/cybat42/)

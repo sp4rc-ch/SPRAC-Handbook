@@ -3,6 +3,7 @@ import { Cylg } from '@/pages/Cylg/Cylg';
 import { Home } from '@/pages/Home/Home';
 import { LegalNotice } from '@/pages/LegalNotice/LegalNotice';
 import { NotFound } from '@/pages/NotFound/NotFound';
+import { Path } from '@/pages/Path/Path';
 import { PrivacyPolicy } from '@/pages/PrivacyPolicy/PrivacyPolicy';
 import { Sparc } from '@/pages/Sparc/Sparc';
 import { usePathname } from '@/router/navigation';
@@ -20,6 +21,7 @@ export function App() {
             {page === 'sparc' && <Sparc />}
             {page === 'cylg' && <Cylg />}
             {page === 'cybat42' && <Cybat42 />}
+            {page === 'path' && <Path />}
             {page === 'legalNotice' && <LegalNotice />}
             {page === 'privacyPolicy' && <PrivacyPolicy />}
             {page === 'notFound' && <NotFound />}
