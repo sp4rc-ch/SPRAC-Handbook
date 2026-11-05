@@ -8,6 +8,7 @@ All text of the site, and the paths of the icons and logos it shows, live in Mar
 | `content/home.md`             | Homepage (`/`)                                                     |
 | `content/sparc.md`            | SPARC page (`/sparc/`)                                             |
 | `content/cylg.md`             | Cyber Lehrgang page (`/cylg/`)                                     |
+| `content/cybat42.md`          | Cyber Bataillon 42 page (`/cybat42/`)                              |
 | `content/legal-notice.md`     | Legal notice (`/legal-notice/`)                                    |
 | `content/privacy-policy.md`   | Privacy policy (`/privacy-policy/`)                                |
 | `content/not-found.md`        | The 404 page                                                       |
@@ -61,9 +62,9 @@ A page has a fixed layout, so its sections come in a fixed order. Inside a secti
 
 Anything written after a `###` heading belongs to that part, up to the next heading. Put intro text, `Source:` lines and notes (`> ...`) before the first `###` of a section.
 
-### Program pages: `sparc.md` and `cylg.md`
+### Program pages: `sparc.md`, `cylg.md` and `cybat42.md`
 
-SPARC and the Cyber Lehrgang share one frame and are read by the same code (`src/content/program.ts`). A program page is:
+SPARC, the Cyber Lehrgang and Cyber Bataillon 42 share one frame and are read by the same code (`src/content/program.ts`). A program page is:
 
 1. `# Name`: the program's logo as an image, the intro paragraph, a list of two links (the yellow button, then the outlined one) and a `>` note.
 2. `## At a glance`: a list of `Label: value` lines.
@@ -74,6 +75,7 @@ SPARC and the Cyber Lehrgang share one frame and are read by the same code (`src
 | `text`         | Paragraphs only                                                                                                     |
 | `tiles`        | `###` tiles: an icon, then a sentence                                                                               |
 | `requirements` | `###` checklists (a list) shown side by side, then `###` tiles                                                      |
+| `checklists`   | `###` checklists (a list) shown side by side                                                                        |
 | `levels`       | One `###` per card, with a sentence and a table `Code \| Name \| What it covers`                                     |
 | `steps`        | A numbered list (the first line of a step is its title, the indented line below is its text), then `###` tiles      |
 | `rules`        | A list in the same form as the steps                                                                                |
@@ -86,6 +88,7 @@ The order of the sections:
 
 - `sparc.md`: *What SPARC is* (`text`), *Is it for you?* (`requirements`), *What you learn* (`levels`), *How it works* (`tiles`), *How to join* (`steps`), *Rules and deadlines* (`rules`), *What you get* (`yesno`), *Help and official links* (`links`).
 - `cylg.md`: *What the CYLG is* (`tiles`), *Is it for you?* (`requirements`), *What you learn* (`levels`), *How to get in* (`steps`), *During the course* (`tiles`), *Commitments and deadlines* (`rules`), *What you get* (`yesno`), *Help and official links* (`links`).
+- `cybat42.md`: *What it does* (`tiles`), *Where it fits* (`tiles`), *Roles and fields* (`checklists`), *Join through lateral entry* (`steps`), *Service* (`rules`), *Growth and limits* (`yesno`), *Help and official links* (`links`).
 
 Details:
 

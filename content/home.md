@@ -55,7 +55,7 @@ Cyber Bataillon 42, the militia unit doing real cyber defence for Kommando Cyber
 - Service: About 3 weeks Refresher Course per year
 - Entry: CyLG or lateral entry
 
-[Read more](#)
+[Read more](/cybat42/)
 
 ## Built by students. Improved by you.
 

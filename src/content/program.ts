@@ -21,18 +21,20 @@ type Base = { title: string; intro: string[]; source?: string };
  * - `text`: heading and paragraphs only
  * - `tiles`: tiles (### with an icon and a sentence)
  * - `requirements`: checklists (### with a list) next to each other, then tiles
+ * - `checklists`: `###` checklists next to each other, all with the same (positive) tone
  * - `levels`: one card per ### with a table of courses
  * - `steps`: a numbered list, then tiles beside it
  * - `rules`: a list of rules (first line title, indented line text)
  * - `yesno`: two ### checklists, "You get" and "You do not get"
  * - `links`: a table of official links
  */
-export type SectionKind = 'text' | 'tiles' | 'requirements' | 'levels' | 'steps' | 'rules' | 'yesno' | 'links';
+export type SectionKind = 'text' | 'tiles' | 'requirements' | 'checklists' | 'levels' | 'steps' | 'rules' | 'yesno' | 'links';
 
 export type ProgramSection =
     | ({ kind: 'text' } & Base)
     | ({ kind: 'tiles'; tiles: Tile[] } & Base)
     | ({ kind: 'requirements'; lists: Checklist[]; tiles: Tile[] } & Base)
+    | ({ kind: 'checklists'; lists: Checklist[] } & Base)
     | ({ kind: 'levels'; levels: Level[] } & Base)
     | ({ kind: 'steps'; steps: Step[]; tiles: Tile[] } & Base)
     | ({ kind: 'rules'; items: Step[] } & Base)
@@ -80,6 +82,8 @@ function readSection(kind: SectionKind, section: Section, file: string): Program
                 lists: section.sections.filter((part) => !hasImage(part)).map((part) => checklist(part, file)),
                 tiles: tiles(section.sections.filter(hasImage)),
             };
+        case 'checklists':
+            return { kind, ...base, lists: section.sections.map((part) => checklist(part, file)) };
         case 'levels':
             return {
                 kind,

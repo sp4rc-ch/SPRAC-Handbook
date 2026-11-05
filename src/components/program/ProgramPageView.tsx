@@ -94,6 +94,16 @@ function Section({ section }: { section: SectionContent }) {
                     {section.tiles.length > 0 && <TileGrid tiles={section.tiles} />}
                 </ProgramSection>
             );
+        case 'checklists':
+            return (
+                <ProgramSection title={title} intro={intro} source={source}>
+                    <div className="grid gap-4 md:grid-cols-2 md:gap-6">
+                        {section.lists.map((list) => (
+                            <YesNoCard key={list.title} list={list} />
+                        ))}
+                    </div>
+                </ProgramSection>
+            );
         case 'levels':
             return (
                 <ProgramSection title={title} intro={intro} source={source}>

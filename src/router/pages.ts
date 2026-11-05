@@ -4,6 +4,7 @@ export const PAGE_PATHS = {
     home: '',
     sparc: 'sparc',
     cylg: 'cylg',
+    cybat42: 'cybat42',
     legalNotice: 'legal-notice',
     privacyPolicy: 'privacy-policy',
 } as const;

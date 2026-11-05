@@ -54,6 +54,7 @@ Pages use a trailing slash:
 | `/`                | Home                      |
 | `/sparc/`          | SPARC                     |
 | `/cylg/`           | Cyber Lehrgang            |
+| `/cybat42/`        | Cyber Bataillon 42        |
 | `/legal-notice/`   | Legal notice              |
 | `/privacy-policy/` | Privacy policy            |
 | anything else      | Not found                 |

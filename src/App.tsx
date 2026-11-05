@@ -1,3 +1,4 @@
+import { Cybat42 } from '@/pages/Cybat42/Cybat42';
 import { Cylg } from '@/pages/Cylg/Cylg';
 import { Home } from '@/pages/Home/Home';
 import { LegalNotice } from '@/pages/LegalNotice/LegalNotice';
@@ -18,6 +19,7 @@ export function App() {
             {page === 'home' && <Home />}
             {page === 'sparc' && <Sparc />}
             {page === 'cylg' && <Cylg />}
+            {page === 'cybat42' && <Cybat42 />}
             {page === 'legalNotice' && <LegalNotice />}
             {page === 'privacyPolicy' && <PrivacyPolicy />}
             {page === 'notFound' && <NotFound />}
