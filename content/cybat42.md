@@ -1,6 +1,6 @@
 ---
 title: Cyber Bataillon 42
-description: Cyber Bataillon 42 (Cy Bat 42) explained: what the Swiss Army militia cyber battalion does, where it fits, roles, lateral entry, service, growth and limits, and official links.
+description: "Cyber Bataillon 42 (Cy Bat 42) explained: what the Swiss Army militia cyber battalion does, where it fits, roles, lateral entry, service, growth and limits, and official links."
 ---
 <!--
   Cyber Bataillon 42 page. Format: docs/CONTENT.md.

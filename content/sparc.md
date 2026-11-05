@@ -1,6 +1,6 @@
 ---
 title: SPARC
-description: SPARC explained: what the Swiss Army cyber training programme is, who it is for, what you learn, how to join, rules, costs and official links.
+description: "SPARC explained: what the Swiss Army cyber training programme is, who it is for, what you learn, how to join, rules, costs and official links."
 ---
 <!--
   SPARC page. Format: docs/CONTENT.md.

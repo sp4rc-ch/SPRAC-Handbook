@@ -16,6 +16,8 @@ All text of the site, and the paths of the icons and logos it shows, live in Mar
 
 A page's file is named after its URL: `/sparc/` reads `content/sparc.md`, the homepage reads `content/home.md`.
 
+Every file starts with a front matter block between two `---` lines (`title:`, `description:`, ...). GitHub reads it as YAML, so a value that contains a colon followed by a space must be put in double quotes, for example `description: "SPARC explained: what it is"`. Without the quotes GitHub shows "Error in user YAML" above the file (the site itself would still build).
+
 ## Writing rules
 
 Every file starts with a few lines between `---` marks. They are used for the page title and description in search results (`title`, `description`), not shown on the page itself.

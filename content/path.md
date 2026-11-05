@@ -1,6 +1,6 @@
 ---
 title: Path
-description: Your route into Swiss military cyber: SPARC, recruit school, the Cyber Lehrgang and Cyber Bataillon 42. Find where you stand today, what to do next and by when.
+description: "Your route into Swiss military cyber: SPARC, recruit school, the Cyber Lehrgang and Cyber Bataillon 42. Find where you stand today, what to do next and by when."
 ---
 <!--
   Path page. Format: docs/CONTENT.md.

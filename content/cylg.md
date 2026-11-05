@@ -1,6 +1,6 @@
 ---
 title: Cyber Lehrgang
-description: Cyber Lehrgang (CYLG) explained: what the Swiss Army militia cyber course is, who it is for, how selection works, the course, commitments, what you get and official links.
+description: "Cyber Lehrgang (CYLG) explained: what the Swiss Army militia cyber course is, who it is for, how selection works, the course, commitments, what you get and official links."
 ---
 <!--
   Cyber Lehrgang page. Format: docs/CONTENT.md.
